@@ -1,0 +1,579 @@
+% =====================================================================
+% SCHEMA GERARCHICO DELLE STRUTTURE ALGEBRICHE, TOPOLOGICHE E DELLE ALGEBRE
+% Compilare con: lualatex schema_strutture.tex
+% (pdflatex funziona quasi sempre, ma con grafi di queste dimensioni
+%  lualatex ha una gestione della memoria più permissiva)
+% =====================================================================
+\documentclass[tikz, border=12pt]{standalone}
+\usepackage{amsmath, amssymb, amsfonts}
+\usetikzlibrary{positioning, fit, shapes.geometric, arrows.meta, calc, backgrounds}
+
+\begin{document}
+\begin{tikzpicture}[
+  % --- stile generico dei nodi "struttura" ---
+  structNode/.style={
+    draw, thick, rounded corners=2pt, fill=white,
+    align=center, text width=3.3cm, minimum height=1.15cm,
+    font=\small, inner sep=4pt
+  },
+  % --- stile delle frecce di ereditarietà "interne" a una categoria ---
+  mainArr/.style={-Stealth, thick, draw=black!75, line width=0.9pt},
+  % --- stile delle frecce "trasversali" fra categorie diverse ---
+  crossArr/.style={-Stealth, thick, dashed, draw=black!55, line width=0.8pt},
+  % --- etichette sulle frecce ---
+  arrLbl/.style={font=\scriptsize\itshape, fill=white, inner sep=1.5pt, align=center},
+  % --- titoli dei riquadri di sfondo ---
+  boxTitle/.style={font=\bfseries\large, align=center}
+]
+
+% =====================================================================
+% CATEGORIA 1 — STRUTTURE ALGEBRICHE DI BASE
+% =====================================================================
+\node[structNode] (magma) {\textbf{Magma}\\ \scriptsize insieme $M$ con operazione binaria $\ast: M\times M \to M$};
+\node[structNode, right=2.6cm of magma] (semigruppo) {\textbf{Semigruppo}\\ \scriptsize $\ast$ associativa: $(a\ast b)\ast c = a\ast(b\ast c)$};
+\node[structNode, right=2.6cm of semigruppo] (monoide) {\textbf{Monoide}\\ \scriptsize esiste elemento neutro $e$: $a\ast e = e\ast a = a$};
+\node[structNode, right=2.6cm of monoide] (gruppo) {\textbf{Gruppo}\\ \scriptsize ogni elemento ha inverso: $a\ast a^{-1}=e$};
+\node[structNode, right=2.6cm of gruppo] (gruppoab) {\textbf{Gruppo Abeliano}\\ \scriptsize $\ast$ commutativa: $a\ast b = b\ast a$};
+
+\draw[mainArr] (magma) -- node[arrLbl, above]{+ associatività} (semigruppo);
+\draw[mainArr] (semigruppo) -- node[arrLbl, above]{+ elemento neutro} (monoide);
+\draw[mainArr] (monoide) -- node[arrLbl, above]{+ inverso} (gruppo);
+\draw[mainArr] (gruppo) -- node[arrLbl, above]{+ commutatività} (gruppoab);
+
+% =====================================================================
+% CATEGORIA 2 — ANELLI E CAMPI
+% =====================================================================
+\node[structNode, below=3.6cm of semigruppo] (anello) {\textbf{Anello} $(A,+,\times)$\\ \scriptsize gruppo abeliano $(A,+)$ e monoide $(A,\times)$, distributività};
+\node[structNode, right=2.6cm of anello] (anellocomm) {\textbf{Anello Commutativo}\\ \scriptsize $\times$ commutativo};
+\node[structNode, right=2.8cm of anellocomm] (dominiointeg) {\textbf{Dominio d'Integrità}\\ \scriptsize nessun divisore dello zero: $ab=0 \Rightarrow a=0$ o $b=0$};
+\node[structNode, right=2.6cm of dominiointeg] (ufd) {\textbf{UFD}\\ \scriptsize fattorizzazione in irriducibili unica (a meno di unità/ordine)};
+\node[structNode, right=2.6cm of ufd] (pid) {\textbf{PID}\\ \scriptsize ogni ideale è principale: $I=(a)$};
+\node[structNode, right=2.8cm of pid] (euclideo) {\textbf{Dominio Euclideo}\\ \scriptsize esiste norma $\delta$ e algoritmo di divisione con resto};
+\node[structNode, right=2.6cm of euclideo] (campo) {\textbf{Campo}\\ \scriptsize ogni elemento non nullo è invertibile per $\times$ -- \textit{campi finiti: base della Crittografia (AES, curve ellittiche)}};
+
+\draw[mainArr] (anello) -- node[arrLbl, above]{+ commutatività} (anellocomm);
+\draw[mainArr] (anellocomm) -- node[arrLbl, above]{+ no zero-divisori} (dominiointeg);
+\draw[mainArr] (dominiointeg) -- node[arrLbl, above]{+ fattoriz.\ unica} (ufd);
+\draw[mainArr] (ufd) -- node[arrLbl, above]{+ ideali principali} (pid);
+\draw[mainArr] (pid) -- node[arrLbl, above]{+ algoritmo divisione} (euclideo);
+\draw[mainArr] (euclideo) -- node[arrLbl, above]{+ ogni elem.\ invertibile} (campo);
+
+% =====================================================================
+% CATEGORIA 3 — MODULI E SPAZI VETTORIALI
+% =====================================================================
+\node[structNode, below=3.6cm of anellocomm] (modulo) {\textbf{Modulo} su anello $R$\\ \scriptsize gruppo abeliano $(M,+)$ con azione $R\times M \to M$};
+\node[structNode, right=3.0cm of modulo] (spaziovett) {\textbf{Spazio Vettoriale}\\ \scriptsize modulo su un campo $\mathbb{K}$ -- \textit{es.\ fisici: posizione, velocità, forza}};
+
+\draw[mainArr] (modulo) -- node[arrLbl, above]{$R \rightsquigarrow \mathbb{K}$ (campo)} (spaziovett);
+
+% =====================================================================
+% CATEGORIA 4 — STRUTTURE TOPOLOGICHE E METRICHE
+% =====================================================================
+\node[structNode, right=7.0cm of euclideo, yshift=0cm] (topologico) {\textbf{Spazio Topologico}\\ \scriptsize insieme $X$ con famiglia di aperti $\tau$};
+\node[structNode, below=2.6cm of topologico] (metrico) {\textbf{Spazio Metrico}\\ \scriptsize funzione distanza $d(x,y)$};
+\node[structNode, below=2.6cm of metrico] (normato) {\textbf{Spazio Normato}\\ \scriptsize spazio vettoriale + norma $\lVert v \rVert$};
+\node[structNode, below=2.6cm of normato, xshift=-2.6cm] (banach) {\textbf{Spazio di Banach}\\ \scriptsize normato e completo (Cauchy $\Rightarrow$ convergente)};
+\node[structNode, below=2.6cm of normato, xshift=2.6cm] (prodint) {\textbf{Spazio con Prodotto Interno}\\ \scriptsize forma bilineare $\langle \cdot,\cdot\rangle$, $\lVert v \rVert = \sqrt{\langle v,v\rangle}$};
+\node[structNode, below=2.6cm of prodint] (hilbert) {\textbf{Spazio di Hilbert}\\ \scriptsize prodotto interno e completo -- \textit{cuore dell'Analisi Funzionale: operatori, spettro}};
+
+\draw[mainArr] (topologico) -- node[arrLbl, right]{+ funzione distanza} (metrico);
+\draw[mainArr] (metrico) -- node[arrLbl, right]{+ struttura lineare, norma} (normato);
+\draw[mainArr] (normato) -- node[arrLbl, left]{+ completezza} (banach);
+\draw[mainArr] (normato) -- node[arrLbl, right]{+ prodotto interno} (prodint);
+\draw[mainArr] (prodint) -- node[arrLbl, right]{+ completezza} (hilbert);
+\draw[crossArr] (hilbert) to[bend right=25] node[arrLbl, below]{è anche} (banach);
+
+% =====================================================================
+% CATEGORIA 5 — ALGEBRE
+% =====================================================================
+\node[structNode, below=4.2cm of spaziovett] (algcampo) {\textbf{Algebra su Campo}\\ \scriptsize spazio vettoriale + prodotto bilineare interno $a\cdot b$};
+\node[structNode, below=3.0cm of algcampo, xshift=-4.6cm] (algassoc) {\textbf{Algebra Associativa}\\ \scriptsize $(a\cdot b)\cdot c = a\cdot(b\cdot c)$};
+\node[structNode, below=2.4cm of algassoc] (algcomm) {\textbf{Algebra Commutativa}\\ \scriptsize $a\cdot b = b\cdot a$};
+\node[structNode, below=3.0cm of algcampo, xshift=4.6cm] (alglie) {\textbf{Algebra di Lie} $\mathfrak{g}$\\ \scriptsize prodotto $[X,Y]$ antisimmetrico, identità di Jacobi};
+\node[structNode, below=5.6cm of algcampo] (algtens) {\textbf{Algebra Tensoriale} $T(V)$\\ \scriptsize prodotto libero $\otimes$, nessun vincolo};
+\node[structNode, below=2.6cm of algtens, xshift=-3.2cm] (grassmann) {\textbf{Algebra di Grassmann} $\Lambda(V)$\\ \scriptsize $T(V)/I$, $\ I=\langle v\otimes v\rangle$: $v\wedge w = -w\wedge v$};
+\node[structNode, below=2.6cm of algtens, xshift=3.2cm] (clifford) {\textbf{Algebra di Clifford} $C\ell_q(V)$\\ \scriptsize $T(V)/I$, $\ I=\langle v\otimes v - Q(v)\rangle$ -- \textit{spinori: Relatività e Meccanica Quantistica}};
+
+\draw[mainArr] (algcampo) -- node[arrLbl, above, sloped]{+ associatività} (algassoc);
+\draw[mainArr] (algassoc) -- node[arrLbl, right]{+ commutatività} (algcomm);
+\draw[mainArr] (algcampo) -- node[arrLbl, above, sloped]{antisimmetria + Jacobi} (alglie);
+\node[structNode, right=4cm of alglie] (universale) {\textbf{Algebra Inviluppante Universale} $U(\mathfrak{g})$\\ \scriptsize $T(\mathfrak{g})/I$, $\ I=\langle X\otimes Y-Y\otimes X-[X,Y]\rangle$: "doma" l'algebra di Lie rendendola associativa (Teorema di Poincaré--Birkhoff--Witt)};
+\draw[mainArr] (alglie) -- node[arrLbl, above]{quoziente: incapsula $[X,Y]$} (universale);
+\draw[crossArr] (algtens) to[bend left=10] node[arrLbl, below, pos=0.4]{stessa costruzione: quoziente di $T(\cdot)$} (universale.south);
+\draw[mainArr] (algtens) -- node[arrLbl, left]{quoziente: $v\otimes v = 0$} (grassmann);
+\draw[mainArr] (algtens) -- node[arrLbl, right]{quoziente: $v^2 = Q(v)$} (clifford);
+\draw[crossArr] (algassoc) to[bend left=15] node[arrLbl, left]{è un'istanza di} (algtens);
+
+% =====================================================================
+% FRECCE TRASVERSALI FRA CATEGORIE (relazioni "a distanza")
+% =====================================================================
+\draw[crossArr] (gruppoab) to[out=-90, in=90] node[arrLbl, right, pos=0.45]{+ struttura moltiplicativa} (anello);
+\draw[crossArr] (gruppoab.south) to[out=-100, in=110] node[arrLbl, above, pos=0.3]{gruppo abeliano soggiacente} (modulo.north);
+\draw[crossArr] (anellocomm.south) to[out=-90, in=90] node[arrLbl, right]{scalari (azione su $M$)} (modulo.north);
+\draw[crossArr] (campo.south) to[out=-160, in=60] node[arrLbl, right, pos=0.6]{scalari} (spaziovett.east);
+\draw[crossArr] (spaziovett) to[out=0, in=140] node[arrLbl, above, pos=0.4]{+ norma $\lVert\cdot\rVert$} (normato.west);
+\draw[crossArr] (spaziovett.south) to[out=-90, in=90] node[arrLbl, right]{+ prodotto bilineare interno} (algcampo.north);
+\draw[crossArr] (spaziovett.south) to[out=-120, in=180] node[arrLbl, above, pos=0.75]{costruzione libera $\otimes$} (algtens.west);
+
+% =====================================================================
+% CATEGORIA 6 — ALGEBRE DI DIVISIONE NORMATE (Cayley--Dickson)
+% =====================================================================
+\node[structNode, right=6.5cm of clifford] (reali) {\textbf{Reali} $\mathbb{R}$\\ \scriptsize dim 1: campo, algebra di divisione banale};
+\node[structNode, right=2.6cm of reali] (complessi) {\textbf{Complessi} $\mathbb{C}$\\ \scriptsize dim 2: associativa, commutativa};
+\node[structNode, right=2.6cm of complessi] (quaternioni) {\textbf{Quaternioni} $\mathbb{H}$\\ \scriptsize dim 4: associativa, NON commutativa -- \textit{rappresentano le rotazioni in 3D: doppio rivestimento di $SO(3)$ (Cat.\ 8)}};
+\node[structNode, right=2.6cm of quaternioni] (ottonioni) {\textbf{Ottonioni} $\mathbb{O}$\\ \scriptsize dim 8: NON associativa (alternativa), non commutativa};
+\node[structNode, dashed, right=2.8cm of ottonioni] (sedenioni) {\textbf{Sedenioni} $\mathbb{S}$\\ \scriptsize dim 16: compaiono divisori dello zero -- non più divisione};
+
+\draw[mainArr] (reali) -- node[arrLbl, above]{Cayley--Dickson} (complessi);
+\draw[mainArr] (complessi) -- node[arrLbl, above]{+ non commutatività} (quaternioni);
+\draw[mainArr] (quaternioni) -- node[arrLbl, above]{+ non associatività} (ottonioni);
+\draw[mainArr, dashed] (ottonioni) -- node[arrLbl, above]{rottura: $\exists$ divisori dello zero} (sedenioni);
+
+\draw[crossArr] (algcampo.east) to[out=0, in=150] node[arrLbl, above, pos=0.55]{Hurwitz: uniche algebre di divisione normate reali} (quaternioni.north);
+\draw[crossArr] (clifford) to[bend right=20] node[arrLbl, below]{$C\ell_{0,2}(\mathbb{R}) \cong \mathbb{H}$} (quaternioni.south);
+
+% =====================================================================
+% CATEGORIA 7 — APPLICAZIONI TRA STRUTTURE: MORFISMI E FUNZIONALI
+% =====================================================================
+\node[structNode, below=3.6cm of grassmann] (funzione) {\textbf{Funzione} $f:A\to B$\\ \scriptsize corrispondenza che associa a ogni $a\in A$ un unico $b\in B$};
+\node[structNode, below=2.2cm of funzione] (omomorfismo) {\textbf{Omomorfismo}\\ \scriptsize $f(a\ast b)=f(a)\ast f(b)$: preserva le operazioni della struttura};
+\node[structNode, right=2.6cm of omomorfismo] (isomorfismo) {\textbf{Isomorfismo}\\ \scriptsize omomorfismo biettivo, la cui inversa è anch'essa un omomorfismo};
+\node[structNode, left=2.6cm of omomorfismo] (endomorfismo) {\textbf{Endomorfismo}\\ \scriptsize omomorfismo $f:A\to A$: stesso dominio e codominio};
+\node[structNode, below=2.2cm of omomorfismo] (automorfismo) {\textbf{Automorfismo}\\ \scriptsize isomorfismo $f:A\to A$: biettivo e dominio $=$ codominio -- \textit{l'insieme $\mathrm{Aut}(A)$ è esso stesso un Gruppo (Cat.\ 1), sotto composizione}};
+\node[structNode, below=3.4cm of isomorfismo] (operatorelineare) {\textbf{Operatore Lineare} $T:V\to W$\\ \scriptsize $T(\alpha v+\beta w)=\alpha T(v)+\beta T(w)$: omomorfismo tra spazi vettoriali -- \textit{operatori differenziali: Analisi Numerica, Equazioni Differenziali}};
+\node[structNode, below=2.2cm of operatorelineare] (formalineare) {\textbf{Forma Lineare (Funzionale)} $\varphi:V\to\mathbb{K}$\\ \scriptsize operatore lineare a valori nel campo scalare};
+\node[structNode, below=2.2cm of formalineare] (spazioduale) {\textbf{Spazio Duale} $V^{*}$\\ \scriptsize insieme di tutti i funzionali lineari: $V^{*}=\mathrm{Hom}(V,\mathbb{K})$};
+\node[structNode, right=2.6cm of spazioduale] (covettore) {\textbf{Covettore}\\ \scriptsize elemento di $V^{*}$: "mangia" un vettore e restituisce uno scalare};
+\node[structNode, right=2.6cm of operatorelineare] (formabilineare) {\textbf{Forma Bilineare} $B:V\times V\to\mathbb{K}$\\ \scriptsize lineare separatamente in ciascun argomento -- \textit{es.: il Prodotto Interno (Cat.\ 4) è il caso simmetrico definito positivo}};
+\node[structNode, below=2.2cm of covettore] (varianza) {\textbf{Varianza / Controvarianza}\\ \scriptsize vettori: componenti controvarianti; covettori: componenti covarianti -- trasformano in modo opposto al cambio di base};
+
+\draw[mainArr] (funzione) -- node[arrLbl, right]{+ preserva le operazioni} (omomorfismo);
+\draw[mainArr] (omomorfismo) -- node[arrLbl, above]{+ biettivo, inversa omom.} (isomorfismo);
+\draw[mainArr] (omomorfismo) -- node[arrLbl, above]{dominio $=$ codominio} (endomorfismo);
+\draw[mainArr] (isomorfismo) -- node[arrLbl, right]{+ dominio $=$ codominio} (automorfismo);
+\draw[mainArr] (endomorfismo) to[bend right=15] node[arrLbl, left]{+ biettivo} (automorfismo);
+\draw[mainArr] (isomorfismo) -- node[arrLbl, right]{specializz.: $V,W$ spazi vett.} (operatorelineare);
+\draw[mainArr] (operatorelineare) -- node[arrLbl, right]{codominio $=\mathbb{K}$} (formalineare);
+\draw[mainArr] (formalineare) -- node[arrLbl, right]{insieme di tutti i $\varphi$} (spazioduale);
+\draw[mainArr] (spazioduale) -- node[arrLbl, above]{i suoi elementi si chiamano} (covettore);
+\draw[mainArr] (operatorelineare) -- node[arrLbl, above]{generalizz.\ a 2 argomenti} (formabilineare);
+\draw[mainArr] (covettore) -- node[arrLbl, right]{+ trasformazione sotto cambio base} (varianza);
+
+% =====================================================================
+% CATEGORIA 8 — GEOMETRIA AFFINE E TRASFORMAZIONI
+% =====================================================================
+\node[structNode, below=3.6cm of sedenioni] (spazioaffine) {\textbf{Spazio Affine}\\ \scriptsize punti $+$ spazio vettoriale delle traslazioni: uno spazio vettoriale che ha dimenticato l'origine};
+\node[structNode, right=2.6cm of spazioaffine] (trasfaffine) {\textbf{Trasformazione Affine}\\ \scriptsize $x\mapsto Ax+b$: preserva combinazioni affini e rette};
+\node[structNode, right=2.6cm of trasfaffine] (isometria) {\textbf{Isometria}\\ \scriptsize preserva le distanze: $d(f(x),f(y))=d(x,y)$ -- \textit{formalizza la distanza già vista in Spazio Metrico (Cat.\ 4)}};
+\node[structNode, right=2.6cm of isometria] (rotazione) {\textbf{Rotazione}\\ \scriptsize isometria che fissa un punto e preserva l'orientazione: gruppo $SO(n)$ -- \textit{per $n=3$, rappresentata dai Quaternioni (Cat.\ 6)}};
+\node[structNode, right=2.6cm of rotazione] (movimenti) {\textbf{Gruppo dei Movimenti}\\ \scriptsize $\mathrm{Isom}(\mathbb{R}^n)=O(n)\ltimes\mathbb{R}^n$};
+
+\draw[mainArr] (spazioaffine) -- node[arrLbl, above]{+ struttura metrica} (trasfaffine);
+\draw[mainArr] (trasfaffine) -- node[arrLbl, above]{+ preserva le distanze} (isometria);
+\draw[mainArr] (isometria) -- node[arrLbl, above]{+ fissa un punto, orientaz.} (rotazione);
+\draw[mainArr] (isometria) -- node[arrLbl, below]{struttura di gruppo} (movimenti);
+
+% =====================================================================
+% CATEGORIA 9 — NUMERI ALGEBRICI E TRASCENDENTI
+% =====================================================================
+\node[structNode, below=3.6cm of reali, xshift=3cm] (razionali) {\textbf{Numeri Razionali} $\mathbb{Q}$\\ \scriptsize campo delle frazioni di $\mathbb{Z}$};
+\node[structNode, right=2.6cm of razionali] (algebrici) {\textbf{Numeri Algebrici}\\ \scriptsize radici di un polinomio non nullo a coefficienti in $\mathbb{Q}$};
+\node[structNode, right=2.6cm of algebrici] (trascendenti) {\textbf{Numeri Trascendenti}\\ \scriptsize non algebrici: es. $\pi$, $e$};
+\node[structNode, below=2.2cm of algebrici] (chiusuraalg) {\textbf{Chiusura Algebrica} $\overline{\mathbb{Q}}$\\ \scriptsize campo algebricamente chiuso minimale contenente $\mathbb{Q}$};
+
+\draw[mainArr] (razionali) -- node[arrLbl, above]{+ radici di polinomi} (algebrici);
+\draw[mainArr, dashed] (algebrici) -- node[arrLbl, above]{complemento in $\mathbb{R}$/$\mathbb{C}$} (trascendenti);
+\draw[mainArr] (algebrici) -- node[arrLbl, right]{+ tutte le radici, campo chiuso} (chiusuraalg);
+\draw[crossArr] (complessi) -- node[arrLbl, right]{contiene $\overline{\mathbb{Q}}$} (algebrici);
+
+% =====================================================================
+% CATEGORIA 10 — ALGEBRA MULTILINEARE: TENSORI E MULTIVETTORI
+% =====================================================================
+\node[structNode, below=6.5cm of trascendenti] (tensoretipo) {\textbf{Tensore di tipo} $(p,q)$\\ \scriptsize elemento di $V^{\otimes p}\otimes(V^{*})^{\otimes q}$: $p$ indici controvarianti, $q$ covarianti};
+\node[structNode, below=2.2cm of tensoretipo] (multivettore) {\textbf{Multivettore ($k$-vettore)}\\ \scriptsize elemento omogeneo di grado $k$ dell'algebra di Grassmann $\Lambda(V)$};
+\node[structNode, below=2.2cm of multivettore] (bivettore) {\textbf{Bivettore}\\ \scriptsize multivettore di grado 2: rappresenta un'area orientata, $v\wedge w$ -- \textit{es.: momento angolare, momento di una forza}};
+
+\draw[mainArr] (tensoretipo) -- node[arrLbl, right]{caso antisimmetrico puro} (multivettore);
+\draw[mainArr] (multivettore) -- node[arrLbl, right]{caso $k=2$} (bivettore);
+
+% =====================================================================
+% CATEGORIA 11 — TEORIA DELLE CATEGORIE (IL META-LIVELLO)
+% =====================================================================
+\node[structNode, below=5.5cm of varianza] (categoria) {\textbf{Categoria}\\ \scriptsize oggetti $+$ morfismi, composizione associativa, identità. (Grp, Vect$_\mathbb{K}$, Top, ... sono categorie: gli omomorfismi ne sono i morfismi)};
+\node[structNode, right=2.6cm of categoria] (funtore) {\textbf{Funtore}\\ \scriptsize "omomorfismo tra categorie": preserva composizione e identità};
+\node[structNode, right=2.6cm of funtore] (isonaturale) {\textbf{Isomorfismo Naturale}\\ \scriptsize trasformazione naturale invertibile fra due funtori};
+\node[structNode, below=2.4cm of funtore] (curryhoward) {\textbf{Corrispondenza Curry--Howard--Lambek}\\ \scriptsize proposizioni $\cong$ tipi $\cong$ oggetti; dimostrazioni $\cong$ programmi $\cong$ morfismi};
+
+\draw[mainArr] (categoria) -- node[arrLbl, above]{+ applicazione tra categorie} (funtore);
+\draw[mainArr] (funtore) -- node[arrLbl, above]{+ trasf.\ naturale invertibile} (isonaturale);
+\draw[mainArr] (categoria) to[bend right=10] node[arrLbl, left]{logica $\leftrightarrow$ tipi $\leftrightarrow$ categorie} (curryhoward);
+
+% =====================================================================
+% CATEGORIA 12 — GRUPPI TOPOLOGICI E GRUPPI DI LIE
+% =====================================================================
+\node[structNode, below=4.5cm of curryhoward] (gruppotop) {\textbf{Gruppo Topologico}\\ \scriptsize gruppo $+$ topologia: prodotto e inverso sono operazioni continue};
+\node[structNode, right=2.6cm of gruppotop] (gruppolie) {\textbf{Gruppo di Lie}\\ \scriptsize gruppo topologico che è anche varietà liscia; la sua algebra di Lie è lo spazio tangente all'identità -- \textit{simmetrie in Meccanica Razionale (Teorema di Noether) e Fisica Matematica}};
+
+\draw[mainArr] (gruppotop) -- node[arrLbl, above]{+ struttura di varietà liscia} (gruppolie);
+
+% =====================================================================
+% CATEGORIA 13 — RETICOLI E ALGEBRE DI BOOLE
+% =====================================================================
+\node[structNode, right=4cm of gruppolie] (poset) {\textbf{Insieme Parzialmente Ordinato}\\ \scriptsize relazione $\le$: riflessiva, antisimmetrica, transitiva};
+\node[structNode, right=2.6cm of poset] (reticolo) {\textbf{Reticolo}\\ \scriptsize ogni coppia ha estremo superiore (join $\vee$) e inferiore (meet $\wedge$)};
+\node[structNode, right=2.6cm of reticolo] (algebrabool) {\textbf{Algebra di Boole}\\ \scriptsize reticolo distributivo e complementato: es.\ $(\mathcal{P}(X),\cup,\cap,\complement)$ -- \textit{equivalente a un anello booleano, dove $x^2=x$ per ogni $x$ (Cat.\ 2)}};
+
+\draw[mainArr] (poset) -- node[arrLbl, above]{+ esistenza di join e meet} (reticolo);
+\draw[mainArr] (reticolo) -- node[arrLbl, above]{+ distributività, complemento} (algebrabool);
+
+% =====================================================================
+% CATEGORIA 14 — ULTERIORI GENERALIZZAZIONI
+% =====================================================================
+\node[structNode, right=4cm of algebrabool] (algebrajordan) {\textbf{Algebra di Jordan}\\ \scriptsize prodotto commutativo non associativo $a\circ b=\tfrac12(ab+ba)$: simmetrizzazione di un'algebra associativa};
+\node[structNode, right=2.6cm of algebrajordan] (quasigruppo) {\textbf{Quasigruppo}\\ \scriptsize magma in cui la divisione è sempre possibile (tavola latina): gruppo senza associatività};
+\node[structNode, right=2.6cm of quasigruppo] (loop) {\textbf{Loop}\\ \scriptsize quasigruppo con elemento neutro};
+
+\draw[mainArr] (quasigruppo) -- node[arrLbl, above]{+ elemento neutro} (loop);
+
+% =====================================================================
+% CATEGORIA 15 — SOTTOSTRUTTURE, QUOZIENTI E TEOREMI DI ISOMORFISMO
+% =====================================================================
+\node[structNode, below=4.2cm of gruppotop] (sottogruppo) {\textbf{Sottogruppo} $H\le G$\\ \scriptsize sottoinsieme chiuso rispetto a operazione e inverso};
+\node[structNode, right=2.6cm of sottogruppo] (sottogruppon) {\textbf{Sottogruppo Normale} $N\trianglelefteq G$\\ \scriptsize $gNg^{-1}=N$ per ogni $g$: le classi laterali formano un gruppo};
+\node[structNode, right=2.6cm of sottogruppon] (gruppoquoz) {\textbf{Gruppo Quoziente} $G/N$\\ \scriptsize classi laterali di un sottogruppo normale, con operazione indotta};
+\node[structNode, below=2.4cm of sottogruppo] (ideale) {\textbf{Ideale} $I\trianglelefteq A$\\ \scriptsize sottogruppo additivo che assorbe la moltiplicazione: $aI\subseteq I$};
+\node[structNode, right=2.6cm of ideale] (anelloquoz) {\textbf{Anello Quoziente} $A/I$\\ \scriptsize classi di resto modulo un ideale, eredita $+$ e $\times$};
+\node[structNode, below=2.4cm of ideale] (sottospazio2) {\textbf{Sottospazio Vettoriale} $W\le V$\\ \scriptsize sottoinsieme chiuso rispetto a combinazioni lineari};
+\node[structNode, right=2.6cm of sottospazio2] (spazioquoz) {\textbf{Spazio Quoziente} $V/W$\\ \scriptsize classi laterali di un sottospazio, ancora spazio vettoriale};
+\node[structNode, right=5cm of gruppoquoz] (nucleo) {\textbf{Nucleo} $\ker f$\\ \scriptsize $\{a: f(a)=e\}$: sempre sottogruppo normale (o ideale, o sottospazio)};
+\node[structNode, below=2.4cm of nucleo] (immagine) {\textbf{Immagine} $\mathrm{im}\,f$\\ \scriptsize $\{f(a): a\in A\}$: sottostruttura del codominio};
+\node[structNode, below=2.4cm of immagine] (teoremaiso1) {\textbf{1° Teorema di Isomorfismo}\\ \scriptsize $G/\ker f \cong \mathrm{im}\,f$: vale, con la notazione giusta, per gruppi, anelli e spazi vettoriali};
+
+\draw[mainArr] (sottogruppo) -- node[arrLbl, above]{+ invariante per coniugio} (sottogruppon);
+\draw[mainArr] (sottogruppon) -- node[arrLbl, above]{classi laterali $\Rightarrow$ gruppo} (gruppoquoz);
+\draw[mainArr] (ideale) -- node[arrLbl, above]{classi di resto} (anelloquoz);
+\draw[mainArr] (sottospazio2) -- node[arrLbl, above]{classi laterali} (spazioquoz);
+\draw[mainArr] (nucleo) -- node[arrLbl, right]{insieme a} (immagine);
+\draw[mainArr] (immagine) -- node[arrLbl, right]{danno} (teoremaiso1);
+\draw[crossArr] (sottogruppon.north) to[bend left=40] node[arrLbl, above, pos=0.5]{il nucleo di un omomorfismo è sempre così} (nucleo.north);
+
+% =====================================================================
+% CATEGORIA 16 — AZIONI DI GRUPPO
+% =====================================================================
+\node[structNode, right=5cm of nucleo] (azionegruppo) {\textbf{Azione di Gruppo} $G\curvearrowright X$\\ \scriptsize omomorfismo $G\to\mathrm{Sym}(X)$: $G$ agisce sull'insieme $X$};
+\node[structNode, right=2.6cm of azionegruppo] (orbita) {\textbf{Orbita} $G\cdot x$\\ \scriptsize $\{g\cdot x: g\in G\}$: punti raggiungibili da $x$};
+\node[structNode, below=2.4cm of azionegruppo] (stabilizzatore) {\textbf{Stabilizzatore} $G_x$\\ \scriptsize $\{g\in G: g\cdot x = x\}$: sottogruppo che fissa $x$};
+\node[structNode, below=2.4cm of orbita] (teoremaorbstab) {\textbf{Teorema Orbita-Stabilizzatore}\\ \scriptsize $|G| = |G\cdot x|\cdot|G_x|$};
+\node[structNode, below=2.4cm of teoremaorbstab] (sylow) {\textbf{Teoremi di Sylow}\\ \scriptsize esistenza, coniugio e conteggio dei sottogruppi di ordine massimo $p^k$};
+
+\draw[mainArr] (azionegruppo) -- node[arrLbl, above]{+ punto base $x$} (orbita);
+\draw[mainArr] (azionegruppo) -- node[arrLbl, left]{+ punto base $x$} (stabilizzatore);
+\draw[mainArr] (orbita) -- (teoremaorbstab);
+\draw[mainArr] (stabilizzatore) -- (teoremaorbstab);
+\draw[mainArr, dashed] (teoremaorbstab) -- node[arrLbl, right]{applicazione ai $p$-sottogruppi} (sylow);
+
+% =====================================================================
+% CATEGORIA 17 — TEORIA DI GALOIS E PRODOTTI DI GRUPPI
+% =====================================================================
+\node[structNode, right=4cm of teoremaorbstab] (estcampo) {\textbf{Estensione di Campo} $L/K$\\ \scriptsize $K\subseteq L$: $L$ è spazio vett.\ su $K$, grado $[L:K]=\dim_K L$};
+\node[structNode, right=2.6cm of estcampo] (estalgebrica) {\textbf{Estensione Algebrica}\\ \scriptsize ogni elemento di $L$ è radice di un polinomio a coefficienti in $K$};
+\node[structNode, right=2.6cm of estalgebrica] (gruppogalois) {\textbf{Gruppo di Galois} $\mathrm{Gal}(L/K)$\\ \scriptsize automorfismi di $L$ che fissano $K$ punto per punto};
+\node[structNode, below=2.2cm of estalgebrica] (corrispgalois) {\textbf{Corrispondenza di Galois}\\ \scriptsize sottogruppi di $\mathrm{Gal}(L/K)$ $\leftrightarrow$ campi intermedi $K\subseteq M\subseteq L$, un Reticolo (Cat.\ 13) rovesciato -- \textit{stessa struttura del Nullstellensatz (Cat.\ 18) e della Dualità di Stone (Cat.\ 19)}};
+\node[structNode, below=2.2cm of estcampo] (crt) {\textbf{Teorema Cinese del Resto}\\ \scriptsize $\mathbb{Z}/n\mathbb{Z}\cong \mathbb{Z}/n_1\mathbb{Z}\times\cdots\times\mathbb{Z}/n_k\mathbb{Z}$ se gli $n_i$ coprimi};
+\node[structNode, below=2.2cm of gruppogalois] (prodsemidiretto) {\textbf{Prodotto Diretto e Semidiretto}\\ \scriptsize $G\times H$; $G\ltimes H$ quando $G$ agisce su $H$ per automorfismi};
+
+\draw[mainArr] (estcampo) -- node[arrLbl, above]{+ ogni elemento è radice} (estalgebrica);
+\draw[mainArr] (estalgebrica) -- node[arrLbl, above]{+ normale e separabile} (gruppogalois);
+\draw[mainArr] (gruppogalois) -- node[arrLbl, right, sloped]{corrispondenza fondamentale} (corrispgalois);
+
+% =====================================================================
+% CATEGORIA 18 — GEOMETRIA ALGEBRICA, DIFFERENZIALE E ALGEBRA MULTILINEARE ESTESA
+% =====================================================================
+\node[structNode, below=4.5cm of spazioquoz] (varieta) {\textbf{Varietà Algebrica}\\ \scriptsize luogo degli zeri di polinomi: $V(S)=\{x: f(x)=0\ \forall f\in S\}$};
+\node[structNode, right=2.6cm of varieta] (nullstellensatz) {\textbf{Nullstellensatz di Hilbert}\\ \scriptsize varietà $\leftrightarrow$ ideali radicali, su un campo algebricamente chiuso};
+\node[structNode, right=4cm of nullstellensatz] (varietadiff) {\textbf{Varietà Differenziabile}\\ \scriptsize spazio topologico localmente omeomorfo a $\mathbb{R}^n$, con carte lisce (un Gruppo di Lie ne è un caso particolare)};
+\node[structNode, right=2.6cm of varietadiff] (fibratotang) {\textbf{Fibrato Tangente} $TM$\\ \scriptsize unione degli spazi tangenti in ogni punto della varietà};
+\node[structNode, right=2.6cm of fibratotang] (campovett) {\textbf{Campo Vettoriale}\\ \scriptsize sezione del fibrato tangente: un vettore tangente per ogni punto -- \textit{es.: campo di velocità di un fluido, campo gravitazionale}};
+\node[structNode, right=2.6cm of campovett] (formediff) {\textbf{Forma Differenziale} $\omega\in\Omega^k(M)$\\ \scriptsize campo di $k$-covettori su una varietà: il duale del Multivettore (Cat.\ 10), sezione di $\Lambda^k T^{*}M$};
+\node[structNode, right=2.6cm of formediff] (derivataesterna) {\textbf{Derivata Esterna} $d:\Omega^k\to\Omega^{k+1}$\\ \scriptsize generalizza gradiente ($k{=}0{\to}1$), rotore ($k{=}1{\to}2$ in $\mathbb{R}^3$) e divergenza ($k{=}2{\to}3$); sempre $d^2=0$};
+\node[structNode, right=4cm of derivataesterna] (prodtensspazi) {\textbf{Prodotto Tensoriale} $V\otimes W$\\ \scriptsize il più generale spazio bilineare costruito da $V$ e $W$};
+\node[structNode, right=2.6cm of prodtensspazi] (contrazione) {\textbf{Contrazione / Traccia}\\ \scriptsize accoppia un indice controvariante con uno covariante, riduce il rango del tensore};
+
+\draw[mainArr] (varieta) -- node[arrLbl, above]{+ campo algebr.\ chiuso} (nullstellensatz);
+\draw[mainArr] (varietadiff) -- node[arrLbl, above]{+ spazio tangente in ogni punto} (fibratotang);
+\draw[mainArr] (fibratotang) -- node[arrLbl, above]{+ scelta di sezione} (campovett);
+\draw[crossArr] (campovett) -- node[arrLbl, right]{duale: covettori invece di vettori} (formediff);
+\draw[mainArr] (formediff) -- node[arrLbl, right]{operatore $d$} (derivataesterna);
+\draw[mainArr] (prodtensspazi) -- node[arrLbl, above]{+ accoppiamento indici} (contrazione);
+\draw[crossArr] (ideale) to[bend left=8] node[arrLbl, left, pos=0.6]{Nullstellensatz: ideali $\leftrightarrow$ varietà} (varieta.north);
+
+% =====================================================================
+% CATEGORIA 19 — ANALOGIE E CORRISPONDENZE TRASVERSALI
+% =====================================================================
+\node[structNode, below=4.5cm of nullstellensatz] (motivoquoziente) {\textbf{Il Motivo del Quoziente}\\ \scriptsize la stessa costruzione ricorre ovunque: $T(V)/I=\Lambda(V),\,C\ell_q(V),\,U(\mathfrak{g})$; $G/N$; $A/I$; $V/W$ -- \textit{sempre: dichiarare per decreto che qualcosa vale zero}};
+\node[structNode, right=2.6cm of motivoquoziente] (dualitastone) {\textbf{Dualità di Stone}\\ \scriptsize Algebra di Boole $\leftrightarrow$ Spazio Topologico compatto totalmente sconnesso -- \textit{la stessa Corrispondenza di Galois, applicata a reticoli e spazi}};
+\node[structNode, right=2.6cm of dualitastone] (dualitapontryagin) {\textbf{Dualità di Pontryagin}\\ \scriptsize Gruppo Abeliano localmente compatto $\leftrightarrow$ Gruppo dei Caratteri $\hat{G}=\mathrm{Hom}(G,U(1))$ -- \textit{l'analogo, per i gruppi, dello Spazio Duale $V^{*}$}};
+\node[structNode, below=2.4cm of motivoquoziente] (rivestimenti) {\textbf{Rivestimenti e Gruppo Fondamentale} $\pi_1(X)$\\ \scriptsize sottogruppi di $\pi_1(X)$ $\leftrightarrow$ rivestimenti di $X$ -- \textit{identica struttura della Corrispondenza di Galois: sottogruppi $\leftrightarrow$ campi intermedi}};
+\node[structNode, right=2.6cm of rivestimenti] (erlangen) {\textbf{Programma di Erlangen (Klein)}\\ \scriptsize una geometria $=$ un gruppo di trasformazioni $+$ le sue proprietà invarianti -- \textit{isometrie, rotazioni e trasformazioni affini, già viste, ne sono l'esempio canonico}};
+\node[structNode, right=2.6cm of erlangen] (rappresentazione) {\textbf{Rappresentazione di un Gruppo} $\rho: G\to GL(V)$\\ \scriptsize omomorfismo di un gruppo in operatori lineari -- \textit{traduce la teoria dei gruppi (Cat.\ 16) in algebra lineare (Cat.\ 7); è esattamente un modulo su $\mathbb{K}[G]$ (Cat.\ 3)}};
+
+% =====================================================================
+% CATEGORIA 20 — TRE ESTENSIONI PROFONDE (non un elenco: tre parallelismi scelti)
+% =====================================================================
+\node[structNode, below=3.6cm of rivestimenti] (omologia) {\textbf{Gruppi di Omologia} $H_n(X)$\\ \scriptsize invarianti algebrici (gruppi abeliani) che misurano i "buchi" $n$-dimensionali di uno spazio topologico};
+\node[structNode, right=2.6cm of omologia] (coomologia) {\textbf{Coomologia} $H^n(X)$\\ \scriptsize duale dell'omologia; il prodotto cup la rende un anello graduato -- \textit{lo Spazio Duale, applicato alla topologia}};
+\node[structNode, right=4cm of coomologia] (maschke) {\textbf{Teorema di Maschke}\\ \scriptsize se $|G|$ è finito e invertibile nel campo, ogni rappresentazione si decompone in irriducibili};
+\node[structNode, right=2.6cm of maschke] (schur) {\textbf{Lemma di Schur}\\ \scriptsize un omomorfismo tra rappresentazioni irriducibili è nullo oppure un isomorfismo};
+\node[structNode, right=2.6cm of schur] (caratteri) {\textbf{Carattere} $\chi(g)=\mathrm{tr}(\rho(g))$\\ \scriptsize classifica le rappresentazioni -- \textit{per $G$ abeliano ritrova esattamente la Dualità di Pontryagin}};
+\node[structNode, right=4cm of caratteri] (ostrowski) {\textbf{Teorema di Ostrowski}\\ \scriptsize le uniche valutazioni non banali su $\mathbb{Q}$ sono $|\cdot|_\infty$ (l'usuale) e le $|\cdot|_p$ $p$-adiche, una per ogni primo};
+\node[structNode, right=2.6cm of ostrowski] (padici) {\textbf{Numeri $p$-adici} $\mathbb{Q}_p$\\ \scriptsize completamento di $\mathbb{Q}$ rispetto a $|\cdot|_p$ -- \textit{la stessa identica costruzione di $\mathbb{R}$, con una distanza diversa}};
+
+\draw[mainArr] (omologia) -- node[arrLbl, above]{+ dualità (come lo Spazio Duale)} (coomologia);
+\draw[crossArr] (rivestimenti) -- node[arrLbl, right]{abelianizzazione: $\pi_1\to H_1$} (omologia);
+\draw[mainArr] (maschke) -- node[arrLbl, above]{+ decomposizione in irriducibili} (schur);
+\draw[mainArr] (schur) -- node[arrLbl, above]{invariante numerico associato} (caratteri);
+\draw[crossArr] (rappresentazione) to[bend left=8] node[arrLbl, above, pos=0.6]{+ $|G|$ finito, invertibile nel campo} (maschke.north);
+\draw[mainArr] (ostrowski) -- node[arrLbl, above]{+ completamento rispetto a $|\cdot|_p$} (padici);
+
+% =====================================================================
+% CATEGORIA 21 — GEOMETRIE DI KLEIN E DECOMPOSIZIONI MATRICIALI
+% =====================================================================
+\node[structNode, below=3.6cm of omologia] (proiettiva) {\textbf{Geometria Proiettiva}\\ \scriptsize gruppo $PGL(n+1,\mathbb{K})$: l'invariante è il birapporto; i punti all'infinito diventano punti come gli altri -- \textit{tutte le coniche non degeneri (cerchio, ellisse, parabola, iperbole) sono proiettivamente equivalenti: a distinguerle è solo la Geometria Euclidea, più restrittiva}};
+\node[structNode, right=2.6cm of proiettiva] (euclidea) {\textbf{Geometria Euclidea}\\ \scriptsize gruppo $\mathrm{Isom}(\mathbb{R}^n)$ (Cat.\ 8): l'invariante è la distanza -- il caso più restrittivo della gerarchia di Klein};
+\node[structNode, right=2.6cm of euclidea] (iperbolica) {\textbf{Geometria Iperbolica}\\ \scriptsize gruppo delle isometrie del modello di Poincaré: nega il V postulato -- per un punto esterno a una retta passano infinite parallele};
+\node[structNode, right=4cm of iperbolica] (autovalori) {\textbf{Autovalori e Autovettori}\\ \scriptsize $Tv=\lambda v$: le direzioni che un operatore lineare lascia invariate, a meno di scala};
+\node[structNode, right=2.6cm of autovalori] (diagonalizzazione) {\textbf{Diagonalizzazione}\\ \scriptsize $T$ è diagonalizzabile se ammette una base di autovettori: $T=PDP^{-1}$};
+\node[structNode, right=2.6cm of diagonalizzazione] (formajordan) {\textbf{Forma Canonica di Jordan}\\ \scriptsize la migliore approssimazione alla diagonalizzazione quando mancano abbastanza autovettori};
+\node[structNode, below=2.2cm of diagonalizzazione] (svd) {\textbf{Decomposizione ai Valori Singolari (SVD)}\\ \scriptsize $T=U\Sigma V^{*}$: funziona per qualunque operatore, anche non quadrato -- \textit{cuore dell'Analisi Numerica}};
+
+\draw[mainArr] (proiettiva) -- node[arrLbl, above]{+ fissa l'iperpiano all'infinito (via Cat.\ 8)} (euclidea);
+\draw[crossArr] (euclidea) -- node[arrLbl, above]{stesso Erlangen, postulato parallele diverso} (iperbolica);
+\draw[mainArr] (autovalori) -- node[arrLbl, above]{+ base di autovettori} (diagonalizzazione);
+\draw[mainArr] (autovalori) to[bend right=15] node[arrLbl, below]{quando $T$ non è diagonalizzabile} (formajordan);
+\draw[mainArr] (diagonalizzazione) -- node[arrLbl, right]{+ generalizza a operatori qualsiasi} (svd);
+
+% =====================================================================
+% CATEGORIA 22 — STRUTTURA DI GRUPPI E ANELLI: TEOREMI CLASSICI
+% =====================================================================
+\node[structNode, below=4.5cm of svd] (risolubile) {\textbf{Gruppo Risolubile}\\ \scriptsize catena di sottogruppi normali $\{e\}=G_0\trianglelefteq G_1\trianglelefteq\cdots\trianglelefteq G_n=G$ con quozienti abeliani};
+\node[structNode, right=2.6cm of risolubile] (abelruffini) {\textbf{Teorema di Abel--Ruffini}\\ \scriptsize un'equazione polinomiale è risolubile per radicali $\iff$ il suo Gruppo di Galois (Cat.\ 17) è risolubile -- \textit{per grado $\ge 5$ il gruppo generico $S_n$ non lo è: nessuna formula risolutiva}};
+\node[structNode, right=2.6cm of abelruffini] (jordanholder) {\textbf{Teorema di Jordan--Hölder}\\ \scriptsize ogni gruppo finito ha una serie di composizione; i fattori sono unici a meno di ordine e isomorfismo -- \textit{i "numeri primi" della teoria dei gruppi}};
+\node[structNode, right=2.6cm of jordanholder] (gruppisemplici) {\textbf{Gruppo Semplice}\\ \scriptsize nessun sottogruppo normale proprio non banale -- i mattoni indivisibili di Jordan--Hölder};
+\node[structNode, right=4cm of gruppisemplici] (noetheriano) {\textbf{Anello Noetheriano}\\ \scriptsize ogni ideale è finitamente generato (catena ascendente di ideali stazionaria) -- \textit{condizione che rende trattabile la Geometria Algebrica, Cat.\ 18}};
+\node[structNode, right=2.6cm of noetheriano] (eulero) {\textbf{Caratteristica di Eulero} $\chi(X)$\\ \scriptsize $\chi(X)=\sum_i (-1)^i \mathrm{rank}\,H_i(X)$ -- l'Omologia (Cat.\ 20a) ridotta a un solo numero};
+\node[structNode, below=4.2cm of jordanholder] (strutturamoduli) {\textbf{Teorema di Struttura dei Moduli f.g.\ su un PID}\\ \scriptsize ogni modulo finitamente generato su un PID si decompone in somma diretta di moduli ciclici $R/(d_1)\oplus\cdots\oplus R/(d_n)$};
+\node[structNode, right=2.6cm of strutturamoduli] (gruppiabelianifiniti) {\textbf{Teorema Fondamentale dei Gruppi Abeliani Finiti}\\ \scriptsize caso $R=\mathbb{Z}$: ogni gruppo abeliano finito è $\mathbb{Z}/d_1\mathbb{Z}\oplus\cdots\oplus\mathbb{Z}/d_n\mathbb{Z}$ -- imparentato col Teorema Cinese del Resto (Cat.\ 17)};
+\node[structNode, right=2.6cm of gruppiabelianifiniti] (jordanunificato) {\textbf{...e la Forma di Jordan}\\ \scriptsize caso $R=\mathbb{K}[x]$: lo stesso identico teorema, applicato a $V$ come $\mathbb{K}[x]$-modulo via $T$, \emph{è} la Forma Canonica di Jordan (Cat.\ 21b) -- due teoremi che in realtà erano sempre stati uno};
+
+\draw[mainArr] (strutturamoduli) -- node[arrLbl, above]{caso $R=\mathbb{Z}$} (gruppiabelianifiniti);
+\draw[mainArr] (strutturamoduli) -- node[arrLbl, above]{caso $R=\mathbb{K}[x]$} (jordanunificato);
+
+\draw[mainArr] (risolubile) -- node[arrLbl, above]{applicato al gruppo di Galois di un polinomio} (abelruffini);
+\draw[mainArr] (jordanholder) -- node[arrLbl, above]{i fattori della serie sono così} (gruppisemplici);
+
+% =====================================================================
+% CATEGORIA 23 — MECCANICA RAZIONALE E FISICA MATEMATICA COME ALGEBRA
+% =====================================================================
+\node[structNode, below=4.5cm of gruppiabelianifiniti] (formasimplettica) {\textbf{Forma Simplettica} $\omega$\\ \scriptsize forma differenziale di grado 2 (Cat.\ 18), chiusa ($d\omega=0$) e non degenere -- \textit{la struttura algebrica dello Spazio delle Fasi in Meccanica Hamiltoniana}};
+\node[structNode, right=2.6cm of formasimplettica] (noetherteor) {\textbf{Teorema di Noether}\\ \scriptsize ad ogni simmetria continua (un'Azione di Gruppo di Lie, Cat.\ 12/16) corrisponde una quantità conservata: energia, quantità di moto, momento angolare};
+\node[structNode, right=2.6cm of noetherteor] (poincaregruppo) {\textbf{Gruppo di Poincaré / di Lorentz}\\ \scriptsize isometrie dello spaziotempo di Minkowski -- \textit{qui la Forma Bilineare (Cat.\ 7) è indefinita, non definita positiva}};
+\node[structNode, below=2.4cm of formasimplettica] (legendre) {\textbf{Trasformata di Legendre}\\ \scriptsize converte la Lagrangiana $L(q,\dot q)$, che vive sul Fibrato Tangente $TM$ (Cat.\ 18), nell'Hamiltoniana $H(q,p)$, che vive sul fibrato cotangente -- dove abita la Forma Simplettica};
+\node[structNode, right=2.6cm of legendre] (osservabile) {\textbf{Operatore Autoaggiunto} $T=T^{*}$\\ \scriptsize su uno Spazio di Hilbert (Cat.\ 4): autovalori sempre reali (Cat.\ 21b) -- \textit{in Meccanica Quantistica rappresenta un'osservabile fisica}};
+
+\draw[mainArr] (legendre) -- node[arrLbl, above]{passa al fibrato cotangente} (formasimplettica);
+
+\draw[crossArr] (formasimplettica) -- node[arrLbl, above]{simmetrie della struttura} (noetherteor);
+
+% =====================================================================
+% CATEGORIA 24 — HOPF, FASCI, GRUPPI CRISTALLOGRAFICI
+% =====================================================================
+\node[structNode, below=4.5cm of osservabile] (algebrahopf) {\textbf{Algebra di Hopf}\\ \scriptsize algebra + coalgebra compatibili: oltre al prodotto, un coprodotto $\Delta: A\to A\otimes A$ che duplica la struttura -- \textit{$U(\mathfrak{g})$ (Cat.\ 5) ne è l'esempio canonico}};
+\node[structNode, right=2.6cm of algebrahopf] (fasci) {\textbf{Fascio (Sheaf)}\\ \scriptsize assegna dati algebrici (es.\ anelli) a ogni aperto di uno spazio, compatibili per restrizione -- \textit{il linguaggio moderno della Geometria Algebrica: generalizza Varietà e Nullstellensatz, Cat.\ 18}};
+\node[structNode, right=2.6cm of fasci] (cristallografici) {\textbf{Gruppi Cristallografici}\\ \scriptsize sottogruppi discreti e cocompatti di $\mathrm{Isom}(\mathbb{R}^n)$ (Cat.\ 8): 17 nel piano (gruppi wallpaper), 230 nello spazio};
+
+% =====================================================================
+% CATEGORIA 25 — ALGEBRA COMMUTATIVA E OMOLOGICA AVANZATA
+% =====================================================================
+\node[structNode, below=4.5cm of cristallografici] (dedekind) {\textbf{Dominio di Dedekind}\\ \scriptsize dominio d'integrità Noetheriano (Cat.\ 22) in cui ogni ideale si fattorizza in modo unico come prodotto di ideali primi -- generalizza il PID (Cat.\ 2) senza esserlo};
+\node[structNode, right=2.6cm of dedekind] (localizzazione) {\textbf{Localizzazione di un Anello}\\ \scriptsize si rendono invertibili gli elementi di un sottoinsieme moltiplicativo -- costruzione gemella del passaggio da $\mathbb{Z}$ a $\mathbb{Q}$};
+\node[structNode, right=2.6cm of localizzazione] (complessocatene) {\textbf{Complesso di Catene}\\ \scriptsize successione di gruppi/moduli con $\partial^2=0$: l'impalcatura algebrica dietro l'Omologia (Cat.\ 20a)};
+\node[structNode, right=2.6cm of complessocatene] (exttor) {\textbf{Ext e Tor}\\ \scriptsize funtori derivati di $\mathrm{Hom}$ e $\otimes$: misurano quanto un modulo è lontano dall'essere libero o proiettivo};
+\node[structNode, right=2.6cm of exttor] (categoriaabeliana) {\textbf{Categoria Abeliana}\\ \scriptsize una Categoria (Cat.\ 11) dove nucleo, immagine e successioni esatte hanno senso -- l'ambiente naturale di Ext e Tor};
+
+\draw[mainArr] (dedekind) -- node[arrLbl, above]{+ inverti un sottoinsieme} (localizzazione);
+\draw[mainArr] (complessocatene) -- node[arrLbl, above]{+ funtori derivati} (exttor);
+
+% =====================================================================
+% CATEGORIA 26 — TEORIA DI LIE, GEOMETRIA ALGEBRICA E DIFFERENZIALE AVANZATE
+% =====================================================================
+\node[structNode, below=4.2cm of dedekind] (sistemaradici) {\textbf{Sistema di Radici}\\ \scriptsize configurazione di vettori che codifica le simmetrie di un'Algebra di Lie semisemplice (Cat.\ 5)};
+\node[structNode, right=2.6cm of sistemaradici] (dynkin) {\textbf{Diagramma di Dynkin}\\ \scriptsize codifica combinatoria di un Sistema di Radici -- classifica completamente le Algebre di Lie semisemplici};
+\node[structNode, right=2.6cm of dynkin] (schema) {\textbf{Schema}\\ \scriptsize generalizza la Varietà Algebrica (Cat.\ 18) incollando $\mathrm{Spec}(A)$ di anelli qualsiasi, non solo campi algebricamente chiusi};
+\node[structNode, right=2.6cm of schema] (connessione) {\textbf{Connessione}\\ \scriptsize regola per derivare Campi Vettoriali (Cat.\ 18) lungo una varietà -- necessaria per confrontare vettori tangenti in punti diversi};
+\node[structNode, right=2.6cm of connessione] (curvatura) {\textbf{Curvatura / Tensore di Riemann}\\ \scriptsize misura quanto una Connessione fallisce nel far commutare le derivate -- si annulla esattamente quando lo spazio è piatto};
+
+\draw[mainArr] (sistemaradici) -- node[arrLbl, above]{codifica combinatoria} (dynkin);
+\draw[mainArr] (connessione) -- node[arrLbl, above]{+ mancata commutatività} (curvatura);
+
+% =====================================================================
+% CATEGORIA 27 — ANALISI FUNZIONALE AVANZATA E GEOMETRIA NON COMMUTATIVA
+% =====================================================================
+\node[structNode, below=4.2cm of sistemaradici] (algebraC) {\textbf{Algebra C*}\\ \scriptsize Algebra di Banach (Cat.\ 4) con involuzione $*$ tale che $\lVert a^{*}a\rVert = \lVert a\rVert^2$};
+\node[structNode, right=2.6cm of algebraC] (gelfandnaimark) {\textbf{Teorema di Gelfand--Naimark}\\ \scriptsize ogni Algebra C* commutativa è $C(X)$ per uno Spazio Topologico $X$ (Cat.\ 4) -- \textit{un'altra Dualità di Stone (Cat.\ 19)}};
+\node[structNode, right=2.6cm of gelfandnaimark] (noncommutativa) {\textbf{Geometria Non Commutativa}\\ \scriptsize se le Algebre C* commutative sono spazi, quelle non commutative sono "spazi generalizzati" -- programma di Connes};
+
+\draw[mainArr] (algebraC) -- node[arrLbl, above]{caso commutativo} (gelfandnaimark);
+\draw[mainArr] (gelfandnaimark) -- node[arrLbl, above]{+ abbandona la commutatività} (noncommutativa);
+
+% =====================================================================
+% CATEGORIA 28 — INVARIANTI, GALOIS DIFFERENZIALE, ALGEBRA COMPUTAZIONALE
+% =====================================================================
+\node[structNode, below=4.2cm of algebraC] (teoremainvarianti) {\textbf{Teorema di Hilbert sugli Invarianti}\\ \scriptsize per un gruppo che agisce (Cat.\ 16) su un anello di polinomi, l'anello degli invarianti è finitamente generato -- \textit{dimostrato mostrando che è Noetheriano, Cat.\ 22}};
+\node[structNode, right=2.6cm of teoremainvarianti] (galoisdifferenziale) {\textbf{Teoria di Galois Differenziale}\\ \scriptsize un'equazione differenziale è risolubile "per quadrature" $\iff$ il suo gruppo di Galois differenziale è risolubile -- \textit{parallelo esatto di Abel--Ruffini (Cat.\ 22)}};
+\node[structNode, right=2.6cm of galoisdifferenziale] (groebner) {\textbf{Basi di Groebner}\\ \scriptsize generatori speciali di un Ideale (Cat.\ 15) che rendono algoritmico decidere appartenenza e risolvere sistemi polinomiali -- \textit{esistono sempre perché l'anello di polinomi è Noetheriano, Cat.\ 22}};
+
+% =====================================================================
+% CATEGORIA 29 — ALGEBRA SIMMETRICA E TENSORI
+% =====================================================================
+\node[structNode, below=4.2cm of teoremainvarianti] (algebrasimmetrica) {\textbf{Algebra Simmetrica} $\mathrm{Sym}(V)$\\ \scriptsize $T(V)/I$, $I=\langle v\otimes w - w\otimes v\rangle$ -- la gemella simmetrica dell'Algebra di Grassmann (Cat.\ 5): stesso quoziente, segno opposto};
+\node[structNode, right=2.6cm of algebrasimmetrica] (tensoremetrico) {\textbf{Tensore Metrico} $g_{\mu\nu}$\\ \scriptsize la Forma Bilineare (Cat.\ 7) o il Prodotto Interno (Cat.\ 4), scritti con indici e fatti variare da punto a punto su una varietà};
+\node[structNode, right=2.6cm of tensoremetrico] (kronecker) {\textbf{Prodotto di Kronecker}\\ \scriptsize la versione a matrici del Prodotto Tensoriale (Cat.\ 18): $(A\otimes B)$ agisce su $V\otimes W$};
+\node[structNode, right=2.6cm of kronecker] (clebschgordan) {\textbf{Coefficienti di Clebsch--Gordan}\\ \scriptsize decompongono il prodotto tensoriale di due Rappresentazioni (Cat.\ 19/20b) in una somma di rappresentazioni irriducibili};
+\node[structNode, right=2.6cm of clebschgordan] (tuckersvd) {\textbf{Decomposizione CP / Tucker}\\ \scriptsize generalizza la SVD (Cat.\ 21b) ai tensori di ordine superiore a 2};
+
+\draw[mainArr] (algebrasimmetrica) -- node[arrLbl, above]{indici, punto per punto} (tensoremetrico);
+
+% =====================================================================
+% CATEGORIA 30 — TEORIA DEI NUMERI
+% =====================================================================
+\node[structNode, below=4.2cm of algebrasimmetrica] (congruenze) {\textbf{Aritmetica Modulare}\\ \scriptsize congruenze $a\equiv b\pmod n$: aritmetica nell'Anello Quoziente $\mathbb{Z}/n\mathbb{Z}$ (Cat.\ 15) -- \textit{il Teorema Cinese del Resto (Cat.\ 17) la scompone quando $n$ non è primo}};
+\node[structNode, right=2.6cm of congruenze] (funzarit) {\textbf{Funzioni Aritmetiche}\\ \scriptsize $\varphi$ di Eulero, funzione di Möbius $\mu$, funzione $\sigma$ dei divisori};
+\node[structNode, right=2.6cm of funzarit] (fermateulero) {\textbf{Piccolo Teorema di Fermat / Eulero}\\ \scriptsize $a^{p-1}\equiv 1\pmod p$; generalizzato: $a^{\varphi(n)}\equiv 1\pmod n$ -- \textit{caso particolare del Teorema di Lagrange (Cat.\ 39) sul gruppo $(\mathbb{Z}/n\mathbb{Z})^{*}$}};
+\node[structNode, right=2.6cm of fermateulero] (reciprocita) {\textbf{Reciprocità Quadratica}\\ \scriptsize lega la risolubilità di $x^2\equiv p\pmod q$ e $x^2\equiv q\pmod p$};
+\node[structNode, right=2.6cm of reciprocita] (curveellittiche) {\textbf{Curve Ellittiche}\\ \scriptsize $y^2=x^3+ax+b$: i punti formano un Gruppo Abeliano (Cat.\ 1) -- crittografia a curve ellittiche};
+\node[structNode, right=2.6cm of curveellittiche] (zetariemann) {\textbf{Funzione Zeta di Riemann} $\zeta(s)$\\ \scriptsize $\sum n^{-s}=$ prodotto di Eulero su tutti i primi};
+\node[structNode, right=2.6cm of zetariemann] (distribprimi) {\textbf{Distribuzione dei Numeri Primi}\\ \scriptsize Teorema dei Numeri Primi: $\pi(x)\sim x/\ln x$};
+
+\draw[mainArr] (congruenze) -- node[arrLbl, above]{invertibili mod $n$} (funzarit);
+\draw[mainArr] (funzarit) -- node[arrLbl, above]{caso $n=p$ primo} (fermateulero);
+\draw[mainArr] (zetariemann) -- node[arrLbl, above]{codifica} (distribprimi);
+
+% =====================================================================
+% CATEGORIA 31 — COMBINATORIA ALGEBRICA E TEORIA SPETTRALE DEI GRAFI
+% =====================================================================
+\node[structNode, below=3.8cm of congruenze] (grafolaplaciano) {\textbf{Grafo e Matrice Laplaciana} $L=D-A$\\ \scriptsize matrice di adiacenza $A$ e matrice dei gradi $D$ di un grafo};
+\node[structNode, right=2.6cm of grafolaplaciano] (spettrografo) {\textbf{Spettro di un Grafo}\\ \scriptsize Autovalori (Cat.\ 21b) della Laplaciana: codificano connettività e struttura};
+\node[structNode, right=2.6cm of spettrografo] (mobiusposet) {\textbf{Funzione di Möbius Combinatoria}\\ \scriptsize generalizza la $\mu$ aritmetica (Cat.\ 30) a un Reticolo (Cat.\ 13) qualsiasi};
+\node[structNode, right=2.6cm of mobiusposet] (funzgeneratrici) {\textbf{Funzioni Generatrici}\\ \scriptsize una successione codificata come coefficienti di una serie formale};
+\node[structNode, right=2.6cm of funzgeneratrici] (polya) {\textbf{Enumerazione di Pólya}\\ \scriptsize conta oggetti a meno di simmetria usando un'Azione di Gruppo (Cat.\ 16)};
+
+\draw[mainArr] (grafolaplaciano) -- node[arrLbl, above]{autovalori} (spettrografo);
+
+% =====================================================================
+% CATEGORIA 32 — FONDAMENTI E LOGICA
+% =====================================================================
+\node[structNode, below=3.8cm of grafolaplaciano] (zfc) {\textbf{Assiomi di ZFC}\\ \scriptsize il sistema assiomatico su cui è costruita quasi tutta la matematica di questo schema};
+\node[structNode, right=2.6cm of zfc] (cardinali) {\textbf{Cardinalità e Numeri Ordinali}\\ \scriptsize misure della dimensione e dell'ordine degli insiemi infiniti -- \textit{per conteggio: gli Algebrici (Cat.\ 9) sono numerabili, quindi "quasi tutti" i reali sono Trascendenti}};
+\node[structNode, right=2.6cm of cardinali] (teoriamodelli) {\textbf{Teoria dei Modelli}\\ \scriptsize studia le strutture algebriche (Cat.\ 1--29) come interpretazioni di teorie del prim'ordine};
+
+% =====================================================================
+% CATEGORIA 39 — TEOREMA DI LAGRANGE, AUTOMI E TEOREMA DI KLEENE
+% (posizionata a destra della Cat. 32, per usare lo spazio libero)
+% =====================================================================
+\node[structNode, right=8cm of teoriamodelli] (lagrangeteor) {\textbf{Teorema di Lagrange}\\ \scriptsize per $H\le G$ finito: $|G|=[G:H]\cdot|H|$ -- caso particolare del Teorema Orbita-Stabilizzatore (Cat.\ 16) sull'azione di $G$ su $G/H$};
+\node[structNode, right=2.6cm of lagrangeteor] (automimonoidi) {\textbf{Automa e Monoide di Transizione}\\ \scriptsize ad ogni automa a stati finiti si associa un Monoide (Cat.\ 1): il linguaggio riconosciuto dipende solo da questo};
+\node[structNode, right=2.6cm of automimonoidi] (kleeneteor) {\textbf{Teorema di Kleene}\\ \scriptsize i linguaggi regolari sono esattamente quelli riconoscibili da un Monoide finito -- l'algebra incontra l'informatica teorica};
+
+\draw[mainArr] (automimonoidi) -- node[arrLbl, above]{linguaggi regolari} (kleeneteor);
+
+\draw[mainArr] (zfc) -- node[arrLbl, above]{misura gli insiemi} (cardinali);
+\draw[mainArr] (cardinali) -- node[arrLbl, above]{struttura $\to$ modello} (teoriamodelli);
+
+% =====================================================================
+% CATEGORIA 33 — TEORIA DEI GRUPPI AVANZATA E RAPPRESENTAZIONI
+% =====================================================================
+\node[structNode, below=3.8cm of zfc] (coxeter) {\textbf{Gruppi di Coxeter}\\ \scriptsize generati da riflessioni, presentazione $(st)^{m_{st}}=e$ -- collegati ai Sistemi di Radici (Cat.\ 26) e ai Gruppi Cristallografici (Cat.\ 24), di cui sono la teoria astratta};
+\node[structNode, right=2.6cm of coxeter] (artin) {\textbf{Gruppi di Artin}\\ \scriptsize tolgono la relazione $s^2=e$ dai Gruppi di Coxeter};
+\node[structNode, right=2.6cm of artin] (basserre) {\textbf{Azioni su Alberi (Bass--Serre)}\\ \scriptsize un gruppo che agisce (Cat.\ 16) su un albero si decompone come prodotto amalgamato o estensione HNN};
+\node[structNode, right=2.6cm of basserre] (rappind) {\textbf{Rappresentazioni Indotte}\\ \scriptsize costruiscono una rappresentazione di $G$ da una di un sottogruppo $H$; Reciprocità di Frobenius lega i caratteri (Cat.\ 20b)};
+\node[structNode, right=2.6cm of rappind] (rappliecompatti) {\textbf{Rappresentazioni dei Gruppi di Lie Compatti}\\ \scriptsize sempre completamente riducibili come nel Teorema di Maschke (Cat.\ 20b) -- teoria di Peter--Weyl};
+
+\draw[mainArr] (coxeter) -- node[arrLbl, above]{- relazione $s^2=e$} (artin);
+
+% =====================================================================
+% CATEGORIA 34 — TOPOLOGIA ALGEBRICA AVANZATA E TEORIA DEI NODI
+% =====================================================================
+\node[structNode, below=3.8cm of coxeter] (eilenbergmaclane) {\textbf{Spazi di Eilenberg--MacLane} $K(G,n)$\\ \scriptsize spazio con un solo gruppo di omotopia non banale, $\pi_n=G$};
+\node[structNode, right=2.6cm of eilenbergmaclane] (spettraleserreseq) {\textbf{Successione Spettrale di Serre}\\ \scriptsize calcola l'Omologia (Cat.\ 20a) di uno spazio totale a partire da base e fibra};
+\node[structNode, right=2.6cm of spettraleserreseq] (gruppodinodo) {\textbf{Gruppo di un Nodo}\\ \scriptsize gruppo fondamentale $\pi_1$ (Cat.\ 19) del complementare del nodo in $\mathbb{R}^3$};
+\node[structNode, right=2.6cm of gruppodinodo] (alexanderjones) {\textbf{Polinomio di Alexander / Jones}\\ \scriptsize invarianti polinomiali che distinguono nodi non equivalenti};
+
+\draw[mainArr] (eilenbergmaclane) -- node[arrLbl, above]{calcola via} (spettraleserreseq);
+\draw[mainArr] (gruppodinodo) -- node[arrLbl, above]{invariante più fine} (alexanderjones);
+
+% =====================================================================
+% CATEGORIA 40 — TEOREMA DI CAYLEY E LEMMA DI BURNSIDE
+% (posizionata a destra della Cat. 34, per usare lo spazio libero)
+% =====================================================================
+\node[structNode, right=6cm of alexanderjones] (cayleyteor) {\textbf{Teorema di Cayley}\\ \scriptsize ogni Gruppo (Cat.\ 1) si immerge in un gruppo di permutazioni, facendolo agire (Cat.\ 16) su se stesso -- \textit{il motivo per cui le Azioni di Gruppo sono universali}};
+\node[structNode, right=2.6cm of cayleyteor] (burnsidelemma) {\textbf{Lemma di Burnside}\\ \scriptsize $|X/G| = \frac{1}{|G|}\sum_{g} |X^g|$: il numero di orbite è la media dei punti fissi -- \textit{il motore dietro l'Enumerazione di Pólya (Cat.\ 31)}};
+
+\draw[mainArr] (cayleyteor) -- node[arrLbl, above]{conta le orbite dell'azione} (burnsidelemma);
+
+% =====================================================================
+% CATEGORIA 35 — TROPICALE, COMPLETAMENTI, GEOMETRIA ALGEBRICA AVANZATA
+% =====================================================================
+\node[structNode, below=3.8cm of eilenbergmaclane] (tropicale) {\textbf{Algebra Tropicale}\\ \scriptsize semianello $(\mathbb{R}\cup\{\infty\}, \min, +)$: la somma diventa minimo, il prodotto diventa somma};
+\node[structNode, right=2.6cm of tropicale] (completamento) {\textbf{Completamento di un Anello}\\ \scriptsize analogo al completamento metrico (Cat.\ 4), ma rispetto a una filtrazione di ideali};
+\node[structNode, right=2.6cm of completamento] (dimkrull) {\textbf{Dimensione di Krull}\\ \scriptsize lunghezza massima di una catena di ideali primi: generalizza la dimensione di una Varietà (Cat.\ 18)};
+\node[structNode, right=2.6cm of dimkrull] (coomfasci) {\textbf{Coomologia di Fasci}\\ \scriptsize misura l'ostruzione a incollare le sezioni locali di un Fascio (Cat.\ 24) in una sezione globale};
+\node[structNode, right=2.6cm of coomfasci] (divisori) {\textbf{Divisori e Fibrati in Rette}\\ \scriptsize combinazioni formali di sottovarietà di codimensione 1: linguaggio per zeri e poli};
+\node[structNode, right=2.6cm of divisori] (categmonoidali) {\textbf{Categorie Monoidali}\\ \scriptsize una Categoria (Cat.\ 11) con un prodotto $\otimes$ associativo, compatibile coi morfismi};
+\node[structNode, right=2.6cm of categmonoidali] (geodetiche) {\textbf{Geodetiche}\\ \scriptsize curve ad accelerazione nulla secondo la Connessione (Cat.\ 26): la generalizzazione della retta};
+
+% =====================================================================
+% CATEGORIA 36 — TENSORI AVANZATI
+% =====================================================================
+\node[structNode, below=3.8cm of tropicale] (riccitensore) {\textbf{Tensore di Ricci e Tensore di Weyl}\\ \scriptsize parti del Tensore di Riemann (Cat.\ 26): tracciano curvatura di volume e di forma separatamente};
+\node[structNode, right=2.6cm of riccitensore] (tensoreenergimpulso) {\textbf{Tensore Energia-Impulso}\\ \scriptsize sorgente della curvatura nelle equazioni di Einstein: $G_{\mu\nu}=8\pi T_{\mu\nu}$};
+\node[structNode, right=2.6cm of tensoreenergimpulso] (simmantisimm) {\textbf{Simmetrizzazione e Antisimmetrizzazione}\\ \scriptsize proiettano un Tensore (Cat.\ 10) sulla sua parte in $\mathrm{Sym}(V)$ (Cat.\ 29) o $\Lambda(V)$ (Cat.\ 5)};
+\node[structNode, right=2.6cm of simmantisimm] (derivatalie) {\textbf{Derivata di Lie, Pushforward e Pullback}\\ \scriptsize modi di trasportare Tensori e Forme Differenziali (Cat.\ 18) lungo una mappa o un flusso};
+\node[structNode, right=2.6cm of derivatalie] (densitatensoriale) {\textbf{Densità Tensoriale}\\ \scriptsize un Tensore (Cat.\ 10) che acquisisce un fattore $|\det J|^w$ sotto cambio di coordinate};
+
+% =====================================================================
+% CATEGORIA 37 — TEORIA DEI CODICI
+% =====================================================================
+\node[structNode, below=3.8cm of riccitensore] (codicilineari) {\textbf{Codici Lineari}\\ \scriptsize sottospazio $C\le \mathbb{F}_q^n$ (Cat.\ 3): i "messaggi validi" sono un sottospazio vettoriale su un Campo finito (Cat.\ 2)};
+\node[structNode, right=2.6cm of codicilineari] (distanzahamming) {\textbf{Distanza di Hamming}\\ \scriptsize numero di coordinate in cui due parole differiscono: determina quanti errori un codice può correggere};
+\node[structNode, right=2.6cm of distanzahamming] (reedsolomon) {\textbf{Codici di Reed--Solomon}\\ \scriptsize valutazioni di polinomi su un Campo Finito (Cat.\ 2): ottimali rispetto al limite di Singleton};
+
+\draw[mainArr] (codicilineari) -- node[arrLbl, above]{misura la capacità correttiva} (distanzahamming);
+\draw[mainArr] (codicilineari) -- node[arrLbl, above]{caso ottimale} (reedsolomon);
+
+% =====================================================================
+% CATEGORIA 38 — TRE SPIEGAZIONI STRUTTURALI (perché funziona ciò che c'è già)
+% =====================================================================
+\node[structNode, below=3.8cm of codicilineari] (radicalejacobson) {\textbf{Radicale di Jacobson} $J(A)$\\ \scriptsize intersezione di tutti gli ideali massimali sinistri: misura quanto un Anello (Cat.\ 2) è lontano dall'essere semisemplice};
+\node[structNode, right=2.6cm of radicalejacobson] (wedderburn) {\textbf{Teorema di Wedderburn--Artin}\\ \scriptsize un anello semisemplice ($J(A)=0$) è un prodotto di anelli di matrici su corpi -- \textit{la ragione strutturale per cui il Teorema di Maschke (Cat.\ 20b) funziona}};
+\node[structNode, right=4cm of wedderburn] (misurahaar) {\textbf{Misura di Haar}\\ \scriptsize unica misura invariante per traslazione su un Gruppo Topologico (Cat.\ 12) localmente compatto -- \textit{rende rigorosa l'Analisi di Fourier e la Dualità di Pontryagin (Cat.\ 19)}};
+\node[structNode, right=4cm of misurahaar] (fibratoprincipale) {\textbf{Fibrato Principale}\\ \scriptsize generalizza il Fibrato Tangente (Cat.\ 18): fibra $=$ un Gruppo di Lie (Cat.\ 12) che agisce liberamente -- \textit{è dove vive davvero una Connessione (Cat.\ 26) in generale}};
+
+\draw[mainArr] (radicalejacobson) -- node[arrLbl, above]{$J(A)=0$} (wedderburn);
+
+% =====================================================================
+% RIQUADRI DI SFONDO (categorie) — disegnati su un layer dietro i nodi
+% =====================================================================
+\begin{pgfonlayer}{background}
+  \node[fit=(magma)(semigruppo)(monoide)(gruppo)(gruppoab),
+        fill=blue!6, draw=blue!45, thick, rounded corners=8pt,
+        inner sep=0.7cm,
+        label={[boxTitle, text=blue!55!black]above:1.~Strutture Algebriche di Base}]
+        (box1) {};
+
+  \node[fit=(anello)(anellocomm)(dominiointeg)(ufd)(pid)(euclideo)(campo),
+        fill=green!6, draw=green!35!black, thick, rounded corners=8pt,
+        inner sep=0.7cm,
+        label={[boxTitle, text=green!30!black]above:2.~Anelli, Domini e Campi}]
+        (box2) {};
+
+  \node[fit=(modulo)(spaziovett

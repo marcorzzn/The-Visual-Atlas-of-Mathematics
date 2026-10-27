@@ -1,0 +1,891 @@
+## Architettura del documento
+
+Prima di tutto, la struttura. Un documento di questa portata non può essere un unico file lineare: deve essere un **libro in parti**, dove ogni parte è autonoma ma condivide un sistema di notazione e un filo concettuale comune. La struttura naturale è questa:
+
+**Parte I — Fondamenti** (capitoli 1–3, già esistenti, da estendere)
+**Parte II — Geometria piana elementare** (capitoli 4–7, già esistenti, da completare)
+**Parte III — Geometria solida elementare** (capitoli 8–10, già esistenti, da estendere)
+**Parte IV — Algebra multilineare e volume k-dimensionale** (capitoli 11–13, nuovi)
+**Parte V — Geometria convessa e combinatoria** (capitoli 14–15, nuovi)
+**Parte VI — Trigonometria come algebra lineare** (capitolo 16, nuovo)
+**Parte VII — Coniche e quadriche** (capitolo 17, nuovo)
+**Parte VIII — Geometria proiettiva** (capitolo 18, nuovo)
+**Parte IX — Rotazioni, orientazione e quaternioni** (capitolo 19, nuovo)
+**Parte X — Curve piane** (capitolo 20, nuovo)
+**Parte XI — Superfici in $\mathbb{R}^3$** (capitolo 21, nuovo)
+**Parte XII — Topologia elementare** (capitolo 22, nuovo)
+**Parte XIII — Geometrie non euclidee** (capitolo 23, nuovo)
+**Parte XIV — Storia e fondamenti** (capitolo 24, nuovo)
+**Appendici** — Formulario generale, dizionario sintetico-lineare esteso, indice analitico
+
+---
+
+## Piano di implementazione per LLM
+
+Quello che segue è scritto direttamente come istruzione operativa per un LLM. Puoi usarlo come system prompt o come documento di specifica da allegare alla conversazione insieme ai file sorgente.
+
+---
+
+```
+SPECIFICA DI IMPLEMENTAZIONE
+Progetto: Geometria Euclidea e Oltre — nel formalismo dell'algebra lineare
+Versione: 2.0 (estensione completa)
+Input: file sorgente LaTeX forniti dall'utente (main.tex + sezioni 00–10)
+Output: documento LaTeX compilabile con pdflatex, strutturato in parti e capitoli
+
+════════════════════════════════════════════════════════
+SEZIONE 0 — REGOLE GENERALI (non derogabili)
+════════════════════════════════════════════════════════
+
+0.1 NOTAZIONE
+Usa esattamente le macro già definite in main.tex:
+  \R, \N, \E, \norm{}, \inner{}{}, \vv{}, \dist, \Area, \Vol
+  \Span, \Or, \SOr, \Isom, \Sim
+Per le aggiunte, definisci nuove macro SOLO in main.tex nella
+sezione "NOTAZIONI", mai inline nel testo. Nuove macro necessarie:
+  \Det (determinante come funzione)
+  \Gram (matrice di Gram)
+  \Ext (prodotto esteriore)
+  \PP (spazio proiettivo)
+  \HH (semipiano di Poincaré)
+  \curl (prodotto vettoriale in R^3)
+  \Adj (aggiunto)
+
+0.2 AMBIENTI
+Usa esclusivamente gli ambienti amsthm già configurati:
+  definition, theorem, proposition, lemma, corollary, axiom,
+  remark, example
+con il loro stile tcolorbox già configurato. Non creare nuovi
+ambienti di teorema.
+
+0.3 PROVE
+OGNI teorema, proposizione e lemma DEVE avere una dimostrazione
+completa. Non sono ammessi "schemi di dimostrazione", "si vede
+facilmente", "è un esercizio standard" o rimandi senza la
+dimostrazione esplicita. L'unica eccezione è il Teorema di Morley
+(cap. 5), che per sua natura non ha dimostrazione elementare: in
+quel caso scrivi un paragrafo che spieghi PERCHÉ non esiste una
+dimostrazione semplice e quali strumenti servirebbero.
+
+0.4 FIGURE
+Ogni figura TikZ deve:
+  - usare le macro di colore già definite: defcolor, thmcolor,
+    propcolor, remcolor
+  - non usare librerie non già caricate in main.tex
+  - compilare senza errori con pdflatex TeX Live 2023
+  - avere una didascalia che spiega il contenuto matematico,
+    non solo descrive il disegno
+
+0.5 RIFERIMENTI INCROCIATI
+Usa \Cref{} (cleveref, già caricato) per tutti i riferimenti.
+Ogni theorem/definition/figure deve avere un'etichetta nel formato:
+  thm:nome-descrittivo
+  def:nome-descrittivo
+  prop:nome-descrittivo
+  fig:nome-descrittivo
+Verifica che ogni \Cref punti a un'etichetta che esiste nel documento.
+
+0.6 STRUTTURA FILE
+Ogni nuovo capitolo va in un file separato:
+  sections/11_multilineare.tex
+  sections/12_gram_cauchy.tex
+  sections/13_volume_k.tex
+  sections/14_simplessi.tex
+  sections/15_politopi.tex
+  sections/16_trigonometria.tex
+  sections/17_coniche.tex
+  sections/18_proiettiva.tex
+  sections/19_rotazioni.tex
+  sections/20_curve.tex
+  sections/21_superfici.tex
+  sections/22_topologia.tex
+  sections/23_non_euclidea.tex
+  sections/24_storia.tex
+Aggiorna main.tex con tutti gli \input{} corrispondenti.
+Aggiungi le dichiarazioni \part{} appropriate in main.tex.
+
+════════════════════════════════════════════════════════
+SEZIONE 1 — MODIFICHE AI FILE ESISTENTI
+════════════════════════════════════════════════════════
+
+1.1 FILE: sections/03_triangoli.tex
+OPERAZIONE: completare le dimostrazioni rimaste come schema
+
+    1.1.a — Criterio ASA (Teorema esistente)
+    La dimostrazione attuale afferma "si applica la legge dei seni
+    per dedurre dist(A,C) = dist(A',C')" senza il calcolo esplicito.
+    Aggiungere i seguenti passi:
+      - Scrivere esplicitamente la legge dei seni in ABC:
+        dist(A,C)/sin(angle_B) = dist(A,B)/sin(angle_C)
+      - Sostituire angle_C = pi - angle_A - angle_B
+        (già giustificato dal Teorema sulla somma degli angoli)
+      - Fare lo stesso per A'B'C' con le ipotesi angle_A=angle_A',
+        angle_B=angle_B', dist(A,B)=dist(A',B')
+      - Concludere dist(A,C)=dist(A',C') per uguaglianza dei
+        rapporti
+      - Applicare SAS con riferimento esplicito al Teorema SAS
+
+    1.1.b — Criterio AA per similitudine (Teorema esistente)
+    La costruzione dell'applicazione lineare T è accennata.
+    Completare con:
+      - Scrittura esplicita di T(u) = u', T(v) = v'
+      - Calcolo che mostra <Tu,Tu> = k²<u,u>,
+        <Tv,Tv> = k²<v,v>, <Tu,Tv> = k²<u,v>
+      - Verifica che T/k preserva il prodotto scalare
+        (stesso calcolo della dimostrazione SAS, con k²
+        al posto di 1)
+      - Conclusione T/k ∈ O(2), dunque F è similitudine di
+        rapporto k
+
+    1.1.c — Incentro (Proposizione esistente)
+    La formula baricentrica I = (aA+bB+cC)/(a+b+c) è enunciata
+    ma la derivazione del piede della bisettrice manca.
+    Aggiungere:
+      - Lemma: il piede D della bisettrice da A su BC è la
+        combinazione affine D = (b·B + c·C)/(b+c)
+        (dimostrazione: D divide BC nel rapporto BD:DC = c:b
+        per il Teorema della bisettrice già dimostrato; la
+        combinazione affine che divide un segmento nel rapporto
+        λ:(1-λ) è (1-λ)P + λQ, applicare con λ = c/(b+c))
+      - Mostrare che I = (a/(a+b+c))·A + ((b+c)/(a+b+c))·D
+        è la combinazione affine di A e D con i coefficienti
+        corretti (non negativi, sommano a 1)
+      - Verificare per simmetria che I giace anche sulle altre
+        due bisettrici
+
+1.2 FILE: sections/04_punti_notevoli.tex
+OPERAZIONE: aggiungere due nuovi paragrafi alla fine del capitolo
+
+    1.2.a — Il cerchio dei nove punti (Feuerbach)
+    Struttura:
+      definition: i nove punti (M_A, M_B, M_C punti medi dei lati;
+        H_A, H_B, H_C piedi delle altezze; E_A, E_B, E_C punti
+        medi dei segmenti ortocentro-vertice)
+      theorem: esiste un cerchio passante per tutti e nove,
+        di centro N = (O+H)/2 e raggio R/2
+      proof:
+        - Con O come origine, H = a+b+c (già dimostrato)
+        - N = (O+H)/2 = (a+b+c)/2
+        - Verificare che ||N - M_A||² = (R/2)²:
+          M_A = (b+c)/2, dunque N - M_A = (a+b+c)/2 - (b+c)/2
+          = a/2, e ||a/2||² = ||a||²/4 = R²/4
+        - Verificare che ||N - H_A||² = (R/2)²:
+          H_A = A + t·(H-A) per il t che annulla <H_A-B, C-B>,
+          calcolo esplicito di t in funzione di a,b,c,R
+        - Verificare che ||N - E_A||² = (R/2)²:
+          E_A = (A+H)/2 = (a + a+b+c)/2 = a + (b+c)/2,
+          dunque N - E_A = (a+b+c)/2 - a - (b+c)/2 = -a/2,
+          e ||-a/2||² = R²/4 ✓
+        (I tre calcoli per M, E sono immediati; quello per H_A
+        richiede il calcolo esplicito del piede dell'altezza come
+        proiezione ortogonale)
+      remark: connessione con la retta di Eulero (N è il punto
+        medio di O e H)
+
+    1.2.b — Formula di Erone via matrice di Gram
+    Struttura:
+      proposition: Area(ABC)² = s(s-a)(s-b)(s-c)
+        dove s = (a+b+c)/2
+      proof:
+        - Sia u = AB, v = AC. La matrice di Gram è
+          G = [[||u||², <u,v>], [<u,v>, ||v||²]]
+          = [[c², c·b·cos A], [c·b·cos A, b²]]
+        - Area² = det(G)/4 (per il Teorema dell'area)
+        - det(G) = c²b² - c²b²cos²A = c²b²sin²A
+        - Sostituire cos A dalla legge di Carnot:
+          cos A = (b²+c²-a²)/(2bc)
+        - Calcolare 1 - cos²A = sin²A e sviluppare:
+          b²c²sin²A = b²c² - (b²+c²-a²)²/4
+        - Fattorizzare via la differenza di quadrati:
+          = (1/4)[2bc + (b²+c²-a²)][2bc - (b²+c²-a²)]
+          = (1/4)[(b+c)²-a²][a²-(b-c)²]
+          = (1/4)(b+c+a)(b+c-a)(a+b-c)(a-b+c)
+          = (2s)(2(s-a))(2(s-b))(2(s-c))·(1/4)
+          = 4s(s-a)(s-b)(s-c)
+        - Dunque Area² = det(G)/4 = s(s-a)(s-b)(s-c) ✓
+      remark: la matrice di Gram comparirà sistematicamente nel
+        capitolo 12 (volume k-dimensionale) come generalizzazione
+        del determinante a dimensioni miste
+
+1.3 FILE: sections/09_superfici.tex
+OPERAZIONE: aggiungere un paragrafo finale su Rodrigues
+
+    Struttura:
+      proposition: Formula di Rodrigues
+        Per ogni vettore v ∈ R³ e rotazione di asse k̂ (versore)
+        e angolo θ:
+        v_rot = v·cos θ + (k̂ × v)·sin θ + k̂(k̂·v)(1-cos θ)
+      proof:
+        - Decomponi v = v_∥ + v_⊥ dove v_∥ = (k̂·v)k̂
+          è la proiezione su k̂ e v_⊥ = v - v_∥ è la componente
+          ortogonale
+        - v_∥ è fissa per la rotazione: R_θ(v_∥) = v_∥
+        - v_⊥ giace nel piano ortogonale a k̂; in quel piano la
+          rotazione di θ agisce come R_θ ∈ SO(2):
+          R_θ(v_⊥) = v_⊥·cos θ + (k̂ × v_⊥)·sin θ
+          (qui k̂ × v_⊥ è il terzo vettore della base ortonormale
+          {v_⊥/||v_⊥||, k̂×v_⊥/||v_⊥||, k̂})
+        - Osservare che k̂ × v = k̂ × v_⊥ (perché k̂ × v_∥ = 0)
+        - Sommare: R_θ(v) = v_∥ + R_θ(v_⊥)
+          = (k̂·v)k̂ + v_⊥·cos θ + (k̂×v)·sin θ
+          = v·cos θ - v_∥·cos θ + v_∥ + (k̂×v)·sin θ
+          = v·cos θ + v_∥·(1-cos θ) + (k̂×v)·sin θ ✓
+      remark: il caso k̂ = e₃, θ = θ dà esattamente la matrice
+        R_θ già calcolata nel capitolo sulle isometrie
+
+════════════════════════════════════════════════════════
+SEZIONE 2 — NUOVI CAPITOLI: SPECIFICHE COMPLETE
+════════════════════════════════════════════════════════
+
+─────────────────────────────────────
+CAP. 11 — Forme multilineari e prodotto esteriore
+FILE: sections/11_multilineare.tex
+─────────────────────────────────────
+PREREQUISITI: capitoli 1–3 del documento attuale
+OBIETTIVO: costruire lo spazio ⋀ᵏV come home naturale del
+"volume k-dimensionale orientato"
+
+CONTENUTO (nell'ordine):
+
+  §11.1 — Forme multilineari alternate
+    def: forma k-lineare alternante su V
+    prop: una forma k-lineare alternante è determinata dai
+      valori su una base (dim dello spazio è C(n,k))
+    prop: se k > n allora ogni forma k-lineare alternante è nulla
+    example: il determinante è l'unica forma n-lineare alternante
+      (a meno di scalari) su R^n — questo è il teorema di
+      caratterizzazione del det, dimostrarlo
+
+  §11.2 — Il prodotto esteriore
+    def: prodotto esteriore v₁ ∧ ... ∧ vₖ come elemento di ⋀ᵏV
+    prop: v₁ ∧ ... ∧ vₖ = 0 sse i vettori sono linearmente
+      dipendenti (dimostrare)
+    prop: antisimmetria: scambiare due fattori cambia il segno
+    theorem: ⋀ᵏV ha dimensione C(n,k), con base {e_{i₁} ∧ ... ∧
+      e_{iₖ} : i₁ < i₂ < ... < iₖ}
+
+  §11.3 — Prodotto esteriore e determinante
+    theorem: il determinante è ⟨v₁∧...∧vₙ, e₁∧...∧eₙ⟩ in ⋀ⁿV
+    corollary: la formula |det(u|v)| per l'area del triangolo
+      (già dimostrata nel cap. 5) è il caso k=n=2 di una
+      struttura più generale
+    remark: anticipazione — nel cap. 12 useremo ⋀ᵏ per definire
+      il volume k-dimensionale in R^n con k < n
+
+  FIGURE RICHIESTE:
+    - Diagramma che mostra ⋀¹V = V, ⋀²R³ (spazio 3D),
+      ⋀³R³ ≅ R, con le dimensioni C(3,1)=3, C(3,2)=3, C(3,3)=1
+
+─────────────────────────────────────
+CAP. 12 — La matrice di Gram e il volume k-dimensionale
+FILE: sections/12_gram_cauchy.tex
+─────────────────────────────────────
+PREREQUISITI: capitolo 11
+
+CONTENUTO:
+
+  §12.1 — La matrice di Gram
+    def: data una lista v₁,...,vₖ ∈ R^n, la matrice di Gram è
+      G_{ij} = ⟨vᵢ,vⱼ⟩, matrice k×k simmetrica semidefinita
+      positiva
+    prop: G è definita positiva sse i vettori sono linearmente
+      indipendenti (dim ≠ 0 sse i.l.)
+    proof: usare il fatto che x^T G x = ||∑ xᵢvᵢ||² ≥ 0,
+      = 0 sse ∑ xᵢvᵢ = 0
+
+  §12.2 — Il volume k-dimensionale
+    def: il parallelotopo generato da v₁,...,vₖ ∈ R^n ha
+      volume k-dimensionale Vol_k = √(det G)
+    theorem: questa definizione è coerente con:
+      - k=n: Vol_n = |det(v₁|...|vₙ)| (già dimostrato nel cap. 8)
+      - k=1: Vol_1 = ||v₁|| (la norma, già definita nel cap. 1)
+      - k=2, n=2: Vol_2 = |det(v₁|v₂)| (area del parallelogramma)
+      - k=2, n=3: Vol_2 = ||v₁ × v₂|| (area in R³ via prodotto
+        vettoriale, da collegare con l'identità di Lagrange)
+    proof per k=2, n=3: calcolare esplicitamente det G =
+      ||v₁||²||v₂||² - ⟨v₁,v₂⟩² e usare l'identità
+      ||v₁×v₂||² = ||v₁||²||v₂||² - ⟨v₁,v₂⟩² (Lagrange)
+    theorem (invarianza per isometrie): se T ∈ O(n), allora
+      Vol_k(Tv₁,...,Tvₖ) = Vol_k(v₁,...,vₖ)
+    proof: la matrice di Gram di (Tv₁,...,Tvₖ) è
+      (Tv)^T(Tw) = v^T T^T T w = v^T w = ⟨v,w⟩,
+      dunque G è invariante sotto O(n)
+
+  §12.3 — Identità di Cauchy-Binet
+    theorem: se A è n×k e B è k×n, allora
+      det(AB) = ∑_{S⊂[n], |S|=k} det(A_S)·det(B_S)
+      dove la somma è su tutti i sottoinsiemi S di k indici e
+      A_S, B_S sono le sottomatrici quadrate corrispondenti
+    proof: espansione del determinante come forma multilineare
+      alternante, raggruppando per i k-uplet di colonne di A
+    corollary: det(A^T A) = ∑_S det(A_S)²
+      (la somma dei quadrati dei minori k×k di A)
+    corollary geometrico: Vol_k² = ∑_S (volume della proiezione
+      del parallelotopo sul sottospazio coordinato S)²
+      — interpretazione: il Gramiano è la "somma dei quadrati
+      delle proiezioni" sulle C(n,k) coordinate k-dimensionali
+
+  FIGURE RICHIESTE:
+    - Caso k=2, n=3: un parallelogramma in R³ con le tre
+      proiezioni sui piani xy, xz, yz, con le rispettive aree
+      |det A_S| per S = {1,2}, {1,3}, {2,3}
+
+─────────────────────────────────────
+CAP. 13 — Simplessi
+FILE: sections/13_simplessi.tex
+─────────────────────────────────────
+PREREQUISITI: capitoli 1, 12
+
+CONTENUTO:
+
+  §13.1 — Inviluppo convesso e indipendenza affine
+    def: inviluppo convesso conv(P₀,...,Pₖ) come insieme delle
+      combinazioni convesse (coefficienti ≥ 0, somma = 1)
+    def: punti affinemente indipendenti (la condizione
+      ∑λᵢPᵢ = 0, ∑λᵢ = 0 implica λᵢ = 0 per ogni i)
+    prop: P₀,...,Pₖ sono affinemente indipendenti sse i vettori
+      P₁-P₀,...,Pₖ-P₀ sono linearmente indipendenti
+    def: simplesso n-dimensionale Δₙ = conv(P₀,...,Pₙ)
+      con P₀,...,Pₙ affinemente indipendenti
+
+  §13.2 — Coordinate baricentriche
+    theorem: ogni punto P ∈ Δₙ si scrive in modo unico come
+      P = ∑λᵢPᵢ con λᵢ ≥ 0, ∑λᵢ = 1
+      (le λᵢ si chiamano coordinate baricentriche di P)
+    proof: esistenza per definizione di inviluppo convesso;
+      unicità per indipendenza affine (se ∑λᵢPᵢ = ∑μᵢPᵢ
+      allora ∑(λᵢ-μᵢ)Pᵢ = 0 con ∑(λᵢ-μᵢ) = 0,
+      dunque λᵢ = μᵢ per indipendenza affine)
+    remark: le coordinate baricentriche sono esattamente ciò
+      che compare nella formula I = (aA+bB+cC)/(a+b+c)
+      dell'incentro (collegamento esplicito al cap. 4)
+
+  §13.3 — Volume del simplesso
+    theorem: Vol_n(Δₙ) = (1/n!) |det(P₁-P₀|...|Pₙ-P₀)|
+    proof (due vie):
+
+      VIA 1 — combinatoria:
+      Il cubo unitario [0,1]^n si decompone in n! simplessi
+      congruenti tramite l'azione delle permutazioni σ ∈ Sₙ:
+        Δ_σ = {x ∈ [0,1]^n : x_{σ(1)} ≤ x_{σ(2)} ≤ ... ≤ x_{σ(n)}}
+      Ogni Δ_σ è l'immagine del simplesso standard
+        Δ_std = {x : x₁ ≤ x₂ ≤ ... ≤ xₙ, xᵢ ≥ 0, ∑xᵢ ≤ 1}
+      sotto una permutazione delle coordinate (che è un'isometria).
+      Dunque Vol(Δ_std) = Vol([0,1]^n)/n! = 1/n!.
+      Il simplesso generale è l'immagine di Δ_std sotto
+      T(x) = P₀ + ∑xᵢ(Pᵢ-P₀), e per il Teorema del determinante
+      (cap. 3): Vol = |det T| · Vol(Δ_std) = (1/n!)|det(Pᵢ-P₀)|.
+
+      VIA 2 — Cavalieri iterato:
+      Scrivere Vol_n(Δₙ) = ∫₀¹ Area(sezione a quota t) dt.
+      La sezione a quota t è un simplesso (n-1)-dimensionale
+      scalato di (1-t), quindi ha volume (1-t)^(n-1) · Vol(Δ_{n-1}).
+      Induzione: Vol_n = Vol_{n-1} · ∫₀¹ (1-t)^{n-1} dt
+        = Vol_{n-1} · 1/n.
+      Poiché Vol_1 = 1 (il segmento unitario), Vol_n = 1/n!.
+      Il fattore |det| entra per il Teorema del determinante.
+
+    corollary: il volume del tetraedro è (1/6)|det|
+      (collegamento esplicito al cap. 9, Teorema 9.2)
+
+  §13.4 — Faces e struttura combinatoria
+    def: una k-faccia di Δₙ è conv(Pᵢ₀,...,Pᵢₖ) per k ≤ n
+    prop: Δₙ ha C(n+1, k+1) facce di dimensione k
+    proof: biezione con i sottoinsiemi di {P₀,...,Pₙ} di
+      cardinalità k+1
+
+─────────────────────────────────────
+CAP. 14 — Politopi convessi
+FILE: sections/14_politopi.tex
+─────────────────────────────────────
+PREREQUISITI: capitoli 2, 13
+
+CONTENUTO:
+
+  §14.1 — Due descrizioni di un politopo
+    def (V-rappresentazione): P = conv(v₁,...,vₘ)
+    def (H-rappresentazione): P = ∩ᵢ {x : ⟨nᵢ,x⟩ ≤ cᵢ}
+    theorem (Minkowski-Weyl): le due descrizioni sono equivalenti
+      per sottoinsiemi compatti di R^n
+    proof (schema strutturato, non "si veda"):
+      - (V → H): ogni politopo finito è compatto e convesso;
+        per ogni punto esterno x₀ esiste un iperpiano separatore
+        (conseguenza del Teorema di separazione per convessi,
+        enunciato e usato ma non dimostrato internamente —
+        segnalare che richiede topologia)
+      - (H → V): un'intersezione finita di semispazi compatta è
+        un politopo; i vertici sono le soluzioni dei sistemi
+        lineari ottenuti saturando n disuguaglianze; ci sono un
+        numero finito di tali sistemi
+
+  §14.2 — Eulero-Poincaré via algebra lineare
+    Questo paragrafo è il culmine della sezione e va sviluppato
+    con cura particolare.
+
+    setup: sia P un politopo convesso in R³. Definiamo:
+      - V = insieme dei vertici, E = insieme degli spigoli,
+        F = insieme delle facce
+      - B₁ = matrice di incidenza spigoli/vertici (|E|×|V|):
+          (B₁)_{e,v} = ±1 se v è un estremo di e, 0 altrimenti
+          (con orientazione degli spigoli fissata arbitrariamente)
+      - B₂ = matrice di incidenza facce/spigoli (|F|×|E|):
+          (B₂)_{f,e} = ±1 se e è sul bordo di f, 0 altrimenti
+          (con orientazione coerente con quella delle facce)
+
+    lemma fondamentale: B₂ B₁ = 0
+    proof: ogni colonna di B₁ corrisponde a un vertice v;
+      (B₂ B₁)_{f,v} = ∑_e (B₂)_{f,e} (B₁)_{e,v}.
+      Gli spigoli e che contribuiscono sono quelli incidenti a v
+      e alla faccia f. Se v è sul bordo di f, ci sono esattamente
+      2 tali spigoli, e i loro contributi si cancellano per le
+      orientazioni. Se v non è sul bordo di f, il contributo è 0.
+
+    theorem (Eulero-Poincaré per politopi convessi):
+      V - E + F = 2
+
+    proof completa via rango-nullità:
+      Definiamo gli spazi di catene con coefficienti reali:
+        C₀ = R^V (combinazioni di vertici)
+        C₁ = R^E (combinazioni di spigoli)
+        C₂ = R^F (combinazioni di facce)
+      e gli operatori di bordo ∂₁ = B₁^T, ∂₂ = B₂^T.
+      Il lemma B₂B₁ = 0 dice ∂₁∂₂ = 0.
+      Per il Teorema rango-nullità applicato a B₁:
+        dim(im B₁) + dim(ker B₁) = |V|
+      Per B₂:
+        dim(im B₂) + dim(ker B₂) = |E|
+      Si dimostra (usando che P è omeomorfo a S²):
+        dim(ker B₁) = 1 (le "funzioni costanti")
+        dim(ker B₂) = dim(im B₁) + 1 (un ciclo extra)
+        dim(im B₂) = |F| - 1
+      Allora:
+        V - E + F
+        = (dim(im B₁) + 1) - (dim(im B₁) + dim(im B₂) + 1)
+          + (dim(im B₂) + 1)
+        = 1 - 1 + 1 + 1 = 2
+
+    remark: questo argomento è la versione finita del
+      Teorema di Gauss-Bonnet, che nel capitolo 21 apparirà
+      in forma continua per le superfici
+
+  FIGURE RICHIESTE:
+    - Cubo con le matrici B₁, B₂ esplicite (almeno
+      parzialmente) per illustrare l'argomento
+
+─────────────────────────────────────
+CAP. 15 — Trigonometria come algebra lineare
+FILE: sections/15_trigonometria.tex
+─────────────────────────────────────
+PREREQUISITI: capitoli 2–3
+
+CONTENUTO:
+
+  §15.1 — Il gruppo SO(2) e le formule di addizione
+    theorem: per ogni α,β ∈ R, R_α · R_β = R_{α+β}
+    proof: moltiplicazione matriciale esplicita
+    corollary: le formule di addizione
+      sin(α+β) = sin α cos β + cos α sin β
+      cos(α+β) = cos α cos β - sin α sin β
+      sono conseguenze dirette della moltiplicazione di
+      matrici di rotazione (non identità separate)
+
+  §15.2 — La formula di Eulero
+    theorem: e^{iθ} = cos θ + i sin θ
+    proof: via serie di potenze di e^x, sin x, cos x
+      (richiama solo la definizione analitica, non usa geometria)
+    corollary: la moltiplicazione per e^{iθ} in C ≅ R² è
+      esattamente la matrice di rotazione R_θ, dunque
+      C* ≅ SO(2) × R>0 (isomorfismo di gruppi di Lie,
+      enunciato informalmente)
+
+  §15.3 — Funzioni iperboliche come rotazioni iperboliche
+    def: cosh t = (e^t + e^{-t})/2, sinh t = (e^t - e^{-t})/2
+    def: la matrice iperbolica H_t = [[cosh t, sinh t],
+      [sinh t, cosh t]]
+    prop: H_t ∈ SO(1,1) (preserva la forma quadratica x²-y²)
+    prop: H_t · H_s = H_{t+s}
+    corollary: le identità iperboliche (cosh²-sinh²=1, formule
+      di addizione) sono conseguenze della moltiplicazione di
+      matrici, esattamente come nel caso trigonometrico
+    remark: SO(1,1) è il gruppo delle "rotazioni iperboliche" —
+      anticipazione della geometria di Minkowski (cap. 23)
+
+─────────────────────────────────────
+CAP. 16 — Coniche e quadriche
+FILE: sections/16_coniche.tex
+─────────────────────────────────────
+PREREQUISITI: capitoli 1–3, Teorema spettrale (enunciare
+  e usare senza dimostrare: la dimostrazione completa richiede
+  il corso di Geometria 2/Algebra lineare 2)
+
+CONTENUTO:
+
+  §16.1 — Forme quadratiche
+    def: Q(x) = x^T A x con A simmetrica
+    prop: ogni forma quadratica si scrive in modo unico con
+      A simmetrica (A = (A + A^T)/2)
+    theorem (Teorema spettrale, enunciato): ogni matrice
+      simmetrica A ∈ Sym(n,R) ha autovalori reali e
+      autovettori ortogonali. Esiste P ∈ O(n) tale che
+      P^T A P = diag(λ₁,...,λₙ)
+    proof: OMESSA (rimandare a un corso di algebra lineare).
+      Motivare però il perché: P^T A P è il cambio di base
+      ortonormale agli autovettori, e la diagonalizzazione
+      significa "ci sono coordinate in cui Q non ha termini
+      misti"
+
+  §16.2 — Classificazione delle coniche
+    def: conica = {x ∈ R² : Q(x) + L(x) + c = 0}
+      dove Q è forma quadratica, L lineare, c costante
+    theorem (riduzione a forma canonica):
+      via completamento del quadrato (traslazione) e
+      diagonalizzazione (rotazione via Teorema spettrale),
+      ogni conica è equivalente a una delle forme canoniche:
+        λ₁x² + λ₂y² = r  (ellisse se r,λ₁,λ₂ > 0;
+                           iperbole se λ₁λ₂ < 0; parabola se
+                           λ₂ = 0)
+    proof completa: riduzione in due passi con i calcoli
+      espliciti
+    theorem (classificazione via segnatura):
+      la segnatura (p,q,r) di A determina il tipo:
+        (2,0,0) → ellisse
+        (1,1,0) → iperbole
+        (1,0,1) o (0,1,1) → parabola
+        etc.
+    corollary: quadriche in R³ per estensione diretta
+
+─────────────────────────────────────
+CAP. 17 — Geometria proiettiva
+FILE: sections/17_proiettiva.tex
+─────────────────────────────────────
+CONTENUTO:
+
+  §17.1 — Lo spazio proiettivo
+    def: PP^n = (R^{n+1} \ {0}) / ~ dove v ~ w sse ∃λ: v = λw
+    prop: PP^n = R^n ∪ PP^{n-1}
+      (decomposizione in "parte affine" + "iperpiano all'infinito")
+    def: coordinate omogenee [x₀:x₁:...:xₙ]
+    example: la retta PP¹ ≅ S¹, il piano PP²
+
+  §17.2 — Applicazioni proiettive
+    def: PGL(n+1) come gruppo delle omografie
+    prop: ogni isometria affine è un caso speciale di omografia
+      (la traslazione di vettore t è la matrice
+       [[1,t],[0,1]] in coordinate omogenee)
+
+  §17.3 — Il birapporto
+    def: birapporto di quattro punti su una retta proiettiva
+    theorem: il birapporto è l'unico invariante proiettivo
+      di quattro punti su una retta
+    proof: classificazione via PGL(2)
+
+  §17.4 — Dualità proiettiva
+    theorem: in PP², punti e rette sono duali
+      (ogni teorema su punti e rette ha un teorema duale)
+    example: dualizzazione del Teorema di Desargues
+
+─────────────────────────────────────
+CAP. 18 — Rotazioni e quaternioni
+FILE: sections/18_rotazioni.tex
+─────────────────────────────────────
+(Rodrigues già nel cap. 9; questo cap. approfondisce)
+
+CONTENUTO:
+
+  §18.1 — SO(3) come varietà
+    prop: ogni R ∈ SO(3) ha un autovalore reale +1
+    proof: det(R-I) = det(R)det(I-R^{-1}) = det(I-R^T)
+      = det(I-R)^T = det(I-R), dunque det(R-I) = -det(I-R)
+      = -(-1)³det(R-I) = det(R-I), quindi det(R-I) = 0
+    corollary: ogni rotazione in R³ ha un asse
+
+  §18.2 — Quaternioni
+    def: H = R⊕Ri⊕Rj⊕Rk con le relazioni i²=j²=k²=ijk=-1
+    prop: i quaternioni unitari Sp(1) = {q: |q|=1} ≅ S³
+    theorem: Sp(1) → SO(3) via q ↦ (v ↦ qvq^{-1})
+      è un omomorfismo di gruppo suriettivo con kernel {±1}
+    proof: verificare che la coniugazione preserva |v|
+      e che il kernel è {±1}
+    remark: questo spiega perché le rotazioni in 3D hanno
+      la "doppia copertura" — fenomeno rilevante in fisica
+      (spin dei fermioni)
+
+─────────────────────────────────────
+CAP. 19 — Curve piane
+FILE: sections/19_curve.tex
+─────────────────────────────────────
+
+CONTENUTO:
+
+  §19.1 — Curve parametriche
+    def: curva regolare γ: I → R² con γ'(t) ≠ 0
+    def: versore tangente T(t) = γ'(t)/|γ'(t)|
+    def: lunghezza d'arco s(t) = ∫₀ᵗ |γ'(τ)| dτ
+
+  §19.2 — Curvatura
+    def: curvatura κ = |dT/ds| (come grandezza geometrica,
+      indipendente dalla parametrizzazione)
+    prop: κ(t) = |det(γ'(t)|γ''(t))| / |γ'(t)|³
+    proof: calcolo diretto di dT/ds via regola della catena
+    example: cerchio di raggio R ha κ = 1/R (costante)
+    theorem: κ = 0 sse la curva è un segmento rettilineo
+
+  §19.3 — Curve di Bézier
+    def: curva di Bézier di grado n tramite n+1 punti di
+      controllo P₀,...,Pₙ:
+      B(t) = ∑ C(n,k) tᵏ (1-t)^{n-k} Pₖ
+    prop: B(t) è una combinazione affine dei Pᵢ
+      (i polinomi di Bernstein sommano a 1)
+    algorithm (De Casteljau): costruzione iterativa come
+      composizione di interpolazioni lineari
+    proof: induzione sul grado — per n=1 è la retta da P₀
+      a P₁; per n generale è l'interpolazione tra le curve
+      di grado n-1 ottenute dai sottoinsiemi di punti
+
+─────────────────────────────────────
+CAP. 20 — Superfici in R³
+FILE: sections/20_superfici.tex
+─────────────────────────────────────
+
+CONTENUTO:
+
+  §20.1 — Parametrizzazioni e piano tangente
+    def: superficie regolare σ: U → R³ con dσ iniettivo
+    def: vettori tangenti ∂σ/∂u, ∂σ/∂v
+    def: piano tangente T_p S = span{∂σ/∂u, ∂σ/∂v}
+    remark: il piano tangente è il nucleo del differenziale
+      dell'equazione cartesiana F(x,y,z)=0 quando la superficie
+      è data implicitamente
+
+  §20.2 — Prima forma fondamentale
+    def: prima forma fondamentale g_{ij} = ⟨∂σ/∂uᵢ, ∂σ/∂uⱼ⟩
+      (la matrice di Gram dei vettori tangenti)
+    def: area di una superficie come
+      Area = ∫∫ √(det G) du dv
+    proof che è ben definita (indipendente dalla parametr.):
+      il fattore √(det G) trasforma come il Jacobiano sotto
+      cambio di parametri, quindi l'integrale è invariante
+    example: recuperare Area(sfera) = 4πR² come nel cap. 10
+
+  §20.3 — Curvatura (cenno)
+    def: curvatura gaussiana K e media H via seconda forma
+      fondamentale (enunciare, non sviluppare)
+    theorem (Gauss-Bonnet, enunciato):
+      ∫∫_S K dA = 2π χ(S)
+    remark: collegamento con Eulero-Poincaré (cap. 14):
+      per un poliedro convesso, la curvatura è concentrata
+      sui vertici e la sua somma è 2π·V - π·(2E) + 0·F...
+      mostrare informalmente il collegamento
+
+─────────────────────────────────────
+CAP. 21 — Topologia elementare
+FILE: sections/21_topologia.tex
+─────────────────────────────────────
+
+CONTENUTO:
+
+  §21.1 — Superfici compatte orientabili
+    def: omeomorfismo, superficie come varietà 2D
+    theorem (classificazione): ogni superficie compatta
+      orientabile è omeomorfa a una sfera con g manici:
+      Σ_g, con g = genere
+    χ(Σ_g) = 2 - 2g
+
+  §21.2 — Caratteristica di Eulero come invariante
+    prop: χ è invariante per omeomorfismo
+    examples: sfera χ=2 (g=0), toro χ=0 (g=1), genere-2 χ=-2
+    remark: V-E+F = χ vale per ogni triangolazione, non solo
+      per poliedri convessi — questo è il risultato generale
+
+─────────────────────────────────────
+CAP. 22 — Geometrie non euclidee
+FILE: sections/22_non_euclidea.tex
+─────────────────────────────────────
+
+CONTENUTO:
+
+  §22.1 — Il modello del semipiano di Poincaré
+    def: H = {z ∈ C : Im(z) > 0}
+    def: metrica iperbolica ds² = (dx² + dy²)/y²
+    def: geodetiche (rette iperboliche) = semicerchi e
+      semirette verticali ortogonali all'asse reale
+    prop: il gruppo delle isometrie è PSL(2,R) (trasformazioni
+      di Möbius z ↦ (az+b)/(cz+d) con a,b,c,d ∈ R, ad-bc>0)
+
+  §22.2 — Confronto tra le tre geometrie
+    tabella: geometria euclidea (K=0), sferica (K>0),
+      iperbolica (K<0) con le corrispondenti proprietà
+      - somma degli angoli in un triangolo
+      - esistenza e unicità di parallele
+      - formula dell'area (Gauss-Bonnet locale)
+
+─────────────────────────────────────
+CAP. 23 — Storia e fondamenti
+FILE: sections/23_storia.tex
+─────────────────────────────────────
+
+CONTENUTO (narrativo, non matematico):
+
+  §23.1 — Da Euclide a Hilbert
+    - Il primo teorema degli Elementi e il suo problema
+      (già menzionato nella dispensa di Cailotto — citare)
+    - I 5 postulati, la storia del V postulato
+    - Gauss, Bolyai, Lobachevsky e la scoperta delle
+      geometrie non euclidee
+    - I Grundlagen di Hilbert (1899): ogni dimostrazione
+      ora dipende solo dagli assiomi, non dai disegni
+
+  §23.2 — Il programma di Erlangen
+    - Klein (1872): la geometria è lo studio degli invarianti
+      sotto un gruppo di trasformazioni
+    - Tabella: geometria euclidea / affinità / proiettiva /
+      topologica con i rispettivi gruppi e invarianti
+
+  §23.3 — Grassmann, Peano e la nascita degli spazi vettoriali
+    - Grassmann (1844): Ausdehnungslehre — prima formulazione
+      dell'algebra esteriore senza coordinate
+    - Peano (1888): prima assiomatizzazione degli spazi
+      vettoriali in forma moderna
+    - Perché ci vollero 50 anni per essere adottati
+
+════════════════════════════════════════════════════════
+SEZIONE 3 — APPENDICI
+════════════════════════════════════════════════════════
+
+APP. A — Formulario esteso
+FILE: sections/A_formulario.tex
+
+Tabelle per:
+  - Geometria piana (già in cap. 11, espandere)
+  - Geometria solida (già in cap. 11, espandere)
+  - Curve (lunghezze d'arco, curvature)
+  - Superfici (aree, volumi parametrici)
+  - Trigonometria (identità principali come identità
+    di gruppo su SO(2))
+  - Volume k-dimensionale (formula √det G, Cauchy-Binet)
+
+APP. B — Dizionario sintetico-lineare esteso
+FILE: sections/B_dizionario.tex
+
+Estendere la tabella del cap. 11 attuale aggiungendo:
+  - Simplesso → combinazione affine + det + Cavalieri
+  - Politopo → sistema lineare + dualità + Eulero-Poincaré
+  - Conica → forma quadratica + Teorema spettrale
+  - Punto proiettivo → retta per l'origine in R^{n+1}
+  - Isometria di Poincaré → trasformazione di Möbius
+
+APP. C — Indice analitico
+Generare con il pacchetto \index e \printindex
+(aggiungere \usepackage{makeidx} e \makeindex a main.tex)
+
+════════════════════════════════════════════════════════
+SEZIONE 4 — AGGIORNAMENTI A main.tex
+════════════════════════════════════════════════════════
+
+4.1 Aggiungere al preambolo:
+  \usepackage{makeidx}
+  \makeindex
+  \usepackage{epigraph}  (per le citazioni storiche)
+
+4.2 Aggiungere le nuove macro di notazione:
+  \newcommand{\Det}{\operatorname{det}}
+  \newcommand{\Gram}{\operatorname{Gram}}
+  \newcommand{\PP}{\mathbb{P}}
+  \newcommand{\HH}{\mathbb{H}}
+  \newcommand{\curl}{\times}
+  \newcommand{\Adj}{\operatorname{Adj}}
+  \newcommand{\Ext}{\textstyle\bigwedge}
+  \newcommand{\sgn}{\operatorname{sgn}}
+  \newcommand{\tr}{\operatorname{tr}}
+  \newcommand{\rank}{\operatorname{rank}}
+
+4.3 Sostituire la lista \input{} con la struttura a parti:
+  \part{Geometria euclidea elementare}
+  \input{sections/00_intro}
+  ... (esistenti) ...
+  \input{sections/10_sintesi}
+
+  \part{Algebra multilineare e volume k-dimensionale}
+  \input{sections/11_multilineare}
+  \input{sections/12_gram_cauchy}
+  \input{sections/13_simplessi}
+  \input{sections/14_politopi}
+
+  \part{Dalla trigonometria alla geometria analitica}
+  \input{sections/15_trigonometria}
+  \input{sections/16_coniche}
+  \input{sections/17_proiettiva}
+
+  \part{Rotazioni, curve e superfici}
+  \input{sections/18_rotazioni}
+  \input{sections/19_curve}
+  \input{sections/20_superfici}
+
+  \part{Topologia e geometrie non euclidee}
+  \input{sections/21_topologia}
+  \input{sections/22_non_euclidea}
+
+  \part{Fondamenti e storia}
+  \input{sections/23_storia}
+
+  \appendix
+  \input{sections/A_formulario}
+  \input{sections/B_dizionario}
+  \printindex
+
+════════════════════════════════════════════════════════
+SEZIONE 5 — ORDINE DI IMPLEMENTAZIONE SUGGERITO
+════════════════════════════════════════════════════════
+
+L'LLM deve procedere in questo ordine, compilando dopo
+ogni fase per verificare che non ci siano errori:
+
+FASE 1: Modifiche ai file esistenti (sez. 1)
+  → Completare le 3 dimostrazioni mancanti
+  → Aggiungere Feuerbach, Erone, Rodrigues
+  → Compilare: deve restituire 0 errori
+
+FASE 2: Aggiornare main.tex (sez. 4)
+  → Aggiungere macro, struttura a parti
+  → Compilare con solo \input{} esistenti commentati
+
+FASE 3: Capitoli 11–14 (Parte IV)
+  → Uno alla volta, compilare dopo ogni file
+  → Priorità: 12 (Gram) e 13 (simplessi) prima di 14
+
+FASE 4: Capitolo 15 (Trigonometria)
+
+FASE 5: Capitoli 16–17 (Coniche, Proiettiva)
+
+FASE 6: Capitoli 18–20 (Rotazioni, Curve, Superfici)
+
+FASE 7: Capitoli 21–22 (Topologia, Non euclidea)
+
+FASE 8: Capitolo 23 (Storia)
+
+FASE 9: Appendici A, B, C
+
+FASE 10: Compilazione finale con 3 passaggi pdflatex
+  → Verificare: 0 errori, 0 undefined references,
+    0 overfull hbox > 20pt
+
+════════════════════════════════════════════════════════
+SEZIONE 6 — CHECKLIST DI QUALITÀ
+════════════════════════════════════════════════════════
+
+Prima di consegnare ogni file, verificare:
+
+□ Ogni theorem/prop/lemma ha la sua proof completa
+□ Ogni proof termina con \hfill$\blacksquare$
+□ Ogni nuova macro è definita in main.tex, non inline
+□ Ogni figura TikZ compila senza errori
+□ Ogni \Cref punta a un'etichetta esistente
+□ Il filo conduttore "algebra lineare" è esplicito: ogni
+  risultato mostra perché è una conseguenza dell'algebra
+  lineare, non un fatto isolato
+□ I collegamenti tra capitoli sono espliciti (remark di
+  collegamento all'inizio o alla fine di ogni sezione nuova)
+□ La terminologia italiana è consistente con i file esistenti
+  (non introdurre sinonimi: se si usa "isometria", non
+  usare mai "trasformazione rigida" come equivalente)
+```
