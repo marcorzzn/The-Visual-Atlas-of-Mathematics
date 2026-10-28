@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galassia Matematica</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css"/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #06060f;
+    --panel: #0d0d1f;
+    --border: #1a1a3a;
+    --text: #c8c8e8;
+    --muted: #5a5a8a;
+    --accent: #7b68ee;
+    --gold: #d4af6a;
+    --cyan: #4ecdc4;
+    --rose: #e8708a;
+    --green: #6bcb77;
+    --orange: #f4a261;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* starfield */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(200,200,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 80%, rgba(200,200,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 40%, rgba(200,200,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 60%, rgba(200,200,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 10%, rgba(200,200,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 50%, rgba(200,200,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 30%, rgba(200,200,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 70%, rgba(200,200,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 15%, rgba(200,200,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 90%, rgba(200,200,255,0.2) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: relative;
+    z-index: 10;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(6,6,15,0.9);
+    backdrop-filter: blur(8px);
+  }
+
+  .title-block h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+  }
+
+  .title-block p {
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-left: auto;
+    align-items: center;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .legend-item:hover { border-color: var(--border); color: var(--text); }
+
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  #network {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* info panel */
+  #info-panel {
+    position: fixed;
+    right: 16px;
+    top: 70px;
+    width: 300px;
+    background: rgba(13,13,31,0.95);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px;
+    z-index: 20;
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.25s ease;
+    pointer-events: none;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  #info-panel.visible {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  #info-panel h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  #info-panel .category {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+
+  #info-panel p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #a0a0cc;
+    margin-bottom: 10px;
+  }
+
+  #info-panel .connections {
+    font-size: 0.72rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+  }
+
+  #info-panel .connections span {
+    display: block;
+    margin: 3px 0;
+    color: var(--cyan);
+  }
+
+  #info-panel .bridge-badge {
+    display: inline-block;
+    background: rgba(212,175,106,0.15);
+    border: 1px solid rgba(212,175,106,0.4);
+    color: var(--gold);
+    font-size: 0.65rem;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+  .controls {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 20;
+    display: flex;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    align-items: center;
+  }
+
+  .controls kbd {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  #close-panel {
+    position: absolute;
+    top: 10px; right: 12px;
+    background: none; border: none;
+    color: var(--muted); cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  #close-panel:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-block">
+    <h1>Galassia Matematica</h1>
+    <p>dalle origini antiche alle frontiere moderne</p>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#d4af6a"></div>Fondamenta</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7b68ee"></div>Algebra</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4ecdc4"></div>Analisi</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e8708a"></div>Geometria</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#6bcb77"></div>Logica/Inform.</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f4a261"></div>Fisica Mat.</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#a8dadc"></div>AI/ML</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ffffff"></div>⭐ Ponti</div>
+  </div>
+</header>
+
+<div id="network"></div>
+
+<div id="info-panel">
+  <button id="close-panel">×</button>
+  <div id="panel-content"></div>
+</div>
+
+<div class="controls">
+  <kbd>scroll</kbd> zoom &nbsp;
+  <kbd>drag</kbd> muovi &nbsp;
+  <kbd>click</kbd> dettagli
+</div>
+
+<script>
+const COLORS = {
+  fondamenta: '#d4af6a',
+  algebra:    '#7b68ee',
+  analisi:    '#4ecdc4',
+  geometria:  '#e8708a',
+  logica:     '#6bcb77',
+  fisica:     '#f4a261',
+  ai:         '#a8dadc',
+  bridge:     '#ffffff',
+  antico:     '#c9a96e',
+};
+
+const nodes_data = [
+  // ── ANTICHITÀ ──
+  { id: 'mesopotamia', label: 'Mesopotamia\n& Egitto', group: 'antico', size: 22,
+    info: { title: 'Mesopotamia & Egitto (3000–600 a.C.)', cat: 'Antichità',
+      desc: 'Aritmetica pratica per commercio e tassazione. Sistema babilonese posizionale in base 60 (usato ancora per angoli e tempo). Equazioni quadratiche, tavole di moltiplicazione, approssimazione di √2.',
+      links: ['→ Numerazione posizionale (India)', '→ Geometria pratica', '→ Sistema sessagesimale ancora vivo'] }},
+  { id: 'grecia', label: 'Grecia Classica', group: 'antico', size: 26,
+    info: { title: 'Grecia Classica (600 a.C. – 300 d.C.)', cat: 'Antichità',
+      desc: 'Da Pitagora a Euclide, Archimede, Apollonio. Primo sistema assiomatico (Elementi, 300 a.C.). Metodo di esaustione precursore del calcolo. Scoperta degli irrazionali.',
+      links: ['→ Geometrie non-euclidee (1800)', '→ Algoritmo di Euclide → Crittografia', '→ Coniche → Orbite planetarie'] }},
+  { id: 'india_arabi', label: 'India & Mondo\nIslamico', group: 'antico', size: 22,
+    info: { title: 'India & Mondo Islamico (500–1200 d.C.)', cat: 'Antichità / Medioevo',
+      desc: 'Numerazione posizionale decimale con lo zero (~600 d.C.) — rivoluzione computazionale. Al-Khwarizmi: Al-Jabr → Algebra. Il suo nome dà origine alla parola "algoritmo".',
+      links: ['→ Algebra simbolica', '→ Trigonometria moderna', '→ Algoritmo come concetto'] }},
+
+  // ── RINASCIMENTO/RIVOLUZIONE ──
+  { id: 'cardano', label: 'Cardano–Tartaglia\nFormula Cubico', group: 'algebra', size: 18,
+    info: { title: 'Tartaglia–Cardano (1545)', cat: 'Algebra',
+      desc: 'Formula per le equazioni cubiche. Richiede numeri complessi anche per soluzioni reali — prima apparizione necessaria di √−1.',
+      links: ['→ Numeri complessi ℂ', '→ Ferrari: formula del quartico', '→ Galois: insolvibilità del quinto grado'] }},
+  { id: 'descartes', label: 'Geometria\nAnalitica', group: 'geometria', size: 24,
+    info: { title: 'Geometria Analitica (Cartesio, 1637)', cat: 'Geometria / Algebra',
+      desc: 'Coordinatizzazione del piano. Ogni curva è un\'equazione, ogni equazione è una curva. Prima grande unificazione: algebra e geometria.',
+      links: ['→ Vettori e spazi n-dimensionali', '→ Computer Graphics', '→ Precede la geometria differenziale'] }},
+  { id: 'newton_leibniz', label: 'Calcolo\nInfinitesimale', group: 'analisi', size: 28,
+    info: { title: 'Newton–Leibniz (1666–1684)', cat: 'Analisi',
+      desc: 'Derivazione e integrazione come operazioni inverse. Newton: flussioni, problema fisico (orbite). Leibniz: notazione dx, ∫ — ancora usata. Teorema Fondamentale del Calcolo.',
+      links: ['→ Meccanica Classica', '→ Equazioni Differenziali', '→ Basi rigorose: Cauchy, Weierstrass (1800)'] }},
+
+  // ── XIX SECOLO ──
+  { id: 'galois', label: 'Galois\n(1832)', group: 'bridge', size: 30,
+    bridge: true,
+    info: { title: '⭐ Corrispondenza di Galois (1832)', cat: 'PONTE: Algebra ↔ Geometria',
+      desc: 'Sottocampi di un\'estensione ↔ Sottogruppi del gruppo di Galois. Prima corrispondenza strutturale profonda della storia matematica. Dimostra l\'insolvibilità per radicali del quinto grado.',
+      links: ['⭐ Ispira il Programma di Langlands', '→ Teoria dei gruppi', '→ Geometria algebrica (schemi)', '→ Teoria delle categorie (funtori di Galois)'] }},
+  { id: 'cantor', label: 'Cantor\nTeoria Insiemi', group: 'fondamenta', size: 26,
+    info: { title: 'Cantor — Teoria degli Insiemi (1874)', cat: 'Fondamenta',
+      desc: 'Cardinalità e ordinali transfiniti. |ℕ| < |ℝ| — dimostrazione diagonale. Paradosso di Russell (1901) → necessità di assiomatizzare → ZFC.',
+      links: ['→ ZFC (Zermelo–Fraenkel)', '→ Ipotesi del Continuo (indipendente da ZFC)', '→ Logica matematica'] }},
+  { id: 'riemann', label: 'Riemann\n(1854)', group: 'geometria', size: 28,
+    info: { title: 'Riemann (1854)', cat: 'Geometria / Analisi',
+      desc: 'Geometria riemanniana: varietà n-dimensionali con metrica variabile. Ipotesi di Riemann (problema del millennio). Superfici di Riemann: topologia incontra analisi complessa.',
+      links: ['→ Relatività Generale (Einstein, 1915)', '→ Topologia algebrica', '→ Taniyama–Shimura–Weil'] }},
+  { id: 'boole', label: 'Algebra\ndi Boole (1854)', group: 'logica', size: 22,
+    info: { title: 'George Boole — Algebra della Logica (1854)', cat: 'Logica / Algebra',
+      desc: 'Modella AND, OR, NOT algebricamente. Struttura: reticolo distributivo complementato.',
+      links: ['⭐ Stone Duality: Algebre di Boole ↔ Spazi topologici', '→ Circuiti digitali (Shannon, 1937)', '→ Logica Proposizionale'] }},
+  { id: 'klein', label: 'Programma\ndi Erlangen', group: 'geometria', size: 20,
+    info: { title: 'Felix Klein — Programma di Erlangen (1872)', cat: 'Geometria',
+      desc: 'Una geometria = un gruppo di trasformazioni + i suoi invarianti. Unifica tutte le geometrie sotto la teoria dei gruppi.',
+      links: ['→ Teoria dei gruppi di Lie', '→ Geometric Deep Learning (2021)', '→ Gauge Theory in fisica'] }},
+
+  // ── FONDAMENTA ──
+  { id: 'zfc', label: 'ZFC\n(Zermelo–Fraenkel)', group: 'fondamenta', size: 22,
+    info: { title: 'Assiomi ZF / ZFC (1908–1922)', cat: 'Fondamenta',
+      desc: 'Zermelo–Fraenkel + Assioma della Scelta. Formalizzazione della teoria degli insiemi. Indipendenza di CH: Gödel (1940) mostra consistenza di CH, Cohen (1963) mostra consistenza di ¬CH.',
+      links: ['→ Basi di tutta la matematica classica', '→ Motivic homotopy theory', '→ HoTT come alternativa costruttiva'] }},
+  { id: 'godel', label: 'Gödel\nIncompletezza', group: 'bridge', size: 30,
+    bridge: true,
+    info: { title: '⭐ Teoremi di Incompletezza (Gödel, 1931)', cat: 'PONTE: Logica ↔ Calcolabilità',
+      desc: 'I: ogni sistema coerente sufficientemente espressivo contiene enunciati indecidibili. II: nessun sistema coerente prova la propria coerenza. Distrugge il Programma di Hilbert.',
+      links: ['→ Problema dell\'Arresto (Turing, 1936)', '→ Calcolabilità e teoria della complessità', '→ Lambda Calcolo (Church)', '⭐ Risposta all\'Entscheidungsproblem di Hilbert'] }},
+  { id: 'cat_theory', label: 'Teoria\ndelle Categorie', group: 'bridge', size: 32,
+    bridge: true,
+    info: { title: '⭐ Teoria delle Categorie (Eilenberg–Mac Lane, 1945)', cat: 'PONTE: Linguaggio Unificante',
+      desc: 'Oggetti e morfismi. Funtori (mappe tra categorie). Trasformazioni naturali. Aggiunzioni. Il linguaggio unificante di tutta la matematica moderna.',
+      links: ['⭐ Curry–Howard–Lambek: Logica ↔ Tipi ↔ Categorie', '→ Topos (generalizza insiemi + logica)', '→ Categorie derivate (Grothendieck)', '→ Langlands geometrico', '→ Semantica linguaggi di programmazione'] }},
+
+  // ── ALGEBRA ──
+  { id: 'algebra_lineare', label: 'Algebra\nLineare', group: 'algebra', size: 28,
+    info: { title: 'Algebra Lineare', cat: 'Algebra',
+      desc: 'Spazi vettoriali, basi, applicazioni lineari, matrici, autovalori. SVD: Decomposizione ai Valori Singolari. Fondamento di analisi numerica, ML, grafica 3D.',
+      links: ['→ Spazi di Hilbert (analisi funzionale)', '→ PCA, compressione (SVD)', '→ Deep Learning (tensori)', '→ Meccanica Quantistica (operatori)'] }},
+  { id: 'teoria_gruppi', label: 'Teoria\ndei Gruppi', group: 'algebra', size: 26,
+    info: { title: 'Teoria dei Gruppi', cat: 'Algebra',
+      desc: 'Gruppi finiti: classificazione completa (1983, ~10.000 pagine). Il gruppo Mostro 𝕄 (196.883 dimensioni). Gruppi di Lie: simmetrie continue SO(3), SU(2), SU(3)...',
+      links: ['⭐ Monstrous Moonshine: Mostro ↔ Forme Modulari', '→ Teorema di Noether (simmetrie)', '→ Modello Standard (fisica)', '→ Geometric Deep Learning'] }},
+  { id: 'algebra_universale', label: 'Algebra\nUniversale', group: 'algebra', size: 20,
+    info: { title: 'Algebra Universale (Birkhoff, 1935)', cat: 'Algebra',
+      desc: 'Studio astratto di insiemi con operazioni. Magma → Semigruppo → Monoide → Gruppo → Gruppo Abeliano. Anello → Dominio → Campo. Reticolo → Algebra di Boole.',
+      links: ['→ Teoria delle varietà (classi equazionali)', '→ Algebra di Boole → Logica', '→ Connessa alla Teoria delle Categorie'] }},
+
+  // ── ANALISI ──
+  { id: 'analisi_reale', label: 'Analisi\nReale', group: 'analisi', size: 24,
+    info: { title: 'Analisi Reale', cat: 'Analisi',
+      desc: 'Costruzione rigorosa di ℝ (Dedekind, 1872). Limiti (Cauchy), continuità, derivabilità, integrabilità. Teorema di Taylor. Analisi in ℝⁿ: gradiente, Jacobiano, Hessiano.',
+      links: ['→ Equazioni Differenziali', '→ Analisi Funzionale', '→ Ottimizzazione → ML'] }},
+  { id: 'analisi_funzionale', label: 'Analisi\nFunzionale', group: 'analisi', size: 26,
+    info: { title: 'Analisi Funzionale', cat: 'Analisi',
+      desc: 'Spazi di Banach e di Hilbert. Operatori lineari limitati. Teoria Spettrale: autovalori in dimensione infinita. Distribuzioni (Schwartz): δ di Dirac.',
+      links: ['→ Meccanica Quantistica (stati = vettori di Hilbert)', '→ Deep Learning (teorema di approssimazione universale)', '→ Neural Tangent Kernel'] }},
+  { id: 'fourier', label: 'Trasformata\ndi Fourier', group: 'bridge', size: 26,
+    bridge: true,
+    info: { title: '⭐ Fourier Duality (1822)', cat: 'PONTE: Analisi ↔ Topologia ↔ Gruppi',
+      desc: 'Dominio temporale ↔ Dominio delle frequenze. Caso speciale di Pontryagin Duality (ℝ è il proprio duale di caratteri). FFT: algoritmo O(n log n).',
+      links: ['⭐ Pontryagin Duality: Gruppi Abeliani ↔ duale di caratteri', '→ Analisi armonica, PDE', '→ MQ: posizione ↔ impulso', '→ FFT → elaborazione del segnale, ML'] }},
+  { id: 'ode_pde', label: 'Equazioni\nDifferenziali', group: 'analisi', size: 22,
+    info: { title: 'Equazioni Differenziali (ODE/PDE)', cat: 'Analisi',
+      desc: 'ODE: Cauchy–Lipschitz (esistenza e unicità). PDE: Laplace, calore, onde, Navier–Stokes. SDE: equazioni stocastiche (moto browniano).',
+      links: ['→ Meccanica Razionale', '→ Fisica Matematica', '→ Modelli di diffusione (AI)', '→ Black–Scholes (finanza)'] }},
+
+  // ── GEOMETRIA ──
+  { id: 'geom_diff', label: 'Geometria\nDifferenziale', group: 'geometria', size: 26,
+    info: { title: 'Geometria Differenziale', cat: 'Geometria',
+      desc: 'Varietà differenziabili, spazio tangente, forme differenziali. Teorema di Stokes (generalizza Green, Gauss). Curvatura di Riemann. Fibrati → Gauge Theory.',
+      links: ['→ Relatività Generale', '→ Meccanica Lagrangiana', '→ Ottimizzazione su varietà (ML)', '→ Geometric Deep Learning'] }},
+  { id: 'topologia', label: 'Topologia\nAlgebrica', group: 'geometria', size: 24,
+    info: { title: 'Topologia Algebrica', cat: 'Geometria / Algebra',
+      desc: 'Gruppo fondamentale π₁, Omologia Hₙ, Coomologia Hⁿ. Poincaré Duality: Hᵏ ≅ Hₙ₋ᵏ. K-teoria (Atiyah–Hirzebruch).',
+      links: ['⭐ Atiyah–Singer Index Theorem', '→ Topological Data Analysis (AI)', '→ HoTT (tipi = spazi omotopici)', '⭐ Weil Conjectures → coomologia ↔ aritmetica'] }},
+  { id: 'geom_algebrica', label: 'Geometria\nAlgebrica', group: 'geometria', size: 26,
+    info: { title: 'Geometria Algebrica (Grothendieck, 1960)', cat: 'Geometria',
+      desc: 'Varietà algebriche: zeri di polinomi. Schemi (Grothendieck): generalizzazione suprema. Geometria = algebra commutativa dualizzata. Coomologia étale. Motivic cohomology (Voevodsky).',
+      links: ['⭐ Weil Conjectures: aritmetica ↔ topologia', '⭐ Mirror Symmetry', '→ Programma di Langlands', '→ Teorie delle categorie derivate'] }},
+
+  // ── PONTI PRINCIPALI ──
+  { id: 'curry_howard', label: '⭐ Curry–Howard\n–Lambek', group: 'bridge', size: 34,
+    bridge: true,
+    info: { title: '⭐⭐ Isomorfismo di Curry–Howard–Lambek (1934–1980)', cat: 'PONTE CENTRALE: Logica ↔ Tipi ↔ Categorie',
+      desc: 'Proposizione = Tipo = Oggetto categoriale. Dimostrazione = Programma = Morfismo. Implicazione A→B = Tipo funzione = Esponenziale. La corrispondenza più profonda tra logica, programmazione e matematica.',
+      links: ['⭐ Logica intuizionista ↔ Lambda calcolo tipato', '⭐ Logica lineare ↔ Tipi lineari (Rust)', '⭐ Logica modale ↔ Monadi (Haskell)', '⭐ HoTT: Tipi = Spazi omotopici'] }},
+  { id: 'langlands', label: '⭐ Programma\ndi Langlands', group: 'bridge', size: 36,
+    bridge: true,
+    info: { title: '⭐⭐ Programma di Langlands (1967–oggi)', cat: 'PONTE: Teoria dei Numeri ↔ Rappresentazioni ↔ Geometria',
+      desc: '"La grande unificazione della matematica." Rappresentazioni del gruppo di Galois ↔ Forme automorfiche ↔ Rappresentazioni di gruppi riduttivi. Include il Teorema di Fermat come corollario parziale.',
+      links: ['⭐ via Taniyama–Shimura–Weil → Fermat', '→ Langlands Geometrico: D-moduli su curve', '⭐ ↔ Mirror Symmetry (geometria simplettica ↔ algebrica)', '→ Frontiera aperta: versione p-adica locale/globale'] }},
+  { id: 'noether', label: '⭐ Teorema\ndi Noether', group: 'bridge', size: 30,
+    bridge: true,
+    info: { title: '⭐ Teorema di Noether (1915)', cat: 'PONTE: Simmetrie ↔ Leggi di Conservazione',
+      desc: 'Ogni simmetria continua corrisponde a una grandezza conservata. Simmetria temporale → energia. Spaziale → quantità di moto. Rotazionale → momento angolare. Base di tutta la fisica moderna.',
+      links: ['→ Algebra di Lie (generatori)', '→ Teoria delle rappresentazioni', '→ Gauge Theory (simmetrie locali → forze)', '→ Meccanica Lagrangiana'] }},
+  { id: 'atiyah_singer', label: '⭐ Atiyah–Singer\nIndex Theorem', group: 'bridge', size: 28,
+    bridge: true,
+    info: { title: '⭐ Atiyah–Singer Index Theorem (1963)', cat: 'PONTE: Analisi ↔ Topologia',
+      desc: 'ind(D) = ∫ ch(E)·Â(TM). Unifica: Riemann–Roch, Gauss–Bonnet, teorema della firma. La dimostrazione richiede K-teoria e forme caratteristiche.',
+      links: ['→ K-teoria (Atiyah–Hirzebruch)', '→ Anomalie in QFT', '→ Geometria non-commutativa (Connes)', '→ Topologia algebrica'] }},
+  { id: 'mirror_symmetry', label: '⭐ Mirror\nSymmetry', group: 'bridge', size: 28,
+    bridge: true,
+    info: { title: '⭐ Mirror Symmetry (1991)', cat: 'PONTE: Geometria Simplettica ↔ Algebrica',
+      desc: 'Nata dalla fisica delle stringhe. Homological Mirror Symmetry (Kontsevich, 1994): Categoria di Fukaya ↔ Categoria derivata dei fasci coerenti.',
+      links: ['⭐ ↔ Langlands Geometrico', '→ Invarianti di Gromov–Witten', '→ Teoria delle stringhe'] }},
+  { id: 'ads_cft', label: '⭐ AdS/CFT\nMaldacena', group: 'bridge', size: 28,
+    bridge: true,
+    info: { title: '⭐ Corrispondenza AdS/CFT (Maldacena, 1997)', cat: 'PONTE: Gravità ↔ Teoria Quantistica dei Campi',
+      desc: 'Gravità in AdS_{d+1} ↔ CFT su ∂AdS_d. Primo esempio di dualità olografica. Entropia dei buchi neri ↔ Entanglement entropico.',
+      links: ['→ Tensor networks ↔ geometria spaziotempo (Swingle)', '→ Informazione Quantistica', '⭐ Connessioni congetturali con Deep Learning (RG flow)'] }},
+  { id: 'shannon_boltzmann', label: '⭐ Shannon\n↔ Boltzmann', group: 'bridge', size: 26,
+    bridge: true,
+    info: { title: '⭐ Shannon ↔ Boltzmann (1948)', cat: 'PONTE: Informazione ↔ Fisica Statistica',
+      desc: 'H = −∑pᵢ log pᵢ. Stessa formula, due significati. Shannon: informazione. Boltzmann: entropia termodinamica. Principio di Landauer: cancellare 1 bit dissipa k_B T ln2 di energia.',
+      links: ['→ Teoria dell\'informazione', '→ Meccanica statistica', '→ Termodinamica dei computer', '→ Funzione di perdita in ML (cross-entropy)'] }},
+  { id: 'taniyama', label: '⭐ Taniyama–\nShimura–Weil', group: 'bridge', size: 26,
+    bridge: true,
+    info: { title: '⭐ Taniyama–Shimura–Weil (1955–1994)', cat: 'PONTE: Curve Ellittiche ↔ Forme Modulari',
+      desc: 'Ogni curva ellittica su ℚ è parametrizzata da una forma modulare. Dimostrato da Wiles (1995) → Ultimo Teorema di Fermat.',
+      links: ['⭐ Componente del Programma di Langlands', '→ Teoria delle rappresentazioni ℓ-adiche', '→ BSD Conjecture (problema del millennio)'] }},
+  { id: 'moonshine', label: '⭐ Monstrous\nMoonshine', group: 'bridge', size: 24,
+    bridge: true,
+    info: { title: '⭐ Monstrous Moonshine (Conway–Norton 1979, Borcherds 1992)', cat: 'PONTE: Gruppo Mostro ↔ Forme Modulari',
+      desc: 'I coefficienti della j-funzione (forma modulare) sono le dimensioni delle rappresentazioni del gruppo Mostro 𝕄. Spiegato tramite vertex operator algebras e teoria delle stringhe.',
+      links: ['→ Algebra di Lie di Kac–Moody', '→ Teoria conforme dei campi', '⭐ Collegamento inaspettato con la fisica delle stringhe'] }},
+
+  // ── LOGICA E INFORMATICA ──
+  { id: 'logica_prop', label: 'Logica\nProposizionale', group: 'logica', size: 22,
+    info: { title: 'Logica Proposizionale', cat: 'Logica',
+      desc: 'Atomi, connettivi AND/OR/NOT, tavole di verità. FBF: soddisfacibile, contraddizione, tautologia. Problema SAT: NP-completo (Cook, 1971).',
+      links: ['⭐ Stone Duality: Algebre di Boole ↔ Topologia', '→ Algebra di Boole', '→ SAT solver → verifica hardware'] }},
+  { id: 'fol', label: 'Logica\ndel I Ordine', group: 'logica', size: 24,
+    info: { title: 'Logica del Primo Ordine (FOL)', cat: 'Logica',
+      desc: 'Quantificatori ∃, ∀. Predicati, funzioni, costanti. Completezza (Gödel, 1929). Compattezza.',
+      links: ['⭐ Curry–Howard (con tipi)', '→ Calcolo Relazionale → SQL', '→ Programmazione Logica (Prolog)', '→ Semantica dei linguaggi'] }},
+  { id: 'turing', label: 'Turing\nCalcolabilità', group: 'logica', size: 26,
+    info: { title: 'Alan Turing — Calcolabilità (1936)', cat: 'Informatica Teorica',
+      desc: 'Macchina di Turing: definizione formale di algoritmo. Tesi di Church–Turing: equivalenza di tutti i modelli. Problema dell\'Arresto: indecidibile.',
+      links: ['⭐ Risposta a Gödel: indecidibilità = incompletezza computazionale', '→ Complessità computazionale (P, NP)', '→ Architettura dei computer (von Neumann)', '→ AI (Turing test)'] }},
+  { id: 'chomsky', label: 'Gerarchia\ndi Chomsky', group: 'logica', size: 20,
+    info: { title: 'Gerarchia di Chomsky (1956)', cat: 'Linguaggi Formali',
+      desc: 'Tipo 3 (Regolari) ↔ DFA. Tipo 2 (Context-Free) ↔ Automa a pila. Tipo 0 ↔ Macchina di Turing. Base teorica dei compilatori.',
+      links: ['→ Compilatori (lexer, parser)', '→ Espressioni regolari (grep, regex)', '→ Connessione con teoria dei gruppi (automatici)'] }},
+  { id: 'lambda', label: 'Lambda\nCalcolo', group: 'logica', size: 24,
+    info: { title: 'Lambda Calcolo (Church, 1932–1936)', cat: 'Informatica Teorica / Logica',
+      desc: 'Modello di calcolo basato su funzioni. Termini: variabili, astrazione λx.M, applicazione MN. β-riduzione. Church-Rosser (confluenza).',
+      links: ['⭐ Curry–Howard: λ-termini = dimostrazioni', '→ Linguaggi funzionali: Haskell, ML, OCaml', '→ Coq, Lean (assistenti alla dimostrazione)'] }},
+  { id: 'tipi', label: 'Teoria\ndei Tipi', group: 'logica', size: 24,
+    info: { title: 'Teoria dei Tipi (Martin-Löf, 1975)', cat: 'Logica / Informatica',
+      desc: 'Tipi dipendenti. Π-tipi, Σ-tipi. Fondamenta costruttive alternative a ZFC. HoTT (Voevodsky, 2006): Tipi = Spazi omotopici, Proposizioni = Tipi abitati.',
+      links: ['⭐ Curry–Howard–Voevodsky: tipi = spazi', '→ Coq, Lean, Agda, Isabelle', '→ Rust (sistema di tipi lineari)', '⭐ Connette con topologia algebrica (HoTT)'] }},
+  { id: 'database', label: 'Modello\nRelazionale', group: 'logica', size: 22,
+    info: { title: 'Modello Relazionale — Codd (1970)', cat: 'Database',
+      desc: 'Relazione ⊆ D₁×⋯×Dₙ. Fondato sulla FOL. 12 Regole di Codd. Algebra Relazionale ↔ Calcolo Relazionale (Teorema di Codd, 1972). SQL come implementazione.',
+      links: ['⭐ Teorema di Codd: Algebra ↔ Calcolo Relazionale', '→ SQL (DDL, DML, DCL, TCL)', '→ FOL come fondamento semantico'] }},
+
+  // ── FISICA ──
+  { id: 'meccanica', label: 'Meccanica\nClassica', group: 'fisica', size: 24,
+    info: { title: 'Meccanica Classica (Newton → Lagrange → Hamilton)', cat: 'Fisica Matematica',
+      desc: 'Newtoniana: F=ma. Lagrangiana: δ∫L dt=0 → Equazioni di Eulero–Lagrange. Hamiltoniana: spazio delle fasi, parentesi di Poisson.',
+      links: ['⭐ Teorema di Noether (simmetrie → conservazione)', '→ Geometria simplettica (Hamiltoniana)', '→ ODE (sistemi dinamici)', '→ Quantizzazione canonica → MQ'] }},
+  { id: 'relat', label: 'Relatività\nGenerale', group: 'fisica', size: 26,
+    info: { title: 'Relatività Generale (Einstein, 1915)', cat: 'Fisica Matematica',
+      desc: 'Curvatura dello spaziotempo = gravità. Gμν = 8πG Tμν. Usa la geometria riemanniana di Riemann (1854).',
+      links: ['→ Geometria riemanniana', '→ Buchi neri, cosmologia', '⭐ AdS/CFT (Maldacena)', '→ Onde gravitazionali (LIGO)'] }},
+  { id: 'mq', label: 'Meccanica\nQuantistica', group: 'fisica', size: 26,
+    info: { title: 'Meccanica Quantistica (1925–1930)', cat: 'Fisica Matematica',
+      desc: 'Spazio di Hilbert dei stati. Osservabili = operatori autoaggiunti. [q̂,p̂] = iℏ. Equazione di Schrödinger (PDE + Fourier).',
+      links: ['→ Analisi funzionale, Teoria spettrale', '⭐ Trasformata di Fourier: x ↔ p', '→ Informazione quantistica', '→ Quantum computing'] }},
+  { id: 'qft', label: 'Teoria\nQuantistica\ndei Campi', group: 'fisica', size: 24,
+    info: { title: 'Teoria Quantistica dei Campi (QFT)', cat: 'Fisica Matematica',
+      desc: 'Unifica MQ + Relatività Ristretta. Simmetrie di gauge: U(1)×SU(2)×SU(3) → Modello Standard. Rinormalizzazione (Wilson) → Gruppo di rinormalizzazione.',
+      links: ['⭐ Teorema di Noether (gauge)', '⭐ Atiyah–Singer (anomalie)', '→ Teoria delle stringhe', '→ Connessioni congetturali con ML (RG ↔ deep learning)'] }},
+
+  // ── AI / ML ──
+  { id: 'ml_classico', label: 'Machine\nLearning', group: 'ai', size: 24,
+    info: { title: 'Machine Learning Classico', cat: 'AI / ML',
+      desc: 'Regressione (minimi quadrati), SVM (dualità di Lagrange, kernel trick → RKHS), clustering (EM algorithm). Fondamenta: algebra lineare, probabilità, ottimizzazione convessa.',
+      links: ['→ Spazi di Hilbert a nucleo riproducente (RKHS)', '→ Ottimizzazione convessa', '→ Inferenza bayesiana'] }},
+  { id: 'deep_learning', label: 'Deep\nLearning', group: 'ai', size: 28,
+    info: { title: 'Deep Learning', cat: 'AI / ML',
+      desc: 'Reti neurali profonde. Backpropagation (1986): regola della catena + SGD. CNN (convoluzione). RNN, LSTM. Transformer (2017): self-attention. LLM.',
+      links: ['→ Analisi funzionale (teorema approssimazione universale)', '→ Ottimizzazione numerica (Adam, SGD)', '→ Algebra lineare (matrici, tensori)', '⭐ Neural Tangent Kernel ↔ Spazi di Hilbert'] }},
+  { id: 'geo_ml', label: 'Geometric\nDeep Learning', group: 'ai', size: 24,
+    info: { title: 'Geometric Deep Learning (Bronstein et al., 2021)', cat: 'AI / ML',
+      desc: 'Equivarianza rispetto a gruppi di simmetria. GNN su grafi, varietà, gruppi. Unifica CNN, RNN, GNN sotto un\'unica prospettiva.',
+      links: ['→ Teoria dei gruppi (equivarianza)', '→ Geometria differenziale (varietà)', '⭐ Programma di Erlangen (Klein) → ML', '→ Topological Data Analysis'] }},
+  { id: 'diffusione', label: 'Modelli\ndi Diffusione', group: 'ai', size: 22,
+    info: { title: 'Modelli di Diffusione (DDPM, Score Matching)', cat: 'AI / ML',
+      desc: 'Processo di diffusione stocastica e inversione. Fondato su equazioni differenziali stocastiche (SDE). Score matching: stima del gradiente della log-densità.',
+      links: ['→ Equazioni differenziali stocastiche', '→ Analisi funzionale', '→ DALL-E, Stable Diffusion, Sora'] }},
+];
+
+const edges_data = [
+  // Antichità
+  { from: 'mesopotamia', to: 'grecia', label: 'trasmissione' },
+  { from: 'grecia', to: 'descartes', label: 'coniche' },
+  { from: 'grecia', to: 'india_arabi', label: 'trasmissione' },
+  { from: 'india_arabi', to: 'cardano', label: 'algebra' },
+  { from: 'grecia', to: 'newton_leibniz', label: 'esaustione' },
+
+  // XVII–XVIII
+  { from: 'descartes', to: 'newton_leibniz', label: 'coordinatizz.' },
+  { from: 'newton_leibniz', to: 'analisi_reale', label: 'rigore' },
+  { from: 'newton_leibniz', to: 'meccanica', label: 'fisica' },
+  { from: 'newton_leibniz', to: 'ode_pde', label: 'formalizza' },
+
+  // XIX
+  { from: 'cardano', to: 'galois', label: '5° grado' },
+  { from: 'galois', to: 'teoria_gruppi', dashes: true, width: 2 },
+  { from: 'galois', to: 'langlands', dashes: true, width: 3, label: 'ispira ⭐' },
+  { from: 'galois', to: 'geom_algebrica', dashes: true, width: 2 },
+  { from: 'cantor', to: 'zfc' },
+  { from: 'riemann', to: 'geom_diff' },
+  { from: 'riemann', to: 'relat', label: 'usa' },
+  { from: 'riemann', to: 'taniyama', dashes: true, width: 2 },
+  { from: 'boole', to: 'logica_prop' },
+  { from: 'boole', to: 'algebra_universale' },
+  { from: 'klein', to: 'teoria_gruppi' },
+  { from: 'klein', to: 'geo_ml', dashes: true, label: 'Erlangen→ML' },
+
+  // Fondamenta XX
+  { from: 'zfc', to: 'godel', label: 'sistema' },
+  { from: 'godel', to: 'turing', dashes: true, width: 3, label: '⭐ incompl.↔arresto' },
+  { from: 'godel', to: 'lambda', dashes: true, width: 2 },
+
+  // Algebra
+  { from: 'algebra_universale', to: 'algebra_lineare' },
+  { from: 'algebra_lineare', to: 'analisi_funzionale' },
+  { from: 'algebra_lineare', to: 'deep_learning' },
+  { from: 'teoria_gruppi', to: 'noether', dashes: true, width: 3 },
+  { from: 'teoria_gruppi', to: 'moonshine', dashes: true, width: 3, label: '⭐' },
+  { from: 'teoria_gruppi', to: 'geo_ml' },
+
+  // Analisi
+  { from: 'analisi_reale', to: 'ode_pde' },
+  { from: 'analisi_reale', to: 'analisi_funzionale' },
+  { from: 'analisi_funzionale', to: 'mq', label: 'Hilbert' },
+  { from: 'analisi_funzionale', to: 'deep_learning', dashes: true, label: 'UAT' },
+  { from: 'fourier', to: 'analisi_funzionale' },
+  { from: 'fourier', to: 'mq', dashes: true, label: 'x↔p ⭐' },
+  { from: 'fourier', to: 'deep_learning', label: 'FFT' },
+  { from: 'ode_pde', to: 'meccanica' },
+  { from: 'ode_pde', to: 'diffusione' },
+
+  // Geometria
+  { from: 'geom_diff', to: 'relat' },
+  { from: 'geom_diff', to: 'meccanica', label: 'spazio config.' },
+  { from: 'geom_diff', to: 'geo_ml' },
+  { from: 'topologia', to: 'atiyah_singer', dashes: true, width: 3 },
+  { from: 'topologia', to: 'tipi', dashes: true, label: 'HoTT ⭐' },
+  { from: 'geom_algebrica', to: 'langlands' },
+  { from: 'geom_algebrica', to: 'mirror_symmetry', dashes: true, width: 3 },
+  { from: 'geom_algebrica', to: 'taniyama' },
+
+  // Ponti principali
+  { from: 'cat_theory', to: 'curry_howard', dashes: true, width: 3, label: 'Lambek' },
+  { from: 'cat_theory', to: 'langlands', dashes: true, width: 2 },
+  { from: 'cat_theory', to: 'geom_algebrica', label: 'schemi' },
+  { from: 'cat_theory', to: 'tipi', dashes: true, width: 2 },
+  { from: 'curry_howard', to: 'lambda', dashes: true, width: 3 },
+  { from: 'curry_howard', to: 'tipi' },
+  { from: 'curry_howard', to: 'fol', dashes: true, width: 2 },
+  { from: 'langlands', to: 'taniyama', dashes: true, width: 3, label: 'include ⭐' },
+  { from: 'langlands', to: 'mirror_symmetry', dashes: true, width: 2, label: 'geom. ↔ simpl.' },
+  { from: 'noether', to: 'meccanica', width: 3 },
+  { from: 'noether', to: 'qft', width: 3 },
+  { from: 'atiyah_singer', to: 'analisi_funzionale' },
+  { from: 'atiyah_singer', to: 'topologia' },
+  { from: 'atiyah_singer', to: 'qft', dashes: true, label: 'anomalie' },
+  { from: 'mirror_symmetry', to: 'geom_diff', label: 'simplettica' },
+  { from: 'ads_cft', to: 'relat', dashes: true, width: 3 },
+  { from: 'ads_cft', to: 'qft', dashes: true, width: 3 },
+  { from: 'ads_cft', to: 'deep_learning', dashes: true, label: 'conget.' },
+  { from: 'shannon_boltzmann', to: 'deep_learning', label: 'cross-entropy' },
+  { from: 'taniyama', to: 'teoria_gruppi', label: 'rappres. ℓ-adiche' },
+  { from: 'moonshine', to: 'qft', dashes: true, label: 'stringhe' },
+
+  // Logica / Informatica
+  { from: 'logica_prop', to: 'fol', label: 'estende' },
+  { from: 'logica_prop', to: 'boole', label: 'usa' },
+  { from: 'fol', to: 'database' },
+  { from: 'fol', to: 'lambda' },
+  { from: 'turing', to: 'chomsky', label: 'Tipo 0' },
+  { from: 'lambda', to: 'curry_howard', dashes: true, width: 3 },
+  { from: 'tipi', to: 'curry_howard', dashes: true, width: 3 },
+
+  // Fisica
+  { from: 'meccanica', to: 'mq', label: 'quantizzaz.' },
+  { from: 'mq', to: 'qft' },
+  { from: 'qft', to: 'relat' },
+
+  // AI
+  { from: 'ml_classico', to: 'analisi_funzionale', label: 'RKHS' },
+  { from: 'ml_classico', to: 'deep_learning' },
+  { from: 'deep_learning', to: 'geo_ml' },
+  { from: 'deep_learning', to: 'diffusione' },
+  { from: 'shannon_boltzmann', to: 'ml_classico', label: 'entropia' },
+];
+
+// Build vis datasets
+const groupColor = {
+  antico: COLORS.antico, fondamenta: COLORS.fondamenta,
+  algebra: COLORS.algebra, analisi: COLORS.analisi,
+  geometria: COLORS.geometria, logica: COLORS.logica,
+  fisica: COLORS.fisica, ai: COLORS.ai, bridge: COLORS.bridge
+};
+
+const visNodes = new vis.DataSet(nodes_data.map(n => ({
+  id: n.id,
+  label: n.label,
+  _info: n.info,
+  _bridge: n.bridge || false,
+  size: n.size,
+  color: {
+    background: n.bridge ? 'rgba(255,255,255,0.08)' : 'rgba(6,6,15,0.7)',
+    border: groupColor[n.group],
+    highlight: { background: 'rgba(255,255,255,0.12)', border: groupColor[n.group] },
+    hover: { background: 'rgba(255,255,255,0.1)', border: groupColor[n.group] }
+  },
+  font: {
+    color: n.bridge ? '#ffffff' : groupColor[n.group],
+    size: n.bridge ? 13 : 11,
+    face: n.bridge ? "'EB Garamond', serif" : "'JetBrains Mono', monospace",
+    bold: n.bridge ? { color: '#ffffff', size: 13 } : undefined,
+  },
+  borderWidth: n.bridge ? 2 : 1,
+  borderWidthSelected: 3,
+  shadow: n.bridge ? { enabled: true, color: groupColor[n.group] + '66', size: 12 } : false,
+  shape: n.bridge ? 'ellipse' : 'dot',
+})));
+
+const visEdges = new vis.DataSet(edges_data.map((e, i) => ({
+  id: i,
+  from: e.from, to: e.to,
+  label: e.label || '',
+  dashes: e.dashes || false,
+  width: e.width || 1,
+  color: { color: e.dashes ? '#4a4a7a' : '#2a2a4a', highlight: '#7b68ee', hover: '#5a5aaa' },
+  font: { color: '#5a5a8a', size: 9, face: "'JetBrains Mono', monospace", strokeWidth: 0, align: 'middle' },
+  arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+  smooth: { type: 'curvedCW', roundness: 0.1 }
+})));
+
+const container = document.getElementById('network');
+const data = { nodes: visNodes, edges: visEdges };
+
+const options = {
+  physics: {
+    enabled: true,
+    barnesHut: {
+      gravitationalConstant: -8000,
+      centralGravity: 0.3,
+      springLength: 180,
+      springConstant: 0.04,
+      damping: 0.09,
+    },
+    stabilization: { iterations: 300 }
+  },
+  interaction: {
+    hover: true,
+    tooltipDelay: 200,
+    zoomView: true,
+    dragView: true,
+    hideEdgesOnDrag: false,
+    navigationButtons: false,
+    keyboard: { enabled: true, speed: { x: 10, y: 10, zoom: 0.02 } }
+  },
+  layout: { improvedLayout: true },
+  nodes: { scaling: { min: 10, max: 40 } },
+  edges: { scaling: { min: 1, max: 4 }, length: 200 }
+};
+
+const network = new vis.Network(container, data, options);
+
+// Info panel
+const panel = document.getElementById('info-panel');
+const panelContent = document.getElementById('panel-content');
+
+network.on('click', function(params) {
+  if (params.nodes.length > 0) {
+    const nodeId = params.nodes[0];
+    const node = visNodes.get(nodeId);
+    const info = node._info;
+    if (!info) return;
+
+    let html = '';
+    if (node._bridge) html += `<div class="bridge-badge">⭐ PONTE / ISOMORFISMO</div>`;
+    html += `<h2>${info.title}</h2>`;
+    html += `<div class="category">${info.cat}</div>`;
+    html += `<p>${info.desc}</p>`;
+    if (info.links && info.links.length > 0) {
+      html += `<div class="connections">Connessioni:<br>`;
+      info.links.forEach(l => { html += `<span>${l}</span>`; });
+      html += `</div>`;
+    }
+
+    panelContent.innerHTML = html;
+    panel.classList.add('visible');
+    network.selectNodes([nodeId]);
+  } else {
+    panel.classList.remove('visible');
+    network.unselectAll();
+  }
+});
+
+network.on('hoverNode', () => { container.style.cursor = 'pointer'; });
+network.on('blurNode', () => { container.style.cursor = 'default'; });
+
+document.getElementById('close-panel').addEventListener('click', () => {
+  panel.classList.remove('visible');
+  network.unselectAll();
+});
+
+// After stabilization, disable physics slightly for smoother interaction
+network.on('stabilizationIterationsDone', () => {
+  network.setOptions({ physics: { barnesHut: { gravitationalConstant: -5000 } } });
+});
+</script>
+</body>
+</html>

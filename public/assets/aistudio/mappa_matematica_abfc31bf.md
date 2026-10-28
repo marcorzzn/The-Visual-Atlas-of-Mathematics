@@ -1,0 +1,1647 @@
+# 1. Preistoria e conteggio
+- Ossa e manufatti matematici
+  - Osso di Ishango (circa 20.000 a.C., Repubblica Democratica del Congo)
+    - Tacche raggruppate: interpretazioni come conteggio, numeri primi (11, 13, 17, 19), calendario lunare, sistema di numerazione in base 10 o 12
+    - Ipotesi di Alexander Marshack: notazione calendariale, fasi lunari
+    - Ipotesi di Jean de Heinzelin: conteggio e aritmetica primitiva
+  - Osso di Lebombo (circa 35.000 a.C., Swaziland)
+    - 29 tacche: interpretazione come calendario lunare (ciclo mestruale)
+  - Osso di lupo di Dolní Věstonice (circa 30.000 a.C., Moravia)
+    - Serie di tacche organizzate in gruppi di 5
+  - Osso di Blanchard (Francia, circa 30.000 a.C.): tacche serpentiniformi
+  - Placca di Lartet (Dordogna): segni interpretati come sistema di conteggio
+- Sistemi di numerazione primitivi
+  - Corrispondenza biunivoca (un sasso, una tacca, un nodo per ogni unità)
+  - Tally stick (bastoni da conteggio): tacche incise, spesso raggruppate
+  - Dita delle mani e dei piedi: base 5, 10, 20 (vigesimali)
+  - Parti del corpo (sistema corporeo: polso, gomito, spalla, testa, ecc.)
+  - Raggruppamenti e basi numeriche naturali
+  - Sistemi a coppie (base 2), a cinquine (base 5), a decine (base 10), a ventine (base 20)
+  - Nodi su corda: quipu incaici (Perù precolombiano) come sistema di registrazione numerica e statistica
+- Prime forme di geometria
+  - Simmetria in utensili litici (bifacciali acheuleani)
+  - Motivi geometrici in pitture rupestri (spirali, cerchi concentrici, linee parallele)
+  - Nozione di distanza, area, volume per attività quotidiane (caccia, raccolta, costruzione ripari)
+  - Misure antropomorfe: pollice, palmo, braccio, passo, cubito
+  - Calendari megalitici: allineamenti astronomici (Stonehenge, Newgrange)
+- Prime concettualizzazioni
+  - Cardinalità di insiemi concreti (confronto senza numeri: più, meno, uguale)
+  - Nozione di ordine (primo, secondo, ultimo)
+  - Seriazione e classificazione
+  - Simmetria e pattern recognition
+  - Geometria sacra e proporzioni
+  - Prime forme di topologia intuitiva (nodi, intrecci per cordami e tessuti)
+
+# 2. Matematica antica
+## 2.1 Matematica egizia (c. 3000 – 300 a.C.)
+- Contesto e fonti
+  - Civiltà del Nilo, piene annuali, necessità di agrimensura e catasto
+  - Scribes: funzionari addestrati al calcolo
+  - Papiri come supporto scrittorio
+  - Sistemi di datazione: anni di regno, calendario civile di 365 giorni
+- Papiri matematici
+  - Papiro di Rhind (Ahmes, c. 1650 a.C., copia di un testo più antico del XIX sec. a.C.)
+    - Metodo della falsa posizione per equazioni lineari
+    - Tavola di scomposizione di 2/n in frazioni unitarie per n dispari fino a 101
+    - Problemi di distribuzione di beni (pane, birra, animali)
+    - Progressioni aritmetiche (es. problema 79: case, gatti, topi, spighe, misure di grano)
+    - Calcolo di aree (rettangolo, triangolo isoscele, trapezio, cerchio: area = (8/9 d)^2, π ≈ 3,1605)
+    - Volume di granai cilindrici e tronco di piramide (dettaglio nel Papiro di Mosca)
+    - Problemi di pendenza (seked) delle piramidi: rapporto tra base e altezza
+    - Primi esempi di algebra retorica: "aha" (quantità incognita)
+  - Papiro di Mosca (c. 1850 a.C.)
+    - Formula del volume del tronco di piramide a base quadrata: V = (h/3)(a^2 + ab + b^2)
+    - Volume di una nave (?)
+  - Papiro di Berlino 6619
+    - Equazioni di secondo grado: problema di dividere un quadrato di area 100 in due quadrati di lati in rapporto 3:4 (→ 3/4 x)^2 + x^2 = 100, soluzione x = 8)
+  - Papiro di Lahun (Kahun): frammenti di problemi matematici
+  - Papiro di Akhmim: problemi di frazioni e volumi
+  - Papiro matematico di Leida: problemi di geometria
+  - Ostraka matematici (Deir el-Medina): calcoli quotidiani
+- Sistema di numerazione
+  - Geroglifico: non posizionale, base 10, simboli specifici per potenze di 10 (1, 10, 100, 1000, 10.000, 100.000, 1.000.000)
+  - Ieratico: scrittura corsiva, simboli più compatti, legature
+  - Demotico: ulteriore evoluzione corsiva
+  - Assenza dello zero
+  - Frazioni: quasi esclusivamente unitarie (1/n), con eccezioni per 2/3 e 3/4
+- Aritmetica e frazioni
+  - Operazioni additive: moltiplicazione per raddoppiamento e decimazione
+  - Divisione come inverso della moltiplicazione
+  - Scomposizione in frazioni unitarie (2/n tabella nel Papiro di Rhind)
+  - Frazioni dell'occhio di Horus (1/2, 1/4, 1/8, 1/16, 1/32, 1/64) come serie geometrica
+  - Interesse semplice
+- Geometria empirica
+  - Agrimensura post-piena: ripristino confini, calcolo aree
+  - Area del triangolo: metà base per altezza
+  - Area del trapezio: media delle basi per altezza
+  - Approssimazione del cerchio: area = (8/9 d)^2 = 256/81 r^2 (π ≈ 3,1605)
+  - Volumi: parallelepipedo, cilindro, piramide, tronco di piramide
+  - Seked (pendenza): principio per la costruzione delle piramidi
+- Algebra retorica
+  - "aha" (mucchio, quantità incognita)
+  - Equazioni lineari del tipo x + 1/n x = k
+  - Equazioni di tipo aha + sue frazioni = numero
+  - Metodo della falsa posizione semplice e doppia
+- Astronomia e calendario
+  - Calendario civile di 365 giorni (12 mesi × 30 giorni + 5 giorni epagomeni)
+  - Stagioni: Akhet (inondazione), Peret (emersione), Shemu (raccolto)
+  - Orientamento astronomico di templi e piramidi (stelle circumpolari, levata eliaca di Sirio)
+  - Orologi stellari (diagonale) su coperchi di sarcofagi
+
+## 2.2 Matematica babilonese (c. 1900 – 300 a.C.)
+- Contesto geografico e storico
+  - Mesopotamia, Sumeri, Accadi, Amorrei (dinastia di Hammurabi), Cassiti, Assiri, Neo-Babilonesi, Seleucidi
+  - Tavolette d'argilla incise in cuneiforme, cotte e conservate
+- Sistema sessagesimale (base 60)
+  - Notazione posizionale senza zero inizialmente (spazio vuoto come separatore)
+  - Introduzione tarda di un simbolo per lo zero (due cunei obliqui) in epoca seleucide
+  - Frazioni sessagesimali (invece di decimali)
+  - Sottomultipli: 1/60, 1/3600, ...
+  - Origine della base 60: forse astronomica (365 ≈ 360) o da conteggio su falangi (12 falangi × 5 dita)
+- Tavolette cuneiformi celebri
+  - Plimpton 322 (c. 1800 a.C., Larsa?)
+    - Lista di 15 terne pitagoriche generate da coppie (p,q) secondo le formule babilonesi: a = p^2 - q^2, b = 2pq, c = p^2 + q^2; oppure a = p^2 - q^2, b = 2pq, c = p^2 + q^2 con varianti; include terne come (12709, 13500, 18541)
+    - Interpretazioni: trigonometria primitiva? Tavola di rapporti? Esercizi di algebra?
+  - YBC 7289 (c. 1800–1600 a.C.)
+    - Quadrato con diagonale disegnata
+    - Numero 1;24,51,10 (sessagesimale) = 1 + 24/60 + 51/3600 + 10/216000 ≈ 1,41421296 (approssimazione di √2 a 6 cifre sign.)
+    - 30 (lato) e 42;25,35 (diagonale = 30 × √2)
+  - Tavoletta BM 13901
+    - Raccolta di problemi quadratici
+    - Metodo di completamento del quadrato
+  - Tavoletta di Susa (c. 1700 a.C.)
+    - Costanti matematiche: approssimazioni, coefficienti per poligoni regolari
+  - Tavoletta VAT 7847: problemi di geometria con equazioni
+- Algebra retorica e sincopata
+  - Equazioni di primo grado, sistemi lineari (metodo di sostituzione ed eliminazione)
+  - Equazioni di secondo grado: metodo di completamento del quadrato
+  - Equazioni cubiche pure (x^3 = a) e miste (ad esempio x^3 + x^2 = a)
+  - Problemi di tipo: "trova due numeri dato prodotto e somma"
+  - Metodo della falsa posizione e doppia falsa posizione
+- Geometria
+  - Teorema di Pitagora applicato praticamente (senza enunciato generale)
+  - Calcoli di aree e volumi: rettangolo, triangolo, trapezio, cerchio (π ≈ 3 o π ≈ 3,125 = 3 + 1/8)
+  - Rapporti di similitudine
+  - "Coefficienti" per calcoli standardizzati (mattoni, scavi, terrapieni)
+  - Volume di tronco di cono e piramide (formula approssimata e esatta?)
+- Aritmetica
+  - Tavole di moltiplicazione, di reciproci, di quadrati, di radici quadrate, di cubi, di radici cubiche
+  - Tavole di esponenziali (interesse composto)
+  - Algoritmi per l'estrazione di radici quadrate
+  - Calcolo di interesse semplice e composto
+- Astronomia matematica
+  - Modelli di moto planetario (sistema a zone A e B)
+  - Periodi di visibilità, effemeridi
+  - Calcolo di eclissi (ciclo di Saros)
+  - Funzioni a zig-zag (velocità variabili lineari nel tempo)
+  - Sistemi di coordinate celesti
+
+## 2.3 Matematica cinese antica e classica (c. 1200 a.C. – XV sec.)
+- Contesto e fonti
+  - Dinastie Shang, Zhou, Qin, Han, Tre Regni, Jin, Tang, Song, Yuan, Ming
+  - "Dieci Canoni" (算经十书, Suanjing Shishu) raccolti in epoca Tang
+- Le Opere Fondamentali
+  - *Zhoubi Suanjing* (Il classico aritmetico dello gnomone e dei sentieri circolari del cielo, c. 100 a.C.)
+    - Teorema del Gougu (Pitagora): relazione tra gou (cateto corto), gu (cateto lungo), xian (ipotenusa)
+    - Calcoli astronomici, cosmologia, calendario
+    - Diagramma dell'ipotenusa (Xian tu)
+  - *Jiuzhang Suanshu* (I Nove Capitoli dell'arte matematica, I sec. d.C.)
+    - Capitolo 1: Fangtian (Campi rettangolari): aree, frazioni, algoritmo di Euclide per MCD
+    - Capitolo 2: Sumi (Miglio e Panico): rapporti e proporzioni
+    - Capitolo 3: Cuifen (Ripartizioni): divisioni proporzionali
+    - Capitolo 4: Shaoguang (Larghezza minima): radici quadrate e cubiche, divisione
+    - Capitolo 5: Shanggong (Valutazione delle opere): volumi di solidi
+    - Capitolo 6: Junshu (Tasse eque): problemi di trasporto e inseguimento
+    - Capitolo 7: Yingbuzu (Eccesso e difetto): falsa doppia posizione per equazioni lineari
+    - Capitolo 8: Fangcheng (Disposizione rettangolare): sistemi di equazioni lineari con metodo di eliminazione (operazioni su colonne della matrice), numeri negativi (contabilizzati con bacchette rosse e nere)
+    - Capitolo 9: Gougu (Triangoli rettangoli): problemi risolti con teorema di Pitagora, terne pitagoriche
+  - *Haidao Suanjing* (Manuale matematico dell'isola marina, Liu Hui, 263 d.C.)
+    - Teoremi di agrimensura
+    - Calcolo di altezze e distanze inaccessibili tramite triangoli simili e pali (metodo delle differenze doppie)
+  - *Sunzi Suanjing* (Manuale matematico del Maestro Sun, III–V sec.)
+    - Teorema cinese del resto: problema "C'è un numero sconosciuto di cose. Contando per 3 ne avanzano 2; per 5 ne avanzano 3; per 7 ne avanzano 2. Quante sono?"
+    - Formulazione e soluzione del sistema di congruenze
+  - *Zhang Qiujian Suanjing* (V sec.): problemi di frazioni, equazioni, serie
+  - *Wucao Suanjing* (V sec.)
+  - *Wujing Suanshu* (VI sec.): matematica per i classici confuciani
+  - *Jigu Suanjing* (Wang Xiaotong, VII sec.): equazioni cubiche per lavori di ingegneria civile
+  - *Shushu Jiyi* (Memorie sulla tradizione dell'arte matematica, VI sec.?): descrizioni di strumenti e metodi
+- Personalità e contributi
+  - Liu Hui (225–295, Regno Wei)
+    - Commentario ai Nove Capitoli (263 d.C.): dimostrazioni, chiarimenti, metodo del cerchio per π (inscritti poligoni fino a 192 lati: π ≈ 3,1416; stima con 3072 lati: π ≈ 3,14159)
+    - Metodo di esaustione per volume della sfera (principio di Liu Hui: rapporto volumi = rapporto aree sezioni)
+    - Teoria delle proporzioni
+  - Zu Chongzhi (429–500) e Zu Gengzhi (figlio)
+    - π confinato tra 3,1415926 e 3,1415927 (primato per circa 1000 anni)
+    - Approssimazione razionale: 355/113 (密率, "rapporto preciso") e 22/7 (约率, "rapporto approssimato")
+    - Volume della sfera: V = (4/3)π r^3, usando il "Principio di Zu Gengzhi" (equivalente al principio di Cavalieri, >1000 anni prima)
+  - Jia Xian (c. 1010–1070)
+    - Triangolo di Pascal (chiamato "diagramma del vecchio metodo dell'estrazione della radice fino all'undicesima potenza") per coefficienti binomiali fino a n=6
+  - Qin Jiushao (1202–1261)
+    - *Shushu Jiuzhang* (Trattato matematico in nove sezioni, 1247)
+    - Soluzione numerica di equazioni polinomiali di grado qualsiasi (metodo di Horner–Qin Jiushao)
+    - Teorema cinese del resto generalizzato: metodo "Dayan qiuyishu"
+    - Aree di campi, problemi di ingegneria, astronomia
+  - Li Ye (1192–1279)
+    - *Ceyuan Haijing* (Specchio marino delle misure del cerchio, 1248): geometria del triangolo inscritto in cerchio, algebra polinomiale
+    - Metodo "tian yuan" (incognita celeste): notazione per polinomi in una variabile e loro manipolazione
+  - Yang Hui (1238–1298)
+    - Triangolo di Pascal (dettaglio fino a n=9)
+    - Magici quadrati di ordine fino a 10
+    - Metodi per estrarre radici di grado superiore
+  - Guo Shoujing (1231–1316)
+    - Trigonometria sferica per astronomia di precisione (calendario Shoushili)
+    - Interpolazione di terzo ordine
+  - Zhu Shijie (1249–1314)
+    - *Suanxue Qimeng* (Introduzione alla matematica, 1299)
+    - *Siyuan Yujian* (Specchio prezioso dei quattro elementi, 1303)
+      - Metodo dei quattro elementi (cielo, terra, uomo, materia): sistemi polinomiali in fino a 4 variabili, eliminazione per sostituzioni successive
+      - Triangolo di Pascal esteso fino a otto potenze
+      - Formule per somme di progressioni aritmetiche e loro combinazioni
+- Algebra
+  - Regola "tian yuan" (incognita del cielo): equazioni in una incognita, rappresentazione a coefficienti disposti verticalmente
+  - Metodo "ling long": approssimazioni successive per radici
+  - Numeri negativi: già accettati nei Nove Capitoli (bacchette rosse = positivi, nere = negativi)
+- Sistema di numerazione con bacchette da calcolo
+  - Rappresentazione decimale posizionale con bacchette disposte orizzontalmente (unità, centinaia,...) e verticalmente (decine, migliaia,...)
+  - Zero indicato da uno spazio vuoto
+- Altri contributi
+  - Crivello per numeri primi (non attribuito a Eratostene ma idea simile in Cina?)
+  - Quadrati magici (dal Lo Shu, 3×3, leggendario, fino a ordini superiori)
+  - Problemi di eccesso e difetto (falsa doppia posizione)
+
+## 2.4 Matematica indiana antica e classica (c. 800 a.C. – XVI sec.)
+- Periodo vedico e tardo-vedico (c. 800–500 a.C.)
+  - *Sulba Sutra* (regole della corda per la costruzione di altari sacrificali)
+    - Baudhayana (c. 800 a.C.): teorema di Pitagora (enunciato generale: "La diagonale di un rettangolo produce quello che i lati separatamente producono", cioè quadrati); approssimazione di √2 (1 + 1/3 + 1/(3·4) – 1/(3·4·34))
+    - Apastamba (c. 600 a.C.): estensione, trasformazioni di figure preservando l'area
+    - Katyayana (c. 300 a.C.): simili
+  - Terne pitagoriche: (3,4,5), (5,12,13), (8,15,17), (12,35,37)
+  - Numeri molto grandi (fino a 10^12) in testi religiosi
+- Periodo classico
+  - Aryabhata (476–550, Kusumapura)
+    - *Aryabhatiya* (499): 108 versi in 4 sezioni (Ganita, Kalakriya, Gola)
+    - Sistema di numerazione posizionale decimale con zero (kha)
+    - Valore di π: 3.1416 (62832/20000)
+    - Tavola dei seni (jya): differenze di seni ogni 3.75° (24 valori)
+    - Soluzione di equazioni diofantee lineari: metodo kuṭṭaka (riduzione a congruenze)
+    - Somma di progressioni aritmetiche
+    - Metodi per estrarre radici quadrate e cubiche
+    - Astronomia: rotazione assiale terrestre, calcolo orbite, eclissi
+  - Varahamihira (505–587): *Pancha-siddhantika*, trigonometria
+  - Brahmagupta (598–668, Ujjain)
+    - *Brahmasphutasiddhanta* (628)
+      - Zero come numero, regole aritmetiche con zero (a+0=a, a-0=a, a·0=0, ma a/0 indefinito o infinito)
+      - Numeri negativi come debiti (regole dei segni)
+      - Formula di Brahmagupta per area quadrilateri ciclici: A = √((s-a)(s-b)(s-c)(s-d)) con s semiperimetro
+      - Teorema di Brahmagupta su diagonali perpendicolari
+      - Equazione di Pell (varga prakriti): Nx^2 + 1 = y^2, soluzione con metodo chakravala (abbozzo)
+      - Equazioni di secondo grado: formula risolutiva generale con due radici (anche negative)
+      - Algebra: identità, prodotti notevoli, soluzioni di equazioni indeterminate
+    - *Khandakhadyaka*: astronomia
+  - Mahavira (c. 800–870)
+    - *Ganitasarasangraha*: aritmetica, frazioni, combinazioni, primi accenni di calcolo combinatorio
+  - Sridhara (c. 870–930): regola pratica per equazioni di secondo grado
+  - Aryabhata II (c. 920–1000): *Mahasiddhanta*
+  - Sripati (c. 1019–1066)
+  - Bhaskara II (1114–1185, Vijjadavida)
+    - *Lilavati* (aritmetica, algebra, geometria): problemi poetici, operazioni, frazioni, regola del tre, combinazioni, calcolo di π (3.1416 e 22/7), area e volume
+    - *Bijaganita* (algebra): equazioni di primo e secondo grado, equazioni cubiche e biquadratiche, equazioni indeterminate, kuttaka
+    - *Siddhantasiromani*: astronomia (Ganitadhyaya, Goladhyaya)
+    - Concetti di derivata (tatkaliki gati): variazione istantanea del seno; calcolo di seni e coseni per valori molto vicini
+    - Nozione di infinitesimo, divisione per zero non definita (ciclo di divisioni mostrando l'assurdo)
+    - Soluzione dell'equazione di Pell (metodo chakravala perfezionato)
+    - Ruota a moto perpetuo? Tentativi di macchine
+  - Narayana Pandita (c. 1340–1400): *Ganita Kaumudi*, permutazioni e combinazioni, quadrati magici
+- Scuola del Kerala (XIV–XVI sec.)
+  - Contesto: Kerala, sud-ovest India. Trasmissione di conoscenze in sanscrito e malayalam.
+  - Madhava di Sangamagrama (c. 1340–1425)
+    - Fondatore della scuola
+    - Serie infinite per funzioni trigonometriche (espresse in versi):
+      - Seno: sin x = x – x^3/3! + x^5/5! – ... (serie di Madhava–Newton)
+      - Coseno: cos x = 1 – x^2/2! + x^4/4! – ... (serie di Madhava–Gregory)
+      - Arcotangente: arctan x = x – x^3/3 + x^5/5 – ... (serie di Madhava–Gregory–Leibniz)
+    - Serie per π: π/4 = 1 – 1/3 + 1/5 – 1/7 + ... e correzioni per accelerare convergenza
+    - Approssimazione razionale di π: 2827433388233 / (9·10^11) ≈ 3.1415926535922 (11 decimali)
+    - Formula di interpolazione per tavole trigonometriche
+  - Parameshvara (c. 1380–1460): commentari, osservazioni astronomiche, eclissi, correzioni alle serie
+  - Nilakantha Somayaji (c. 1444–1544)
+    - *Tantrasamgraha* (1501): sintesi della conoscenza astronomica e matematica
+    - Serie migliorata per π: π/4 = √3 – ... termini rapidamente convergenti
+    - Modello planetario con Mercurio, Venere attorno al Sole, Sole attorno alla Terra (elio-geocentrismo parziale, simile a Tycho Brahe?)
+    - Serie per seno e coseno, derivate e integrali
+  - Jyeshtadeva (c. 1500–1575)
+    - *Yuktibhāṣā* (spiegazione razionale, in prosa malayalam): dimostrazioni analitiche delle serie infinite
+    - Derivate e integrali di funzioni polinomiali e trigonometriche
+    - Dimostrazione del calcolo di π con serie
+    - Teoria del limite, integrazione termine a termine
+  - Achyuta Pisharati (c. 1550–1621): astronomia, calendario
+  - Sankara Variar (c. 1500–1560): commenti
+
+## 2.5 Matematica greca classica ed ellenistica
+- Presocratici e pitagorici (VI–V sec. a.C.)
+  - Talete di Mileto (c. 624–546 a.C.): inicio della geometria razionale (dimostrazioni)
+    - Diametro divide il cerchio in due parti uguali
+    - Angoli alla base di triangolo isoscele sono uguali
+    - Angoli opposti al vertice sono uguali
+    - Criterio di uguaglianza dei triangoli (due angoli e un lato)
+    - Previsione dell'eclisse solare del 585 a.C.
+  - Pitagora di Samo (c. 570–495 a.C.) e Scuola Pitagorica di Crotone
+    - Numeri figurati: triangolari (1,3,6,10,...), quadrati (1,4,9,16,...), pentagonali, etc.
+    - Somme di numeri pari, dispari
+    - Numeri amicabili (220 e 284)
+    - Numeri perfetti (6, 28, 496)
+    - Teoria musicale: rapporti numerici degli intervalli consonanti (ottava 2:1, quinta 3:2, quarta 4:3)
+    - Media aritmetica, geometrica, armonica
+    - Tetraktys decadica (1+2+3+4=10)
+    - Teorema di Pitagora (conoscenza precedente, ma dimostrazione e generalizzazione)
+    - Scoperta degli incommensurabili (Ippaso di Metaponto, c. 450 a.C.): √2 irrazionale → crisi dei fondamenti pitagorici
+    - Pentagono stellato e sezione aurea
+  - Anassagora (c. 500–428 a.C.): tentativo di quadrare il cerchio in prigione
+  - Democrito (c. 460–370 a.C.): volume del cono e della piramide (1/3 del cilindro/prisma circoscritto, senza dimostrazione rigorosa ma concetto atomistico)
+  - Ippocrate di Chio (c. 440 a.C.): quadratura delle lunule; primo "Elementi di geometria" (perduto)
+  - Teodoro di Cirene (c. 400 a.C.): irrazionalità di √3, √5, ..., √17
+  - Archita di Taranto (c. 400 a.C.): duplicazione del cubo tramite intersezione di superfici (curva di Archita); fondatore della meccanica matematica
+- Platone (427–347 a.C.) e l'Accademia
+  - Ruolo della matematica come propedeutica filosofica; forme ideali, dianoia
+  - "Nessuno entri che non sia geometra"
+  - 5 solidi platonici (tetraedro, cubo, ottaedro, dodecaedro, icosaedro) e loro associazione agli elementi (Timeo)
+  - Problema di Delo (duplicazione del cubo)
+  - Metodo analitico (analisi e sintesi)
+  - Teeteto (c. 417–369 a.C.)
+    - Costruzione dell'ottaedro e icosaedro regolari
+    - Classificazione degli irrazionali quadratici (Libro X degli Elementi)
+  - Eudosso di Cnido (c. 408–355 a.C.)
+    - Teoria generale delle proporzioni (inclusi incommensurabili, Libro V Elementi)
+    - Metodo di esaustione: approccio rigoroso per aree e volumi (via doppia riduzione all'assurdo)
+    - Dimostrazione che il volume del cono è 1/3 del cilindro, piramide 1/3 del prisma
+    - Modello astronomico delle sfere omocentriche
+  - Menechmo (c. 350 a.C.): scoperta delle sezioni coniche (parabola, iperbole) per la duplicazione del cubo (x^3 = 2a^3 → intersezioni di parabola e iperbole)
+  - Dinostrato (c. 350 a.C.): quadratrice di Ippia per quadrare il cerchio
+- Aristotele (384–322 a.C.)
+  - Analitici primi e secondi: sillogistica, dimostrazione, struttura assiomatica della scienza
+  - Leggi del pensiero: non contraddizione, terzo escluso
+  - Categorie, logica modale, definizioni
+  - Fisica: continuum, infinito potenziale vs attuale, confutazione paradossi di Zenone
+- Euclide di Alessandria (c. 300 a.C.)
+  - *Elementi* (Stoicheia): 13 libri
+    - Libro I: 23 definizioni (punto, linea, superficie), 5 postulati (compreso V postulato parallele), 5 nozioni comuni; 48 proposizioni (costruzioni, uguaglianza triangoli, angoli retti, teorema di Pitagora e suo inverso, area)
+    - Libro II: algebra geometrica (14 proposizioni): quadrato di binomio, sezione aurea, costruzione geometrica di equazioni
+    - Libro III: cerchio (37 proposizioni): tangenti, corde, angoli al centro e alla circonferenza
+    - Libro IV: poligoni regolari inscritti e circoscritti (16 proposizioni): pentagono, esagono, decangono
+    - Libro V: teoria delle proporzioni di Eudosso (25 proposizioni): grandezze, rapporto, uguaglianza di rapporti
+    - Libro VI: similitudine e proporzioni in geometria piana (33 proposizioni)
+    - Libri VII–IX: aritmetica (teoria dei numeri):
+      - Algoritmo euclideo per MCD (VII, prop. 1–2)
+      - Numeri primi e composti; ogni numero è prodotto di primi
+      - Infinità dei numeri primi (IX, prop. 20)
+      - Numeri perfetti: 2^{p-1}(2^p-1) (IX, prop. 36)
+      - Proporzioni tra numeri
+    - Libro X: irrazionalità (115 proposizioni): classificazione di incommensurabili quadratici, lavoro basato su Teeteto
+    - Libro XI: geometria solida elementare (39 proposizioni)
+    - Libro XII: metodo di esaustione per area del cerchio, volume piramide, cono, sfera (18 proposizioni)
+    - Libro XIII: 5 poliedri regolari (solidi platonici), costruzione e dimostrazione che sono solo 5 (18 proposizioni)
+  - Altre opere:
+    - *Dati* (Data): 95 proposizioni su "dati" elementi
+    - *Ottica* e *Catottrica*: geometria della visione e riflessione
+    - *Fenomeni*: astronomia geometrica (sfera celeste)
+    - *Divisione delle figure*: problemi di suddivisione
+    - *Pseudo-Euclide*: Porismi, Luoghi su superfici, Coniche (perduti)
+- Archimede di Siracusa (287–212 a.C.)
+  - *Misura del cerchio*: 3 + 10/71 < π < 3 + 1/7 (dimostrato con poligoni di 96 lati)
+  - *Sulla sfera e il cilindro*: area e volume di sfera e cilindro; V_sfera = 2/3 V_cilindro circoscritto, A_sfera = 4 A_cerchio massimo
+  - *Spirale di Archimede*: r = aθ; area della prima spira (1/3 del cerchio di raggio 2πa); tangente alla spirale
+  - *Quadratura della parabola*: area del segmento parabolico = 4/3 del triangolo inscritto (dimostrazione geometrica e meccanica)
+  - *Conoidi e sferoidi*: volumi di solidi di rotazione di coniche
+  - *Arenario* (Psammites): sistema di numerazione per esprimere numeri enormi (granelli di sabbia nell'universo), fino a 10^(8·10^16); citazione del modello eliocentrico di Aristarco
+  - *Metodo meccanico dei teoremi* (palinsesto riscoperto 1906): metodo euristico dell'equilibrio (taglio in sezioni, pesatura su leva immaginaria) applicato a volume sfera, paraboloide, etc.
+  - *Galleggianti* (idrostatica): principio di Archimede
+  - *Leve*: legge della leva
+  - Problema dei buoi del Sole (equazione diofantea enorme)
+- Apollonio di Perga (c. 262–190 a.C.)
+  - *Coniche* (Κωνικά): 8 libri (4 in greco, 3 in arabo, 1 perduto)
+    - Definizione unificata di ellisse, parabola, iperbole come sezioni di un doppio cono
+    - Conio dei nomi: ellisse (mancanza), parabola (uguaglianza), iperbole (eccesso) in base al rapporto tra area del quadrato sull'ordinata e rettangolo sull'ascissa
+    - Proprietà focali, tangenti, normali, asintoti
+    - Teorema di Apollonio per le coniche
+    - Diametri coniugati
+    - Numero massimo di intersezioni di due coniche (fino a 4)
+  - Altre opere: *Taglio di rapporti*, *Luoghi piani*, *Contatti* (cerchi tangenti), *Epicicli*
+- Eratostene di Cirene (c. 276–194 a.C.)
+  - Crivello di Eratostene per numeri primi
+  - Misura della circonferenza terrestre (con errore < 1%)
+  - Mesolabio (strumento per duplicazione cubo)
+- Nicomaco di Gerasa (c. 100 d.C.)
+  - *Introduzione all'aritmetica* (Arithmetike eisagoge): numeri figurati, rapporto, proporzione, classificazione numeri pari/dispari, perfetti/abondanti/deficienti
+- Teodosio di Bitinia (c. 100 a.C.): *Sferiche*: geometria sulla sfera
+- Erone di Alessandria (c. 10–70 d.C.)
+  - *Metrica*: formula di Erone per l'area del triangolo (A = √(s(s-a)(s-b)(s-c)))
+  - Metodo iterativo per radice quadrata (metodo babilonese)
+  - *Pneumatica*, *Automata*: macchine mosse da vapore, acqua, molla
+  - *Diottra*: strumenti da rilevamento
+- Menelao di Alessandria (c. 70–130 d.C.)
+  - *Sferiche*: trigonometria sferica, teorema di Menelao per triangoli sferici e piani
+- Claudio Tolomeo (c. 100–170 d.C.)
+  - *Almagesto* (Mathematike Syntaxis): modello geocentrico con eccentrici ed epicicli; tavole delle corde per semicerchio (360°) con incrementi di ½° (equivalente a seno con 4 cifre)
+  - Teorema di Tolomeo per quadrilateri ciclici
+  - *Geografia*: proiezioni cartografiche
+- Diofanto di Alessandria (c. 200–284 d.C.)
+  - *Arithmetica* (13 libri, 6 conservati in greco, 4 in arabo)
+    - Notazione sincopata per potenze: δ^υ (dynamis, quadrato), κ^υ (kybos, cubo), etc.
+    - Incognita: ς (arithmos)
+    - Equazioni determinate e indeterminate di grado 1–3; ricerca di soluzioni razionali (non solo intere)
+    - Problemi celebri: divisione di un quadrato in due quadrati (osservazione marginale di Fermat)
+    - Metodi di soluzione: riduzione a equazioni note
+- Pappo di Alessandria (c. 290–350 d.C.)
+  - *Collezione matematica* (Synagoge): enciclopedia in 8 libri
+    - Teorema dell'esagono di Pappo
+    - Teorema di Pappo–Guldino (solidi e superfici di rotazione)
+    - Problema di Pappo: luogo di punti a distanze da rette con rapporto costante (risolto da Cartesio nella *Géométrie*)
+    - Commenti e supplementi a opere precedenti
+- Ipazia di Alessandria (c. 360–415)
+  - Commenti a Diofanto, Apollonio, Tolomeo (perduti)
+  - Filosofa, matematica e astronoma neoplatonica
+- Proclo Diadoco (412–485)
+  - *Commento al primo libro degli Elementi di Euclide*: fonte storica preziosissima su matematica greca
+- Antemio di Tralles (c. 474–558) e Isidoro di Mileto: architetti e geometri (Hagia Sophia)
+- Giovanni Filopono (c. 490–570): critica alla dinamica aristotelica, precursore dell'impetus
+
+## 2.6 Zenone e paradossi
+- Zenone di Elea (c. 490–430 a.C.)
+  - Paradossi del moto:
+    - Dicotomia: per percorrere una distanza finita bisogna prima percorrere la metà, poi la metà della metà, all'infinito → moto impossibile
+    - Achille e la tartaruga: Achille non raggiunge la tartaruga (serie geometrica convergente ma somma infinita di intervalli temporali)
+    - Freccia: una freccia in volo è in ogni istante in un luogo uguale a sé stesso → è ferma
+    - Stadio: due file di corpi si muovono in direzioni opposte → paradossi della relatività del moto
+  - Significato: concetto di infinito potenziale vs attuale, continuità, tempo e spazio discreti o continui; influenzerà la fondazione dell'analisi (limite, serie convergenti) e teorie del continuo
+
+# 3. Matematica medievale
+## 3.1 Mondo islamico (VII–XV secolo)
+- Periodo abbaside, Casa della Sapienza (Bayt al-Hikma), Baghdad, IX sec.: traduzioni di opere greche, indiane, persiane
+- Muhammad ibn Musa al-Khwarizmi (c. 780–850)
+  - *Al-Kitāb al-Mukhtaṣar fī Ḥisāb al-Jabr wal-Muqābala* (Il libro conciso sul calcolo per completamento e bilanciamento, c. 820)
+    - Algebra come disciplina separata: manipolazione di equazioni senza uso di simboli (retorica)
+    - Classificazione di equazioni di primo e secondo grado in sei tipi canonici
+    - Soluzione per completamento del quadrato (al-jabr = trasporto termini negativi; al-muqabala = riduzione termini simili)
+    - Dimostrazioni geometriche delle soluzioni (modelli con rettangoli e quadrati)
+    - Applicazioni pratiche: eredità, scambi commerciali, agrimensura
+  - *Sul calcolo indiano* (testo arabo perduto, trad. latina: *Algoritmi de numero Indorum*): diffusione del sistema decimale posizionale e dello zero; origine della parola "algoritmo"
+- al-Kindi (c. 801–873): *De aspectibus* (ottica geometrica), crittoanalisi (analisi di frequenza), *De gradibus* (dosi medicinali)
+- Banu Musa (tre fratelli, IX sec.): *Libro dei dispositivi ingegnosi* (Kitab al-Hiyal), problemi geometrici applicati a meccanismi automatici
+- Thabit ibn Qurra (826–901)
+  - Coppie di numeri amicabili generalizzate (coppia 17296, 18416)
+  - Generalizzazione del teorema di Pitagora per qualsiasi triangolo
+  - Calcolo del volume del paraboloide
+  - Principio di meccanica (equilibrio di leve)
+  - Traduttore di Archimede, Apollonio, Euclide
+- Abu Kamil Shuja (850–930)
+  - *Algebra*: estensione di al-Khwarizmi a equazioni più complesse, soluzione di problemi diofantei, irrazionali quadratici
+  - Influenza su Fibonacci
+- al-Battani (Albategnius, 858–929)
+  - Raffinamento delle tavole tolemaiche, precessione equinozi
+  - Uso sistematico di seno, coseno, tangente, cotangente in trigonometria piana e sferica
+  - Relazione: tan α = sin α / cos α, sec, cosec
+- Abu'l-Wafa al-Buzjani (940–998)
+  - Trigonometria sferica applicata all'astronomia
+  - Identità di somma per seno e coseno: sin(a+b) = ...
+  - Costruzioni geometriche con righello a apertura fissa
+- al-Karaji (953–1029)
+  - Algebra dei polinomi: operazioni, elevamento a potenza, estrazione di radici
+  - Primi usi di un principio di induzione implicito (per coefficienti binomiali e somme di potenze)
+  - Triangolo di Tartaglia–Pascal (coefficienti binomiali)
+  - Teoria delle equazioni di grado superiore
+- Ibn al-Haytham (Alhazen, 965–1040, Il Cairo)
+  - *Libro dell'Ottica* (Kitab al-Manazir): riformulazione dell'ottica (intromissione, camera oscura, leggi riflessione e rifrazione)
+  - Problema di Alhazen: dato un cerchio e due punti, trovare il punto sulla circonferenza dove un raggio proveniente da un punto si riflette sull'altro (equazione di quarto grado risolta geometricamente con intersezione di iperbole e cerchio)
+  - Somma di potenze quarte: formula per ∑ i^4, necessaria per calcolare il volume del paraboloide
+  - Metodo di esaustione applicato a integrali di x^k
+- Al-Biruni (973–1048)
+  - Trigonometria sferica completa
+  - Proiezioni cartografiche (proiezione di Al-Biruni)
+  - Misura del raggio terrestre
+  - Trattati di astronomia, geografia, mineralogia
+- Omar Khayyam (1048–1131)
+  - *Trattato sulla dimostrazione dei problemi di algebra e al-muqabala*
+    - Classificazione di equazioni cubiche (25 tipi)
+    - Soluzione geometrica tramite intersezione di coniche (cerchio, parabola, iperbole)
+    - Comprensione che la soluzione algebrica generale per radicali era fuori portata con i metodi del tempo
+- al-Samaw'al ibn Yahya (1130–1180)
+  - *al-Bahir fi'l-hisab*: aritmetica dei polinomi con coefficienti anche negativi; divisione lunga di polinomi; introduzione di esponenti negativi
+  - Uso dell'induzione matematica esplicita
+- Nasir al-Din al-Tusi (1201–1274)
+  - *Trattato del quadrilatero* (fondazione della trigonometria come disciplina indipendente da astronomia):
+    - Legge dei seni per triangoli piani e sferici
+    - Legge delle tangenti
+    - Tavole trigonometriche precise
+  - Coppia di Tusi (meccanismo a due cerchi che produce moto rettilineo alternato da due moti circolari)
+  - Osservatorio di Maragha
+- al-Kashi (c. 1380–1429, Samarcanda, osservatorio di Ulugh Beg)
+  - *Miftāḥ al-ḥisāb* (Chiave dell'aritmetica, 1427):
+    - Aritmetica decimale (introduzione frazioni decimali, prima di Stevin)
+    - Calcolo di π con 16 cifre decimali corrette (π ≈ 3.1415926535897932) usando metodo di Archimede con poligoni di 3·2^28 lati
+    - Algoritmo di Ruffini-Horner per l'estrazione di radici n-esime di numeri interi
+    - Legge dei coseni (teorema di al-Kashi): a^2 = b^2 + c^2 - 2bc cos A
+  - *Risala al-watar wa'l-jaib*: seno di 1° con grande precisione (equazione cubica risolta iterativamente)
+- Ulugh Beg (1394–1449): tavole astronomiche (Zij-i Sultani), catalogo stellare
+- Altri contributi
+  - Algebra: Abu Bakr al-Karaji, al-Samaw'al
+  - Geometria pratica (hisab, misaha): Ibn Abdun, Abu'l-Wafa
+  - Teoria dei numeri: amicabili (Thabit ibn Qurra, Ibn al-Banna)
+  - Combinatoria: enumerazioni, quadrati magici (al-Buni)
+
+## 3.2 Europa medievale (X–XV sec.)
+- Alto Medioevo: trasmissione del sapere attraverso monasteri, scuole cattedrali
+- Gerberto d'Aurillac (c. 946–1003, futuro Papa Silvestro II)
+  - Introduzione dell'astrolabio, dell'abaco con gettoni indo-arabi (senza zero)
+  - Testi di geometria e aritmetica
+- Traduzioni dal greco e dall'arabo in latino (XII sec.)
+  - Adelardo di Bath (c. 1080–1152): traduzione Euclide, al-Khwarizmi
+  - Gerardo da Cremona (1114–1187): traduzione di più di 70 opere (Almagesto, Elementi, Algebra di al-Khwarizmi, medicina)
+  - Roberto di Chester: traduzione Algebra di al-Khwarizmi
+  - Platone di Tivoli, Giovanni da Siviglia
+- Nascita delle Università (Bologna 1088, Parigi 1150, Oxford 1167)
+  - Quadrivium: Aritmetica, Geometria, Musica, Astronomia
+- Leonardo Pisano detto Fibonacci (c. 1170–1250)
+  - *Liber Abaci* (1202, riv. 1228):
+    - Diffusione del sistema decimale posizionale indo-arabico in Europa
+    - Successione di Fibonacci (1,1,2,3,5,8,...) dal problema dei conigli
+    - Algoritmi per calcoli commerciali (cambi valute, pesi, misure)
+    - Teoria dei numeri: criteri di divisibilità, MCD, mcm
+    - Frazioni continue (sviluppo di √2, √10)
+    - Problemi di algebra e applicazioni
+  - *Practica geometriae* (1220): geometria pratica, trigonometria
+  - *Liber quadratorum* (1225): equazioni diofantee, terne pitagoriche, identità di Brahmagupta–Fibonacci (x^2 + y^2)(u^2 + v^2) = (xu ± yv)^2 + (xv ∓ yu)^2
+- Jordanus Nemorarius (c. 1225–1260)
+  - *De numeris datis*: algebra con lettere (precoce notazione simbolica)
+  - *De ratione ponderis*: meccanica statica, principio dei lavori virtuali
+- Thomas Bradwardine (c. 1300–1349)
+  - *Tractatus de proportionibus* (1328): regola del moto M = log (F/R) (legge Bradwardine per velocità in funzione del rapporto forza/resistenza)
+- William Heytesbury (c. 1313–1372/73): "regola di Merton" (velocità uniformemente accelerata, spazio percorso = velocità media × tempo)
+- Giovanni di Dumbleton (c. 1310–1349)
+- Richard Swineshead (Calculator) (c. 1323–1354): *Liber calculationum*, serie infinite, limiti
+- Nicole Oresme (c. 1323–1382)
+  - *Tractatus de configurationibus qualitatum et motuum* (c. 1350):
+    - Rappresentazione grafica di qualità e moti (intensità vs estensione) – precursore della geometria analitica
+    - Concetto di latitudo delle forme
+    - Dimostrazione della divergenza della serie armonica: ∑ 1/n = ∞ (prova geometrica con raggruppamenti)
+  - Operazioni con esponenti frazionari (notazione precoce)
+  - *De proportionibus proportionum*: probabilità di rapporti incommensurabili
+  - *Livre du ciel et du monde*: commenti cosmologici, relatività del moto
+- Roberto Grosseteste (c. 1175–1253): *De luce*, importanza della matematica e dell'ottica nella filosofia naturale
+- Ruggero Bacone (c. 1214–1294): *Opus Majus*, matematica come chiave di tutte le scienze, prospettiva, sperimentazione
+- John Peckham (c. 1230–1292): *Perspectiva communis*
+- Witelo (c. 1230–1275): *Perspectiva*
+- Regiomontano (Johannes Müller, 1436–1476)
+  - *De triangulis omnimodis libri quinque* (1464, pubbl. 1533): prima opera moderna di trigonometria piana e sferica indipendente dall'astronomia
+  - Tavole trigonometriche accurate
+  - Effemeridi per la navigazione
+
+# 4. Rinascimento e prima modernità (XIV–XVII sec.)
+- Algebra italiana e soluzione della cubica e quartica
+  - Scipione del Ferro (1465–1526): soluzione caso x^3 + px = q (senza pubblicare)
+  - Niccolò Tartaglia (1499–1557): riscoperta indipendente, formula generale per tutte le cubiche; sfida con Fior (allievo di del Ferro, 1535)
+  - Gerolamo Cardano (1501–1576):
+    - *Ars Magna* (1545): pubblica le soluzioni di del Ferro/Tartaglia per cubica e Ferrari per quartica; discussione dei numeri complessi (radici quadrate di negativi, "sofistici")
+    - Regola di Cardano per cubica depressa x^3 + px + q = 0: x = ³√(-q/2 + √(q²/4 + p³/27)) + ³√(-q/2 - √(q²/4 + p³/27))
+    - Casus irreducibilis (tre radici reali che richiedono numeri complessi nella formula)
+  - Ludovico Ferrari (1522–1565): soluzione della quartica riducendola a una cubica risolvente
+  - Rafael Bombelli (1526–1572):
+    - *L'Algebra* (1572): regole formali per numeri complessi (moltiplicazione: +i × +i = –1, etc.), operazioni con radici di negativi
+    - Notazione per potenze e incognite
+- Prospettiva e geometria
+  - Filippo Brunelleschi (1377–1446): esperimenti prospettici (Battistero di Firenze, 1413 ca.)
+  - Leon Battista Alberti (1404–1472): *De pictura* (1435): primo trattato sulla prospettiva lineare matematica
+  - Piero della Francesca (c. 1415–1492):
+    - *De prospectiva pingendi*: studio matematico della prospettiva, costruzione di solidi complessi
+    - *Trattato d'abaco*: aritmetica commerciale, algebra
+    - *Libellus de quinque corporibus regularibus*: solidi platonici e semiregolari
+  - Luca Pacioli (c. 1445–1517):
+    - *Summa de arithmetica, geometria, proportioni et proportionalità* (1494): enciclopedia delle matematiche del tempo, partita doppia contabile
+    - *De divina proportione* (1509): proporzione aurea, solidi platonici illustrati da Leonardo da Vinci
+  - Albrecht Dürer (1471–1528):
+    - *Underweysung der Messung* (1525): costruzioni geometriche di curve con righello e compasso, poligoni, poliedri, prospettiva, sezioni coniche
+    - Curva di Dürer, spirali
+  - Guidobaldo del Monte (1545–1607): *Perspectivae libri sex* (1600)
+- Notazione e algebra simbolica
+  - Michael Stifel (1487–1567): *Arithmetica integra* (1544): regole per esponenti negativi, radici
+  - Robert Recorde (1512–1558): introduzione del segno "=" (1557) perché "due linee parallele non possono essere più uguali"
+  - François Viète (1540–1603):
+    - *In artem analyticem isagoge* (1591): introduzione di lettere (vocali per incognite, consonanti per coefficienti); distinzione tra logistica speciosa (calcolo con simboli) e numerosa
+    - Relazioni tra radici e coefficienti di polinomi (formule di Viète)
+    - Formula per π come prodotto infinito: 2/π = √(1/2) · √(1/2 + 1/2√(1/2)) · ... (primo prodotto infinito)
+    - Lavoro sulle equazioni trigonometriche (soluzione cubica con coseno triplo)
+  - Simon Stevin (1548–1620):
+    - *De Thiende* (1585): sistema decimale per frazioni, vantaggi pratici (operazioni con decimali)
+    - *Principes de statique*: principio dei lavori virtuali, parallelogramma delle forze
+    - Idrostatica
+  - William Oughtred (1574–1660): notazione con "×" per moltiplicazione, regolo calcolatore
+  - Thomas Harriot (1560–1621): simbolismo algebrico avanzato; fattorizzazione di polinomi
+- Logaritmi
+  - John Napier (Nepero, 1550–1617):
+    - *Mirifici logarithmorum canonis descriptio* (1614): definizione di logaritmo (logaritmo naturale); due progressioni (aritmetica e geometrica) messe in corrispondenza
+    - Ossa di Nepero: strumento per moltiplicazioni e divisioni
+    - Logaritmi naturali sebbene non come li intendiamo oggi (legati a seni e rapporti)
+  - Henry Briggs (1561–1630): logaritmi in base 10 (logaritmi briggsiani o volgari); tavole più pratiche (Arithmetica Logarithmica, 1624)
+  - Jost Bürgi (1552–1632): logaritmi indipendentemente (1620), a base 1.0001
+- Geometria analitica
+  - Pierre de Fermat (1601–1665):
+    - *Ad locos planos et solidos isagoge* (1636, pubbl. postumo 1679): equazioni di retta e coniche nel piano, sistemi di coordinate oblique
+    - Primi passi della geometria analitica
+  - René Descartes (Cartesio, 1596–1650):
+    - *La Géométrie* (1637, appendice al *Discours de la méthode*):
+      - Fusione di algebra e geometria: coordinate cartesiane (assi ortogonali), equazione di curve
+      - Costruzione geometrica di soluzioni algebriche
+      - Regola dei segni di Cartesio per determinare il numero di radici positive di un polinomio
+      - Problema di Pappo risolto: luogo di punti le cui distanze da più rette hanno proporzioni date è una curva algebrica
+      - Metodo delle normali (precursore della derivata)
+- Calcolo combinatorio e probabilità
+  - Blaise Pascal (1623–1662):
+    - *Traité du triangle arithmétique* (1654): triangolo di Pascal, proprietà (simmetria, addizione, somme di diagonali), uso in combinatoria e probabilità
+    - Uso del principio di induzione matematica (esplicito nel Traité)
+    - Corrispondenza con Fermat (1654) sul "problema delle parti" (divisione della posta in un gioco interrotto): fondazione del calcolo delle probabilità
+    - Scommessa di Pascal (argomento probabilistico per credere in Dio)
+  - Christiaan Huygens (1629–1695):
+    - *De ratiociniis in ludo aleae* (1657): primo libro stampato sul calcolo delle probabilità, valore atteso
+    - Orologio a pendolo, cicloide isocrona
+  - Jakob Bernoulli (1654–1705) (v. sez. 5): *Ars Conjectandi* (1713 postumo): legge dei grandi numeri (teorema di Bernoulli), numeri di Bernoulli, permutazioni e combinazioni
+- Precursori del calcolo infinitesimale
+  - Johannes Kepler (1571–1630):
+    - *Stereometria doliorum* (1615): misura del volume di botti e solidi di rotazione tramite metodo dei cilindretti (integrazione intuitiva)
+    - Leggi del moto planetario (ellittiche)
+  - Bonaventura Cavalieri (1598–1647, allievo di Galileo):
+    - *Geometria indivisibilibus continuorum nova quadam ratione promota* (1635): principio degli indivisibili (se due solidi hanno sezioni uguali a ogni altezza, hanno ugual volume)
+    - Area sotto la curva y = x^n come 1/(n+1)
+  - Evangelista Torricelli (1608–1647):
+    - Volume del solido di rotazione di iperbole equilatera (tromba di Gabriele): volume finito, superficie infinita
+  - Gilles de Roberval (1602–1675): metodo degli indivisibili; area della cicloide, quadratura del seno
+  - John Wallis (1616–1703):
+    - *Arithmetica infinitorum* (1656): prodotto di Wallis per π (π/2 = (2·2·4·4·6·6...)/(1·3·3·5·5·7...)); interpolazione; esponenti frazionari e negativi; integrale di x^n generalizzato
+  - Isaac Barrow (1630–1677):
+    - Teorema fondamentale del calcolo in forma geometrica (tangente e quadratura come operazioni inverse)
+  - James Gregory (1638–1675):
+    - Serie per arctan x, tan x, sec x
+    - Teorema di Gregory (serie di Taylor) per funzioni generiche (prime idee)
+  - Pietro Mengoli (1626–1686): somma di serie (serie di Mengoli ∑ 1/(n(n+1)) = 1), problema di Basilea (∑ 1/n^2)
+- Teoria dei numeri (Fermat e poi)
+  - Fermat:
+    - Piccolo teorema di Fermat: a^p ≡ a (mod p) per p primo
+    - Teorema dei due quadrati: p primo = 1 mod 4 ⇔ p = a^2 + b^2
+    - Ultimo teorema di Fermat: x^n + y^n = z^n non ha soluzioni intere positive per n > 2 (annotazione a margine dell'Aritmetica di Diofanto)
+    - Metodo della discesa infinita
+    - Numeri di Fermat: F_n = 2^{2^n}+1 (congetturati tutti primi; F_5 scomposto da Eulero)
+  - Marin Mersenne (1588–1648): numeri primi di Mersenne M_p = 2^p – 1; corrispondenza internazionale (rete dei dotti)
+- Altri
+  - Grégoire de Saint-Vincent (1584–1667): quadratura dell'iperbole, proprietà logaritmica
+  - Johann Hudde (1628–1704): regole per massimi e minimi, equazioni
+
+# 5. Sviluppo del calcolo infinitesimale (XVII–XVIII sec.)
+- Isaac Newton (1642–1727)
+  - Metodo delle fluxioni (1665–1666, manoscritti inediti fino a *Methodus fluxionum* 1671, pubbl. 1736)
+    - Quantità fluenti (x, y) e flussioni (dx/dt, dy/dt), momenti (incrementi infinitesimi o)
+    - Derivata come velocità istantanea
+    - Integrazione come antidifferenziazione (fluenti da flussioni)
+  - Sviluppo in serie binomiale generalizzata (1665): (1+x)^α per α razionale
+  - *De analysi per aequationes numero terminorum infinitas* (1669, pubbl. 1711): integrazione tramite espansione in serie
+  - *Philosophiæ Naturalis Principia Mathematica* (1687):
+    - Formulazione geometrica del calcolo (lemmi di limiti, proporzioni ultime)
+    - Leggi del moto, gravitazione universale
+    - Determinazione di orbite planetarie, precessione, maree
+  - *Arithmetica Universalis* (1707)
+  - Algoritmo di Newton (o Newton–Raphson) per radici di equazioni
+  - Metodo delle differenze finite, interpolazione (formula di Newton)
+  - Controversia con Leibniz sulla priorità del calcolo (Royal Society 1712)
+- Gottfried Wilhelm Leibniz (1646–1716)
+  - Calcolo differenziale e integrale (1684: *Nova methodus pro maximis et minimis*, prima pubblicazione)
+    - Notazione dx, dy, ∫ (summa, 1686)
+    - Regola del prodotto: d(xy) = x dy + y dx
+    - Regola della derivata di funzione composta: dy/dt = (dy/dx)(dx/dt)
+    - Derivate di ordine superiore (d^n)
+    - Integrale definito e indefinito
+  - *Monadologia*, *Caratteristica universale* (progetto di linguaggio simbolico universale)
+  - Calcolo combinatorio
+  - Determinanti (1684, poi ripresi)
+  - Serie di Leibniz: π/4 = 1 – 1/3 + 1/5 – 1/7 + ...
+  - Sviluppo di log(1+x), arctan x
+- La disputa Newton–Leibniz: priorità, notazioni, sviluppo europeo vs insulare
+- Famiglia Bernoulli
+  - Jakob Bernoulli (1654–1705)
+    - *Ars Conjectandi* (1713 postumo): teoria della probabilità, legge dei grandi numeri, numeri di Bernoulli, distribuzione binomiale
+    - Equazione differenziale di Bernoulli: y' + P(x)y = Q(x) y^n
+    - Catenaria, brachistocrona, lemniscata di Bernoulli
+    - Curva isocrona paracentrica
+  - Johann Bernoulli (1667–1748)
+    - Soluzione della brachistocrona (1696) con il metodo di Fermat ottico (problema lanciato come sfida)
+    - Regola di de l'Hôpital (in realtà di Johann, 1696): per limiti 0/0
+    - Calcolo delle variazioni: principio di minima azione
+    - Equazione differenziale di Bernoulli-Riccati
+    - Curva tautocrona, catenaria, quadrature
+  - Daniel Bernoulli (1700–1782)
+    - *Hydrodynamica* (1738): equazione di Bernoulli, conservazione energia fluidi
+    - Oscillazioni di una corda vibrante: soluzione come serie trigonometrica (sovrapposizione modi normali)
+    - Probabilità e statistica: paradosso di San Pietroburgo (con Nicolas Bernoulli)
+    - Applicazioni economiche (teoria del rischio)
+- Leonhard Euler (1707–1783)
+  - *Introductio in analysin infinitorum* (1748): fondazione dell'analisi moderna
+    - Concetto moderno di funzione (f(x))
+    - Funzioni esponenziali, logaritmiche, trigonometriche, iperboliche
+    - Identità di Eulero: e^{iπ} + 1 = 0 (e^{iθ} = cos θ + i sin θ)
+    - Scomposizione del seno in prodotto infinito: sin x = x ∏ (1 – x²/(n²π²))
+  - *Institutiones calculi differentialis* (1755) e *Institutiones calculi integralis* (1768–1770): trattati enciclopedici
+  - Teoria dei grafi: problema dei ponti di Königsberg (1736) → nascita della topologia/teoria dei grafi; formula V – E + F = 2 per poliedri convessi (caratteristica di Eulero)
+  - Funzione zeta di Eulero: ζ(s) = ∑ n^{-s}; prodotto di Eulero: ζ(s) = ∏_p (1 – p^{-s})^{-1}; valori per s=2,4,... (ζ(2)=π²/6, risolve problema di Basilea)
+  - Calcolo delle variazioni: equazione di Eulero-Lagrange
+  - Teoria dei numeri:
+    - Funzione φ di Eulero (totiente)
+    - Legge di reciprocità quadratica (congetturata, poi dimostrata da Gauss)
+    - Numeri amicabili (62 coppie trovate)
+    - Congettura di Eulero (generalizzazione Fermat, confutata nel 1966)
+  - Metodo di Eulero per equazioni differenziali; costante di Eulero-Mascheroni γ
+  - Funzioni Beta e Gamma (integrale di seconda specie, B e Γ)
+  - Serie di Fourier (precoce, per funzioni periodiche)
+  - Meccanica celeste: moto dei corpi rigidi (angoli di Eulero), equazioni dei fluidi ideali
+  - Oltre 850 pubblicazioni (Opera Omnia)
+- Joseph-Louis Lagrange (1736–1813)
+  - *Mécanique analytique* (1788): formulazione puramente analitica della meccanica (senza diagrammi), equazioni di Lagrange, principio dei lavori virtuali
+  - Teoria delle equazioni: *Réflexions sur la résolution algébrique des équations* (1771), studio delle permutazioni delle radici (precursore della teoria dei gruppi)
+  - Teorema dei quattro quadrati (1770): ogni intero è somma di quattro quadrati
+  - Equazione di Pell risolta con frazioni continue (metodo Lagrangiano)
+  - Metodo dei moltiplicatori di Lagrange per ottimizzazione vincolata
+  - Teorema di Lagrange (gruppi): ordine del sottogruppo divide ordine del gruppo (per gruppi di permutazioni)
+  - Calcolo delle variazioni, equazione di Eulero-Lagrange
+- Pierre-Simon Laplace (1749–1827)
+  - *Théorie analytique des probabilités* (1812): sintesi, metodo della funzione generatrice, primi teoremi limite (teorema centrale del limite nella forma di Laplace)
+  - *Mécanique céleste* (5 volumi, 1799–1825): riformulazione della meccanica celeste newtoniana
+  - Equazione di Laplace: ΔV = 0; potenziale newtoniano, armoniche sferiche
+  - Trasformata di Laplace: L{f}(s) = ∫ e^{-st}f(t)dt
+  - Ipotesi della nebulosa primordiale (sistema solare)
+  - Regola di Laplace per la stima di probabilità (regola di successione)
+- Gaspard Monge (1746–1818)
+  - *Géométrie descriptive* (1799): rappresentazione di oggetti 3D su piani tramite proiezioni ortogonali (metodo di Monge)
+  - Equazioni alle derivate parziali del primo ordine: metodo delle caratteristiche, cono di Monge
+  - Geometria differenziale: equazioni di Monge-Ampère
+  - Fondatore dell'École Polytechnique
+- Adrien-Marie Legendre (1752–1833)
+  - *Éléments de géométrie* (1794): testo semplificato
+  - Polinomi di Legendre (soluzione dell'equazione di Laplace con separazione variabili)
+  - Funzioni ellittiche (precursore di Abel e Jacobi)
+  - Metodo dei minimi quadrati (pubblicato 1805, contemporaneo a Gauss)
+  - Congettura di Legendre (sempre un primo tra n² e (n+1)²)
+  - Simbolo di Legendre e legge di reciprocità quadratica (dimostrazione parziale)
+- Joseph Fourier (1768–1830)
+  - *Théorie analytique de la chaleur* (1822): equazione del calore, metodo di separazione variabili, serie di Fourier, integrale di Fourier
+  - Serie di Fourier: ogni funzione periodica può essere rappresentata come somma di seni e coseni
+  - Coefficienti di Fourier: a_n = (2/T)∫ f(x) cos(2πnx/T) dx
+- Altri matematici del Settecento
+  - Brook Taylor (1685–1731): serie di Taylor (1715, *Methodus Incrementorum Directa et Inversa*), integrazione per parti
+  - Colin Maclaurin (1698–1746): serie di Maclaurin; *Treatise of Fluxions* (1742): difesa newtoniana, criterio integrale per serie
+  - Jean le Rond d'Alembert (1717–1783):
+    - Equazione delle onde (1747): y_{tt} = c^2 y_{xx}, soluzione di d'Alembert
+    - Criterio del rapporto per serie
+    - *Encyclopédie* (con Diderot): voci matematiche
+    - Paradosso di d'Alembert in fluidodinamica
+  - Alexis Clairaut (1713–1765): equazioni differenziali, curvatura terrestre, soluzione singolare
+  - Gabrielle Émilie du Châtelet (1706–1749): traduzione commentata dei Principia di Newton in francese
+  - Maria Gaetana Agnesi (1718–1799): *Instituzioni analitiche* (1748), curva "versiera" (witch of Agnesi)
+  - J.H. Lambert (1728–1777): dimostrazione irrazionalità di π (1761); proiezioni cartografiche; funzioni iperboliche; legge di Lambert in ottica
+  - Vincenzo Riccati (1707–1775) e Girolamo Saladini: equazione di Riccati (y' = p(x) y² + q(x) y + r(x))
+  - Paolo Ruffini (1765–1822): dimostrazione (incompleta) dell'impossibilità di risolvere la quintica per radicali (1799)
+
+# 6. Ottocento: il secolo del rigore e della specializzazione
+## 6.1 Analisi rigorosa
+- Augustin-Louis Cauchy (1789–1857)
+  - Definizione di limite, continuità, convergenza di serie e successioni (ε-δ rudimentale)
+  - Criterio di convergenza di Cauchy
+  - Integrale di Cauchy per funzioni continue (limite di somme)
+  - Teorema fondamentale del calcolo
+  - Analisi complessa: integrale di linea, teorema integrale, formula integrale di Cauchy, serie di Laurent, residui, teorema dei residui
+  - Criterio del rapporto per serie, criterio della radice
+  - Equazioni di Cauchy–Riemann
+- Bernard Bolzano (1781–1848)
+  - Teorema di Bolzano (o degli zeri): ogni funzione continua su [a,b] con f(a)f(b)<0 ha uno zero
+  - Teorema di Bolzano–Weierstrass: ogni insieme infinito limitato ha punto di accumulazione; ogni successione limitata ha sottosuccessione convergente
+  - Funzione continua senza derivata in nessun punto (costruzione pre-Weierstrass)
+  - *Paradoxien des Unendlichen* (postumo 1851): studio dell'infinito, insiemi infiniti (pre-Cantor)
+- Karl Weierstrass (1815–1897)
+  - Definizione ε-δ rigorosa di limite e continuità
+  - Funzione continua non derivabile in alcun punto (1872, presentata all'Accademia di Berlino)
+  - Teorema di Weierstrass: funzione continua su compatto ha massimo e minimo
+  - Teorema di approssimazione di Weierstrass (polinomi approssimano uniformemente funzioni continue su intervallo)
+  - Prolungamento analitico, fattorizzazione di Weierstrass per funzioni intere, funzioni ellittiche (funzione ℘)
+  - Contributi al calcolo delle variazioni, equazioni differenziali
+- Richard Dedekind (1831–1916)
+  - Taglio di Dedekind per la costruzione dei numeri reali (1872, *Stetigkeit und irrationale Zahlen*)
+  - *Was sind und was sollen die Zahlen?* (1888): teoria degli insiemi per l'aritmetica, catene, definizione di insieme infinito
+  - Idealtheorie: ideali, anelli di Dedekind, domini integralmente chiusi
+- Georg Cantor (1845–1918)
+  - Teoria degli insiemi (1874–1897)
+    - Insiemi numerabili e non numerabili (ℝ non numerabile, argomento diagonale 1891)
+    - Cardinali e ordinali transfiniti: ℵ_0, ℵ_1, ω, numeri ordinali
+    - Insieme di Cantor (ternario): perfetto, totalmente sconnesso, non numerabile, misura zero
+    - Ipotesi del continuo (CH): 2^{ℵ_0} = ℵ_1
+    - Teorema di Cantor–Bernstein: se |A| ≤ |B| e |B| ≤ |A| allora |A| = |B|
+    - Gerarchia dei transfiniti
+  - Caratterizzazioni di ℝ tramite successioni di Cauchy
+## 6.2 Analisi reale e teoria delle funzioni
+- Peter Gustav Lejeune Dirichlet (1805–1859): funzione di Dirichlet (1 su ℚ, 0 su ℝ\ℚ), principio dei cassetti, condizioni di convergenza delle serie di Fourier
+- Bernhard Riemann (1826–1866)
+  - Integrale di Riemann (1854, Habilitationsschrift): partizioni, somme superiore/inferiore, condizioni di integrabilità (funzione di Riemann: 1 se x irrazionale, discontinua ma integrabile? No, esempio di funzione non integrabile modificata su infiniti punti)
+  - Funzione zeta di Riemann (1859): estensione analitica a ℂ, equazione funzionale, ipotesi di Riemann (zeri non banali su Re(s)=1/2)
+  - Varietà riemanniane, tensore metrico, curvatura (1854, lezione "Sulle ipotesi che stanno alla base della geometria")
+  - Superfici di Riemann, connessione, genere; teorema di Riemann–Roch (versione per curve)
+  - Mappature conformi, teorema di mappatura di Riemann
+- Ulisse Dini (1845–1918): criterio di Dini (convergenza uniforme di serie di Fourier), derivate, funzioni implicite
+- Camille Jordan (1838–1922):
+  - Misura di contenuto di Jordan (precursore misura di Lebesgue)
+  - Teorema di Jordan per curve piane (curva di Jordan divide piano in interno/esterno)
+  - Forma canonica di Jordan per matrici
+- Henri Lebesgue (1875–1941, inizio XX sec.):
+  - *Leçons sur l'intégration* (1904): misura di Lebesgue, integrale di Lebesgue (basato su partizione del codominio), teoremi di convergenza (convergenza dominata, monotona, Fatou)
+  - Spazi L^p
+- Altri: Paul du Bois-Reymond, Thomas Stieltjes (integrale di Riemann–Stieltjes)
+## 6.3 Analisi complessa
+- Cauchy: teoremi fondamentali, residui (v. sopra)
+- Riemann: teorema di mappatura di Riemann, metodi geometrici, superficie di Riemann
+- Weierstrass: approccio power series, teorema di Weierstrass per funzioni intere (fattorizzazione), funzioni ellittiche (℘), prolungamento analitico
+- Joseph Liouville (1809–1882): teorema di Liouville (funzione intera limitata → costante); primi numeri trascendenti (numeri di Liouville)
+- Charles Hermite (1822–1901): funzioni ellittiche; dim. trascendenza di *e* (1873)
+- Ferdinand von Lindemann (1852–1939): dim. trascendenza di π (1882) → impossibilità quadratura del cerchio con riga e compasso
+- Émile Picard (1856–1941): teorema piccolo (funzione intera non costante assume ogni valore con al più una eccezione) e grande di Picard (intorno di singolarità essenziale)
+- Carl Runge (1856–1927): teorema di approssimazione di Runge (approssimazione funzione analitica con funzioni razionali)
+- Gösta Mittag-Leffler (1846–1927): teorema di decomposizione in frazioni semplici (generalizzazione del teorema dei residui)
+## 6.4 Algebra astratta
+- Teoria dei gruppi
+  - Évariste Galois (1811–1832):
+    - Condizioni per risolubilità delle equazioni algebriche per radicali (gruppo di Galois risolubile ⇔ equazione risolubile per radicali)
+    - Corrispondenza di Galois (sottogruppi del gruppo di Galois ⇔ campi intermedi)
+    - Gruppi semplici, successioni di composizione
+    - *Mémoire sur les conditions de résolubilité des équations par radicaux* (1831, pubbl. postumo 1846 da Liouville)
+  - Niels Henrik Abel (1802–1829):
+    - Dimostrazione impossibilità risoluzione per radicali della quintica generale (1824)
+    - Integrali abeliani, funzioni ellittiche (competizione con Jacobi)
+    - Teorema di Abel per le serie di potenze (convergenza uniforme)
+    - Premio dell'Accademia di Francia (1830, postumo)
+  - Arthur Cayley (1821–1895):
+    - Gruppo astratto (definizione assiomatica, 1854), tavole di Cayley
+    - Teorema di Cayley: ogni gruppo è isomorfo a un sottogruppo di un gruppo di permutazioni
+    - Calcolo matriciale, teorema di Cayley–Hamilton
+  - Peter Ludwig Mejdell Sylow (1832–1918): teoremi di Sylow (1872) per gruppi finiti (esistenza di p-sottogruppi, loro coniugio e numero)
+  - Camille Jordan: teorema di Jordan–Hölder (raffinamento unico delle serie di composizione)
+  - Otto Hölder (1859–1937): contributi a gruppi e serie di composizione
+- Algebra lineare e matrici
+  - Determinanti: Alexandre-Théophile Vandermonde (1735–1796), Laplace, Cauchy, Carl Gustav Jacob Jacobi (1804–1851)
+  - Gauss: eliminazione gaussiana per sistemi lineari
+  - Cayley: calcolo matriciale (1858), matrice inversa, prodotto
+  - James Joseph Sylvester (1814–1897): algebra delle invarianti, termine "matrice", rango, teorema di Sylvester (legge d'inerzia delle forme quadratiche)
+  - William Rowan Hamilton (1805–1865): quaternioni (1843, i^2=j^2=k^2=ijk=-1); ottonioni, algebra non commutativa
+  - Hermann Grassmann (1809–1877): *Ausdehnungslehre* (1844, 1862): algebra multilineare, spazi vettoriali astratti, prodotto esterno
+  - Ferdinand Georg Frobenius (1849–1917): teoria delle rappresentazioni, teorema di Frobenius sui corpi associativi con divisione su ℝ (solo ℝ, ℂ, ℍ)
+  - Autovalori, autovettori, diagonalizzazione: Weierstrass (forma canonica delle matrici), Frobenius (polinomio minimo)
+  - Eugenio Beltrami (1835–1900): decomposizione ai valori singolari
+- Anelli e ideali
+  - Richard Dedekind: ideali, domini di Dedekind, fattorizzazione unica di ideali in ideali primi (1871, supplementi a Dirichlet *Vorlesungen über Zahlentheorie*)
+  - Leopold Kronecker (1823–1891): approccio costruttivo ("Dio creò i numeri interi, tutto il resto è opera dell'uomo"), divisori ideali, teoria delle forme
+  - David Hilbert (1862–1943):
+    - Teorema della base di Hilbert (anelli di polinomi noetheriani)
+    - Nullstellensatz (teorema degli zeri, collegamento geometria algebrica–algebra commutativa)
+    - Teoria degli invarianti (teorema di finitezza di Hilbert)
+    - *Zahlbericht* (1897): sintesi teoria algebrica dei numeri
+- Algebre di Lie e gruppi continui
+  - Sophus Lie (1842–1899): gruppi di trasformazioni continui, simmetrie di equazioni differenziali, riduzione di ordine; algebra di Lie associata
+  - Wilhelm Killing (1847–1923): classificazione delle algebre di Lie semplici su ℂ (1890), radici, diagrammi di Dynkin (poi sistematizzati da Dynkin)
+  - Élie Cartan (1869–1951): prolungamento teoria di Killing, algebre semisemplici, classificazione gruppi di Lie semplici, spazi simmetrici, teoria delle rappresentazioni, forme differenziali
+- Quaternioni e algebre non associative
+  - Hamilton, Graves (ottonioni), Cayley (algebra di Cayley)
+  - John T. Graves: ottonioni (1843)
+  - Arthur Cayley: algebra delle matrici, ottetti
+## 6.5 Teoria dei numeri
+- Carl Friedrich Gauss (1777–1855)
+  - *Disquisitiones Arithmeticae* (1801, a 24 anni):
+    - Congruenze, aritmetica modulare (notazione a ≡ b (mod m))
+    - Legge di reciprocità quadratica (prima dimostrazione completa; otto dimostrazioni in vita di Gauss)
+    - Forme quadratiche binarie: equivalenza, riduzione, composizione
+    - Radici primitive, criteri
+    - Numeri poligonali, equazioni diofantee
+    - Ciclotomia: condizione per costruibilità poligoni regolari con riga e compasso (n prodotto di primi di Fermat distinti × potenza di 2)
+  - Metodo dei minimi quadrati (con Legendre)
+  - Primo teorema di Gauss (geometria differenziale: Theorema Egregium, curvatura intrinseca)
+  - Funzioni ellittiche (lemniscatica), media aritmetico-geometrica
+  - Congettura dei numeri primi (π(x) ~ x/log x, formulata come congettura)
+- Johann Peter Gustav Lejeune Dirichlet (1805–1859)
+  - Teorema sulle progressioni aritmetiche: esistono infiniti primi in ogni progressione a + nd con (a,d)=1 (1837, usa serie L e analisi armonica)
+  - Principio dei cassetti (Dirichlet's box principle)
+  - Condizioni al contorno di Dirichlet per PDE
+- Ernst Eduard Kummer (1810–1893)
+  - Teoria degli ideali (ideali ideali) per ristabilire l'unicità della fattorizzazione in anelli di interi algebrici (campi ciclotomici)
+  - Dimostrazione dell'Ultimo Teorema di Fermat per numeri primi "regolari" (1850)
+  - Superfici di Kummer
+- Bernhard Riemann: funzione zeta, ipotesi di Riemann; formula esplicita per π(x) (1859)
+- Richard Dedekind: ideali, interi algebrici, fondazione moderna della teoria algebrica dei numeri
+- Leopold Kronecker: *Jugendtraum* (congettura di Kronecker–Weber: ogni estensione abeliana di ℚ è contenuta in un campo ciclotomico; dimostrata da Weber, Hilbert)
+- Pafnuty Chebyshev (1821–1894):
+  - Disuguaglianza di Chebyshev (probabilità)
+  - Teorema di Bertrand–Chebyshev: esiste sempre un primo tra n e 2n (dimostrato 1852)
+  - Stime per π(x): c1 x/log x < π(x) < c2 x/log x
+- Charles Hermite: trascendenza di *e* (1873)
+- Ferdinand von Lindemann: trascendenza di π (1882)
+- Hermann Minkowski (1864–1909):
+  - Geometria dei numeri (1896, *Geometrie der Zahlen*): teorema di Minkowski sui corpi convessi; applicazione a forme quadratiche, approssimazione diofantea
+  - Spazio-tempo di Minkowski (1908, per relatività ristretta)
+- Adolf Hurwitz (1859–1919): teorema di Hurwitz (approssimabilità numeri irrazionali); algebre a divisione
+- Heinrich Weber (1842–1913): teoria dei campi di classi (abbozzo), *Lehrbuch der Algebra*
+## 6.6 Geometria
+- Geometria proiettiva
+  - Jean-Victor Poncelet (1788–1867): *Traité des propriétés projectives des figures* (1822): principio di dualità, punti ciclici, principio di continuità
+  - Jakob Steiner (1796–1863): "il più grande geometra dai tempi di Apollonio"; metodi sintetici, teorema di Steiner sulle coniche, catenaria
+  - Karl von Staudt (1798–1867): geometria proiettiva puramente di incidenza, senza metriche (1847: *Geometrie der Lage*)
+  - Michel Chasles (1793–1880): *Aperçu historique* (1837), rapporto anarmonico, omografia
+- Geometrie non euclidee e assolute
+  - Nikolai Lobachevsky (1792–1856): sviluppo autonomo della geometria iperbolica (1826, primo annuncio; 1829–30 pubblicazioni)
+  - János Bolyai (1802–1860): sviluppo indipendente (1832, *Appendix* al libro del padre Farkas Bolyai)
+  - Carl Friedrich Gauss: già in possesso dei concetti di geometria non euclidea dal 1810–20 (lettere private), ma non pubblica per timore delle "strida dei beoti"
+  - Bernhard Riemann: *Über die Hypothesen, welche der Geometrie zu Grunde liegen* (1854, pubbl. 1868):
+    - Concetto di varietà n-dimensionale, metrica, tensore di curvatura
+    - Geometria ellittica (curvatura positiva), casi a curvatura costante
+  - Eugenio Beltrami (1868): *Saggio di interpretazione della geometria non-euclidea* (modello del disco di Beltrami–Klein per geometria iperbolica); mostra consistenza relativa (se euclidea è consistente, anche iperbolica lo è)
+  - Felix Klein (1849–1925):
+    - *Über die sogenannte nicht-euklidische Geometrie* (1871): modello proiettivo della geometria iperbolica
+    - Programma di Erlangen (1872): "La geometria è lo studio degli invarianti sotto un gruppo di trasformazioni". Classificazione geometrie (euclidea, affine, proiettiva, conforme, etc.) in base ai gruppi.
+  - Henri Poincaré (1854–1912): modello del disco di Poincaré per geometria iperbolica, automorfismi, gruppi fuchsiani
+- Geometria algebrica antica
+  - Riemann: superfici di Riemann, teorema di Riemann–Roch per curve (1857)
+  - Alfred Clebsch (1833–1872): geometria algebrica e teoria degli invarianti; superficie di Clebsch (superficie cubica con 27 rette)
+  - Paul Gordan (1837–1912): "re della teoria degli invarianti"; teorema di finitezza di Gordan–Hilbert
+  - Max Noether (1844–1921): teorema di Max Noether (condizioni per passaggio di una curva per le intersezioni di altre), geometria su superficie; padre di Emmy Noether
+  - Scuola italiana di geometria algebrica:
+    - Guido Castelnuovo (1865–1952): teorema di Castelnuovo–Enriques, razionalità superfici
+    - Federigo Enriques (1871–1946): classificazione superfici algebriche, *Lezioni di geometria algebrica*
+    - Francesco Severi (1879–1961): fondamenti geometria algebrica, equivalenza razionale, serie lineari
+    - Luigi Cremona (1830–1903): trasformazioni birazionali (cremoniane) del piano
+    - Corrado Segre (1863–1924): varietà pluritangenti, superficie rigate
+  - Alexander von Brill (1842–1935), Max Noether: sviluppo della geometria su curve
+- Geometria differenziale classica
+  - Gauss: *Disquisitiones generales circa superficies curvas* (1828): curvatura gaussiana, Theorema Egregium (curvatura è intrinseca)
+  - Gaspard Mainardi (1800–1879) e Delfino Codazzi (1824–1873): equazioni di Mainardi–Codazzi
+  - Pierre Ossian Bonnet (1819–1892): teorema di Gauss–Bonnet per superfici
+  - Jean-Gaston Darboux (1842–1917): *Leçons sur la théorie générale des surfaces* (4 vol., 1887–1896): tetraedro di Darboux, coordinate di Darboux
+  - Luigi Bianchi (1856–1928): identità di Bianchi per tensore di curvatura
+## 6.7 Topologia nascente
+- Johann Benedict Listing (1808–1882): conio del termine "topologia" (1847, *Vorstudien zur Topologie*); nastro di Möbius (descritto indipendentemente da Möbius, 1858)
+- August Ferdinand Möbius (1790–1868): nastro di Möbius, funzione di Möbius (teoria dei numeri), principio di dualità
+- Bernhard Riemann: topologia delle superfici (genere), connessione (semplicemente connesso, etc.)
+- Enrico Betti (1823–1892): numeri di Betti per varietà n-dimensionali (1871), gruppi di omologia (precursore)
+- Henri Poincaré (1854–1912):
+  - *Analysis Situs* (1895) e 5 supplementi (1899–1904): fondazione della topologia algebrica (o "analysis situs")
+  - Gruppo fondamentale (π_1)
+  - Omologia (numeri di Betti, coefficienti di torsione)
+  - Congettura di Poincaré: ogni 3-varietà chiusa semplicemente connessa è omeomorfa a S^3 (1904)
+  - Teoria qualitativa delle equazioni differenziali
+- Camille Jordan (1838–1922): teorema di Jordan per curve piane (dimostrazione rigorosa 1887)
+## 6.8 Fondamenti e logica matematica
+- George Boole (1815–1864):
+  - *The Mathematical Analysis of Logic* (1847), *An Investigation of the Laws of Thought* (1854): algebra della logica, logica proposizionale come algebra (0/1, AND/OR/NOT)
+- Augustus De Morgan (1806–1871): leggi di De Morgan, logica delle relazioni
+- Gottlob Frege (1848–1925):
+  - *Begriffsschrift* (1879): logica dei predicati, quantificatori, sistema formale
+  - *Die Grundlagen der Arithmetik* (1884): riduzione dell'aritmetica alla logica (logicismo)
+  - *Grundgesetze der Arithmetik* (1893, 1903): tentativo di assiomatizzazione; paradosso di Russell (1902) mina il sistema (V legge fondamentale)
+- Giuseppe Peano (1858–1932):
+  - Assiomi di Peano (1889, *Arithmetices principia, nova methodo exposita*): 9 assiomi per numeri naturali (0, successore, induzione)
+  - *Formulario mathematico* (1895–1908): progetto di enciclopedia in simboli
+  - Curva di Peano (1890): curva continua che riempie il quadrato
+- Georg Cantor: teoria degli insiemi (v. sopra)
+- Richard Dedekind: catene, assiomi di Peano–Dedekind
+- Bertrand Russell (1872–1970):
+  - Paradosso di Russell (1901): l'insieme di tutti gli insiemi che non appartengono a sé stessi
+  - *Principia Mathematica* (con Alfred North Whitehead, 1910–1913): tentativo di fondare la matematica sulla teoria dei tipi (ramificata) + assioma di riducibilità
+  - Teoria delle descrizioni definite
+- Alfred North Whitehead (1861–1947): *Principia*, *Process and Reality*
+- David Hilbert:
+  - *Grundlagen der Geometrie* (1899): assiomatizzazione completa della geometria euclidea (20 assiomi in 5 gruppi, senza ricorso a intuizione)
+  - Programma di Hilbert (1900–1930): fondazione finitista della matematica, Entscheidungsproblem (problema della decisione), consistenza, completezza
+  - 23 problemi di Hilbert (Congresso Internazionale di Matematica, Parigi 1900): guida della matematica del XX sec.
+- LEJ Brouwer (1881–1966): intuizionismo, rifiuto del principio del terzo escluso per infinito; topologia (teorema del punto fisso di Brouwer, 1911)
+## 6.9 Probabilità e statistica
+- Pierre-Simon Laplace, Gauss (distribuzione normale, minimi quadrati)
+- Siméon Denis Poisson (1781–1840): distribuzione di Poisson (1837, *Recherches sur la probabilité des jugements*); legge dei grandi numeri per probabilità variabili
+- Pafnuty Chebyshev: disuguaglianza di Chebyshev, legge dei grandi numeri con condizioni deboli
+- Andrey Markov (1856–1922): catene di Markov (1906, sequenze di esperimenti dipendenti); analisi dei testi (applicazione della catena a "Eugene Onegin")
+- Alexander Lyapunov (1857–1918): teorema centrale del limite sotto condizioni generali (1901, condizione di Lyapunov)
+- Francis Galton (1822–1911): correlazione, regressione verso la media, studi sull'ereditarietà, eugenetica
+- Karl Pearson (1857–1936): coefficiente di correlazione prodotto-momento di Pearson, test chi-quadro (χ²), biometria, *Biometrika* (rivista)
+- Thorvald N. Thiele (1838–1910): teoria della stima, cumulanti
+- F.Y. Edgeworth (1845–1926): espansione di Edgeworth per distribuzioni
+## 6.10 Meccanica e fisica matematica
+- William Rowan Hamilton: meccanica hamiltoniana, equazioni di Hamilton
+- Carl Gustav Jacobi: equazione di Hamilton–Jacobi, integrali completi
+- Sofia Kovalevskaya (1850–1891): teorema di Cauchy–Kovalevskaya per PDE; moto del corpo rigido con un punto fisso (trottola di Kovalevskaya)
+- Heinrich Hertz (1857–1894): meccanica senza forze, onde elettromagnetiche
+- Lord Kelvin (William Thomson, 1824–1907): analisi di Fourier, cavi transatlantici, armoniche sferiche
+- James Clerk Maxwell (1831–1879): equazioni di Maxwell (elettromagnetismo), teoria cinetica dei gas, distribuzione di Maxwell–Boltzmann
+- Josiah Willard Gibbs (1839–1903): meccanica statistica, vettori, calcolo vettoriale moderno (con Heaviside)
+## 6.11 Teoria delle equazioni differenziali
+- Equazioni ordinarie:
+  - Teorema di esistenza e unicità di Cauchy–Lipschitz (Cauchy, Lipschitz, Picard)
+  - Metodo delle approssimazioni successive di Picard–Lindelöf
+  - Sturm–Liouville: teoria spettrale per operatori differenziali ordinari (1836–37)
+- PDE:
+  - Classificazione in ellittiche, paraboliche, iperboliche
+  - Metodo di Fourier (separazione variabili)
+  - Funzioni di Green (George Green, 1793–1841)
+  - Principio di Dirichlet e critica di Weierstrass
+
+# 7. Prima metà del Novecento
+## 7.1 Fondamenti e logica
+- David Hilbert (1862–1943)
+  - Programma formalista: assiomatizzazione completa, consistenza, decidibilità
+  - 23 problemi (1900)
+  - *Grundlagen der Mathematik* (con Paul Bernays, 1934, 1939)
+  - Calcolo epsilon
+- Kurt Gödel (1906–1978)
+  - Teorema di completezza della logica del prim'ordine (1929, dissertazione)
+  - Teoremi di incompletezza (1931, *Über formal unentscheidbare Sätze...*):
+    - Primo: in ogni sistema formale coerente contenente aritmetica, esistono proposizioni vere ma non dimostrabili
+    - Secondo: un sistema coerente non può dimostrare la propria coerenza
+  - Consistenza relativa dell'assioma di scelta e dell'ipotesi generalizzata del continuo (GCH) con ZF (1938, costruzione dell'universo L, costruttibile)
+- Alfred Tarski (1901–1983):
+  - Semantica logica (teoria dei modelli, definizione di verità in strutture, *Der Wahrheitsbegriff* 1933)
+  - Decidibilità della geometria elementare e dei campi reali chiusi (teorema di Tarski–Seidenberg)
+  - Algebra universale, teoria degli insiemi
+- Alonzo Church (1903–1995):
+  - Lambda calcolo (1932–36)
+  - Tesi di Church–Turing: le funzioni effettivamente calcolabili sono quelle ricorsive generali (o lambda-definibili)
+  - Dimostrazione dell'indecidibilità della logica del prim'ordine (1936)
+- Alan Turing (1912–1954):
+  - *On Computable Numbers* (1936): macchina di Turing, problema dell'arresto (indecidibile), macchina universale
+  - Contributi alla crittoanalisi (Enigma, seconda guerra mondiale)
+  - Test di Turing (IA)
+- Emil Post (1897–1954): sistemi di Post, problema della corrispondenza di Post, gradi di insolubilità
+- Logica combinatoria: Moses Schönfinkel, Haskell Curry
+- Teoria della dimostrazione
+  - Gerhard Gentzen (1909–1945): calcolo dei sequenti, deduzione naturale, Hauptsatz (teorema di eliminazione del taglio); dimostrazione della coerenza dell'aritmetica usando induzione transfinita fino a ε₀ (1936)
+  - Jacques Herbrand (1908–1931): teorema di Herbrand, strutture di Herbrand
+- Teoria dei modelli
+  - Leopold Löwenheim, Thoralf Skolem: teorema di Löwenheim–Skolem (1915–1920)
+  - Compatibilità e compattezza (Gödel, Maltsev)
+- Teoria assiomatica degli insiemi
+  - Ernst Zermelo (1871–1953): assiomatizzazione (1908, Zermelo set theory)
+  - Adolf Fraenkel (1891–1965): aggiunta assioma di rimpiazzamento → ZF
+  - Assioma della scelta (C): ZF + C = ZFC
+  - John von Neumann (1903–1957): sistema NBG (Neumann–Bernays–Gödel), ordinali come insiemi ben fondati, funzioni
+  - Kurt Gödel: universo L (1938)
+  - Paul Cohen (1934–2007): metodo del forcing (1963), dimostrazione indipendenza dell'ipotesi del continuo e dell'assioma della scelta da ZF
+- Scuole di fondazione
+  - Logicismo: Frege, Russell, Whitehead
+  - Formalismo: Hilbert
+  - Intuizionismo: Brouwer, Arend Heyting (logica intuizionista, 1930)
+## 7.2 Algebra moderna
+- Emmy Noether (1882–1935)
+  - Anelli noetheriani (condizione della catena ascendente)
+  - Teorema di struttura per anelli con condizioni di catena: ogni anello commutativo noetheriano è decomponibile come intersezione di primari (teorema di Lasker–Noether)
+  - *Idealtheorie in Ringbereichen* (1921)
+  - Leggi di conservazione ↔ simmetrie (teorema di Noether, 1918, in fisica)
+  - Algebra moderna: moduli, ideali, algebra omologica
+- Emil Artin (1898–1962): algebra astratta, campi (teoria di Galois), anelli artiniani, funzioni L di Artin, reciprocità di Artin
+- Bartel Leendert van der Waerden (1903–1996):
+  - *Moderne Algebra* (1930, 2 volumi): sintesi monumentale basata sui corsi di Noether e Artin; testo di riferimento per generazioni
+- Teoria dei gruppi
+  - Gruppi finiti: William Burnside (problema di Burnside: gruppi finitamente generati di esponente finito sono finiti? Risposta negativa 1964), Philip Hall (sottogruppi di Hall, gruppi risolubili)
+  - Teorema di Feit–Thompson (1963): ogni gruppo finito di ordine dispari è risolubile (255 pagine)
+  - Classificazione dei gruppi semplici finiti (programma 1955–2004, decine di migliaia di pagine): gruppi ciclici di ordine primo, gruppi alternanti, gruppi di tipo Lie, 26 gruppi sporadici (di cui il "Mostro" di ordine ~8·10^53)
+- Algebre di Lie
+  - Classificazione riveduta: Eugen Dynkin (diagrammi di Dynkin, 1947)
+  - Claude Chevalley (1909–1984): gruppi algebrici, gruppi di Chevalley
+- Teoria delle rappresentazioni
+  - Issai Schur (1875–1941): lemma di Schur, funzioni di Schur (combinatoria)
+  - Hermann Weyl (1885–1955): *The Classical Groups* (1939), formula dei caratteri di Weyl, teoria delle rappresentazioni di gruppi compatti e algebre di Lie
+  - Richard Brauer (1901–1977): teoria modulare delle rappresentazioni, caratteri di Brauer
+## 7.3 Analisi funzionale
+- David Hilbert: spazi di Hilbert (ℓ², L²), equazioni integrali, spettro di operatori
+- Erhard Schmidt (1876–1959): processo di ortogonalizzazione di Gram–Schmidt
+- Frigyes Riesz (1880–1956): teorema di rappresentazione di Riesz (funzionali lineari su spazi di Hilbert); spazi L^p
+- Stefan Banach (1892–1945)
+  - *Théorie des opérations linéaires* (1932): spazi di Banach (spazi normati completi)
+  - Teorema di Hahn–Banach (estensione di funzionali lineari, con Hans Hahn, 1927)
+  - Teorema di Banach–Steinhaus (principio di uniforme limitatezza, con Hugo Steinhaus, 1927)
+  - Teorema della mappa aperta, teorema del grafico chiuso
+  - Paradosso di Banach–Tarski (con Alfred Tarski, 1924)
+- Hugo Steinhaus (1887–1972): fondatore della scuola matematica di Lwów
+- Leonidas Alaoglu (1914–1981): teorema di Banach–Alaoglu (compattezza debole-* della palla unitaria nel duale)
+- John von Neumann
+  - Algebra degli operatori (anelli di operatori, 1929–36)
+  - Teorema spettrale per operatori autoaggiunti non limitati (con Marshall Stone?)
+  - Teoria ergodica (teorema ergodico medio, 1932)
+  - Meccanica quantistica: formalizzazione matematica (spazi di Hilbert, 1932 *Mathematische Grundlagen der Quantenmechanik*)
+- Marshall Stone (1903–1989): teorema di rappresentazione di Stone per algebre booleane; dualità di Stone; teorema di Stone–Weierstrass
+- Andrey Kolmogorov: spazi di Kolmogorov, teorema di Kolmogorov–Arnold–Moser, probabilità
+- Israel Gelfand (1913–2009): teoria delle algebre di Banach commutative (trasformata di Gelfand), analisi armonica
+- Mark Krein (1907–1989): teorema di Krein–Milman
+- Shizuo Kakutani (1911–2004): teorema del punto fisso di Kakutani
+## 7.4 Topologia
+- Topologia generale
+  - Felix Hausdorff (1868–1942): *Grundzüge der Mengenlehre* (1914), spazi di Hausdorff (T2), spazi metrici, assiomi di separazione
+  - Pavel Urysohn (1898–1924): lemma di Urysohn (funzione continua che separa chiusi in spazi normali), dimensione topologica (teoria di Menger–Urysohn)
+  - Andrey Tychonoff (1906–1993): teorema di Tychonoff (prodotto di spazi compatti è compatto, equivalente all'assioma della scelta); spazi di Tychonoff (completamente regolari)
+  - Lev Pontryagin (1908–1988): dualità di Pontryagin per gruppi abeliani localmente compatti
+- Topologia algebrica
+  - Gruppo fondamentale: Poincaré, Max Dehn (teorema di Dehn, geometria iperbolica), Seifert–van Kampen (teorema di Seifert–van Kampen, 1931)
+  - Omologia: Emmy Noether (interpretazione gruppale: gruppi di omologia invece di numeri di Betti), Leopold Vietoris, James W. Alexander (dualità di Alexander, invariante di Alexander per nodi)
+  - Solomon Lefschetz (1884–1972): teorema del punto fisso di Lefschetz (1926)
+  - Coomologia: Kolmogorov, Alexander, Hassler Whitney (prodotti cup, 1938), Eilenberg–MacLane (assiomi di Eilenberg–Steenrod per omologia/coomologia, 1945; spazi di Eilenberg–MacLane K(G,n))
+  - Norman Steenrod (1910–1971): algebra di Steenrod, quadrati di Steenrod
+  - Teoria dei fibrati: fibrati vettoriali, classi caratteristiche (Stiefel–Whitney, Pontryagin, Chern – vedi dopo)
+  - Teoria dell'ostruzione
+- Teoria dei nodi
+  - James W. Alexander: polinomio di Alexander (1928)
+  - Kurt Reidemeister (1893–1971): mosse di Reidemeister, *Knotentheorie* (1932)
+  - Max Dehn: lemma di Dehn (dimostrato rigorosamente più tardi da Papakyriakopoulos, 1957)
+## 7.5 Geometria differenziale e riemanniana
+- Tullio Levi-Civita (1873–1941): derivata covariante, trasporto parallelo (1917, *Nozione di parallelismo in una varietà qualunque*)
+- Gregorio Ricci-Curbastro (1853–1925): calcolo differenziale assoluto (tensoriale)
+- Albert Einstein (1879–1955): relatività generale (1915), equazioni di campo
+- Élie Cartan: forme differenziali, derivata esterna, metodo del triedro mobile; geometria di Cartan, connessioni su fibrati principali; spazi simmetrici
+- Hermann Weyl: connessione affine, teoria di gauge (1918, tentativo di unificazione gravità/elettromagnetismo)
+- William Hodge (1903–1975): teorema di Hodge (1941, decomposizione di forme differenziali su varietà compatte in armoniche, esatte, co-esatte)
+- Georges de Rham (1903–1990): teorema di de Rham (1931): coomologia di de Rham isomorfa all'omologia singolare reale
+- Heinz Hopf (1894–1971): fibrazione di Hopf (S^3 → S^2), invariante di Hopf, teorema di Hurewicz
+- Charles Ehresmann (1905–1979): fibrati, getti, connessioni
+- Jan Schouten (1883–1971): analisi tensoriale
+## 7.6 Probabilità e statistica
+- Andrey Kolmogorov (1903–1987):
+  - *Grundbegriffe der Wahrscheinlichkeitsrechnung* (1933): assiomatizzazione della probabilità basata sulla teoria della misura (spazio di probabilità (Ω, ℱ, P))
+  - Processi stocastici, equazioni di Chapman–Kolmogorov
+  - Teorema di Kolmogorov–Arnold–Moser (KAM, 1954)
+- Processi stocastici:
+  - Norbert Wiener (1894–1964): processo di Wiener (moto browniano matematico, 1923), integrazione di Wiener; cibernetica
+  - Paul Lévy (1886–1971): processi di Lévy, distribuzioni stabili, moto browniano e subordinazione
+  - Kiyosi Itô (1915–2008): calcolo stocastico (integrale di Itô, 1944), lemma di Itô, equazioni differenziali stocastiche
+  - Aleksandr Khinchin (1894–1959): legge del logaritmo iterato, processi stocastici
+- Statistica matematica:
+  - Ronald A. Fisher (1890–1962): verosimiglianza (maximum likelihood), informazione di Fisher, disegno sperimentale, analisi della varianza (ANOVA), statistica sufficiente
+  - Jerzy Neyman (1894–1981), Egon Pearson (1895–1980): teoria dei test di ipotesi (lemma di Neyman–Pearson, 1933), intervalli di confidenza
+  - Abraham Wald (1902–1950): decisioni statistiche, test sequenziale (1945), funzioni di decisione
+  - Harald Cramér (1893–1985): teorema di Cramér–Rao (disuguaglianza per varianza stimatori), teorie asintotiche
+  - Bruno de Finetti (1906–1985): probabilità soggettiva, teorema di rappresentazione per scambiabilità (1937)
+## 7.7 Teoria dei numeri moderna
+- G. H. Hardy (1877–1947), J. E. Littlewood (1885–1977):
+  - Metodo del cerchio per partizioni (Hardy–Ramanujan, 1918: formula asintotica per p(n))
+  - Problemi di Waring: ogni intero è somma di g(k) k-esime potenze (dimostrazione per k sufficientemente grande, anni '20)
+  - Congettura di Goldbach, congettura dei primi gemelli
+  - Funzione zeta e teoria analitica
+- Srinivasa Ramanujan (1887–1920):
+  - Partizioni: formula asintotica con Hardy; identità di Rogers–Ramanujan
+  - Funzione tau di Ramanujan (τ(n)), forme modulari
+  - Numeri altamente composti
+  - Somme di Ramanujan, identità ipergeometriche
+  - Quaderni di Ramanujan (fonte di ricerche continue)
+- Teoria algebrica dei numeri:
+  - Kurt Hensel (1861–1941): numeri p-adici (1897)
+  - Helmut Hasse (1898–1979): principio di Hasse (local-global) per forme quadratiche; funzioni zeta di Hasse–Weil
+  - Emil Artin: legge di reciprocità di Artin (1927), funzioni L di Artin
+  - Teiji Takagi (1875–1960): teoria dei campi di classi (1920)
+  - Carl Ludwig Siegel (1896–1981): forme modulari, teoria analitica dei numeri, equazioni diofantee (teorema di Siegel)
+- André Weil (1906–1998):
+  - Teorema di Riemann–Roch per curve su campi finiti (1940, lettera dalla prigione)
+  - Congetture di Weil (1949): analogia con topologia, funzioni zeta di varietà su campi finiti; dimostrate poi da Dwork, Grothendieck, Deligne
+- Teoria analitica dei numeri:
+  - Ivan Vinogradov (1891–1983): teorema di Vinogradov (ogni intero dispari sufficientemente grande è somma di tre primi, 1937)
+  - Yuri Linnik (1915–1972): teorema di Linnik, metodo del crivello grande
+  - Viggo Brun (1885–1978): crivello di Brun, teorema di Brun (somma dei reciproci dei primi gemelli converge)
+  - Atle Selberg (1917–2007): crivello di Selberg, formula traccia di Selberg, dimostrazione elementare del teorema dei numeri primi (con Erdős, 1949)
+  - Paul Erdős (1913–1996): teorema dei numeri primi elementare con Selberg; innumerevoli contributi in combinatoria, teoria dei numeri, probabilità
+## 7.8 Analisi
+- Analisi reale:
+  - Misura e integrale di Lebesgue, spazi L^p
+  - Teoria della misura astratta: Johann Radon (1887–1956), Otton Nikodym (1887–1974): teorema di Radon–Nikodym
+  - Funzioni a variazione limitata, assoluta continuità
+  - Spazi di Sobolev (Sergei Sobolev, 1908–1989, a partire anni '30)
+- Analisi complessa in più variabili:
+  - Friedrich Hartogs (1874–1943): fenomeno di Hartogs (continuazione analitica)
+  - Henri Cartan (1904–2008): fasci coerenti (Teoremi A e B di Cartan, 1950s)
+  - Kiyoshi Oka (1901–1978): problemi di Cousin, domini di olomorfia
+- Equazioni differenziali parziali:
+  - Richard Courant (1888–1972), David Hilbert: *Methoden der mathematischen Physik* (1924)
+  - Jacques Hadamard (1865–1963): problema di Cauchy ben posto, propagazione singolarità, disuguaglianza di Hadamard
+  - Sergej Sobolev: soluzioni deboli, spazi di Sobolev, immersione di Sobolev
+  - Kurt Friedrichs (1901–1982): estensioni di Friedrichs, regolarità ellittica
+## 7.9 Analisi geometrica e variazionale
+- Calcolo delle variazioni moderno:
+  - Leonida Tonelli (1885–1946): semicontinuità inferiore, teoremi di esistenza
+  - Richard Courant: principio di Dirichlet rivisitato
+  - Herbert Federer (1920–2010), Wendell Fleming: teoria geometrica della misura (correnti, insiemi di perimetro finito)
+- Teoria del potenziale: Otto Frostman, Marcel Riesz
+## 7.10 Logica e informatica
+- Claude Shannon (1916–2001): *A Mathematical Theory of Communication* (1948), teoria dell'informazione, algebra booleana per circuiti digitali (tesi 1937)
+- Norbert Wiener: cibernetica (1948)
+- John von Neumann: architettura di von Neumann (1945), teoria dei giochi (con Morgenstern, 1944), automa cellulare, affidabilità
+- Alan Turing: *Computing Machinery and Intelligence* (1950), test di Turing
+
+# 8. Seconda metà del Novecento
+## 8.1 Geometria algebrica e algebra commutativa
+- Alexander Grothendieck (1928–2014)
+  - Rinnovamento della geometria algebrica con linguaggio categoriale e topologico
+  - *Éléments de géométrie algébrique* (EGA, 1960–67, con Jean Dieudonné): fondazione con schemi, fascio strutturale, spazi anellati
+  - *Séminaire de Géométrie Algébrique du Bois-Marie* (SGA 1–7, 1960–69): coomologia étale, topoi, coomologia cristallina, teoria della discesa, gruppo fondamentale étale
+  - Motivi (congetture standard, categoria dei motivi)
+  - Teorie di coomologia di Weil
+- Jean-Pierre Serre (1926– )
+  - *Faisceaux Algébriques Cohérents* (FAC, 1955): coomologia dei fasci in geometria algebrica
+  - *Géométrie algébrique et géométrie analytique* (GAGA, 1956): confronto tra caso algebrico e analitico su ℂ
+  - Algebra omologica, gruppi di omotopia, teoria dei numeri
+- Pierre Deligne (1944– )
+  - Dimostrazione congettura di Weil (III) (1974) usando coomologia étale, formule delle tracce di Grothendieck
+  - Teoria di Hodge mista: strutture di Hodge su varietà non necessariamente compatte/lisce
+  - Cicli evanescenti, fasci perversi (con Goresky e MacPherson)
+  - Congetture di Weil II, programma di Langlands geometrico
+- David Mumford (1937– )
+  - Teoria geometrica degli invarianti (GIT, 1965): quozienti di varietà per azioni di gruppi
+  - Varietà abeliane, compatificazione di moduli
+  - Curve algebriche, theta-funzioni
+- Oscar Zariski (1899–1986): topologia di Zariski, superfici algebriche, risoluzione singolarità in caratteristica zero (parziale)
+- Heisuke Hironaka (1931– ): risoluzione delle singolarità in caratteristica zero (1964, Fields)
+- Kunihiko Kodaira (1915–1997): classificazione varietà complesse compatte (superfici di Kodaira, teorema di annullamento di Kodaira)
+- Michael Atiyah (1929–2019), Isadore Singer (1924–2021): teorema dell'indice (1963) applicato a superfici di Riemann, geometria algebrica
+- Algebra commutativa:
+  - Anelli locali, regolari, completamenti
+  - Profondità, anelli di Cohen–Macaulay (Francis Sowerby Macaulay, 1916)
+  - Moduli di Cohen–Macaulay massimali
+  - Complessi di Koszul, omologia di Hochschild
+  - Teoria delle intersezioni (William Fulton, 1984)
+  - Dualità di Grothendieck
+## 8.2 Topologia e geometria differenziale
+- Teoria di Morse: Marston Morse (1892–1977); applicazioni di:
+  - Stephen Smale (1930– ): teorema h-cobordismo, dimostrazione congettura di Poincaré in dimensione ≥5 (1961, Fields 1966); ferro di cavallo, stabilità strutturale
+  - Raoul Bott (1923–2005): teorema di periodicità di Bott (1957) per gruppi unitari e ortogonali infiniti; formula del punto fisso di Atiyah–Bott
+- John Milnor (1931– )
+  - Sfere esotiche (1956): esistenza di strutture differenziabili non standard su S^7 (28 classi)
+  - *Topology from the Differentiable Viewpoint* (1965)
+  - K-teoria, teorema di Milnor–Moore, congettura di Milnor (forme quadratiche, dimostrata da Voevodsky)
+  - Dinamica olomorfa
+- René Thom (1923–2002)
+  - Teoria del cobordismo: classificazione delle varietà compatte chiuse tramite cobordismo (1954, Fields 1958)
+  - Teoria delle catastrofi (1972)
+- Classi caratteristiche:
+  - Shiing-Shen Chern (1911–2004): classi di Chern (1946), teorema di Gauss–Bonnet–Chern, geometria differenziale
+  - Lev Pontryagin (1908–1988): classi di Pontryagin
+  - Eduard Stiefel (1909–1978), Hassler Whitney (1907–1989): classi di Stiefel–Whitney
+- Friedrich Hirzebruch (1927–2012):
+  - Teorema di Hirzebruch–Riemann–Roch (1954): formula per la caratteristica di Eulero di un fibrato olomorfo su varietà complessa compatta in termini di classi di Chern
+  - Genere L, segnatura, *Topological Methods in Algebraic Geometry* (1956)
+  - Superfici di Hirzebruch
+- Teorema dell'indice di Atiyah–Singer (1963, Fields per Atiyah 1966, Abel per entrambi 2004):
+  - Indice analitico = indice topologico per operatori ellittici su varietà compatte
+  - Applicazioni a topologia, geometria, fisica
+- Raoul Bott: periodicità di Bott (1957), dualità di Bott–Samelson
+- Michael Atiyah: K-teoria (cobordismo), *K-theory* (1967), teorema del punto fisso di Atiyah–Bott
+## 8.3 Analisi complessa e geometria
+- Varietà complesse:
+  - Metriche di Kähler: Erich Kähler (1906–2000)
+  - Classificazione di Kodaira
+- Teoria di Hodge su varietà kähleriane: decomposizione di Hodge, dualità di Poincaré, forme armoniche
+- Analisi complessa in più variabili:
+  - Henri Cartan: teoremi A e B di Cartan per fasci coerenti
+  - Hans Grauert (1930–2011): teoerema di Grauert (immagine diretta di fasci coerenti), varietà di Stein
+  - Reinhold Remmert (1930–2016): teoremi di Remmert–Stein, continuazione analitica
+- Shing-Tung Yau (1949– ):
+  - Teorema di Calabi (congettura di Calabi, 1978, Fields 1982): esistenza di metriche di Kähler–Einstein su varietà di Kähler con prima classe di Chern nulla → varietà di Calabi–Yau
+  - Disuguaglianza di isoperimetrica, teoremi di rigidità, analisi geometrica
+- Phillip Griffiths (1938– ): periodi di integrali, varietà algebriche, strutture di Hodge
+## 8.4 Sistemi dinamici e caos
+- Henri Poincaré: problemi a tre corpi, sezione di Poincaré, teoria qualitativa EDO
+- George David Birkhoff (1884–1944): teorema ergodico di Birkhoff (1931)
+- Stephen Smale: sistemi iperbolici, stabilità strutturale, ferro di cavallo di Smale, attrattori
+- Edward Lorenz (1917–2008): effetto farfalla, attrattore di Lorenz (1963), caos deterministico, equazioni di Lorenz
+- Kolmogorov–Arnold–Moser (KAM): teoria delle perturbazioni per sistemi quasi-integrabili (tori invarianti persistenti sotto piccole perturbazioni):
+  - Andrey Kolmogorov (1954)
+  - Vladimir Arnold (1937–2010): teorema KAM, singolarità, meccanica classica
+  - Jürgen Moser (1928–1999): versione analitica
+- Teoria ergodica:
+  - John von Neumann: teorema ergodico medio (1932)
+  - Kolmogorov–Sinai: entropia di Kolmogorov–Sinai (1958) e invarianza per isomorfismi
+  - Yakov Sinai (1935– ): gas di sfere dure, misure invarianti
+  - Hillel Furstenberg: sistemi dinamici e combinatoria (prova ergodica del teorema di Szemerédi, 1977)
+- Biforcazioni:
+  - Aleksandr Andronov, Evgenii Leontovich
+  - Henri Poincaré, René Thom, Vladimir Arnold (classificazioni di singolarità e biforcazioni, ADE)
+- Dinamica complessa:
+  - Pierre Fatou (1878–1929), Gaston Julia (1893–1978): insiemi di Julia e insieme di Fatou (1917–20)
+  - Benoit Mandelbrot (1924–2010): insieme di Mandelbrot (1980), geometria frattale (*The Fractal Geometry of Nature*, 1982)
+## 8.5 Analisi armonica
+- Laurent Schwartz (1915–2002):
+  - *Théorie des distributions* (1951): generalizzazione delle funzioni per includere delta di Dirac e derivate generalizzate; spazio delle funzioni test (𝒟) e distribuzioni (𝒟')
+- Analisi di Fourier su ℝ^n:
+  - Antoni Zygmund (1900–1992): *Trigonometric Series* (1935, 1959), scuola di Chicago
+  - Alberto Calderón (1920–1998), Antoni Zygmund: operatori integrali singolari, teoria di Calderón–Zygmund (1956)
+  - Elias M. Stein (1931–2018): integrali singolari, spazi di Hardy, funzioni massimali, analisi armonica su gruppi di Lie (Nilpotenti, ecc.)
+  - Charles Fefferman (1949– , Fields 1978): spazi di Hardy, disuguaglianza di Fefferman–Stein, analisi complessa in più variabili
+  - Terence Tao (1975– , Fields 2006): operatori di Hilbert, analisi armonica, PDE
+- Trasformata di Fourier su gruppi: George Mackey, Harish-Chandra
+## 8.6 Equazioni differenziali parziali (PDE)
+- Teoria del potenziale, problemi al contorno (Dirichlet, Neumann)
+- Soluzioni deboli e spazi funzionali:
+  - Sergej Sobolev (1908–1989): spazi di Sobolev (W^{k,p}), teoremi di immersione
+  - Laurent Schwartz: distribuzioni
+  - Formulazione variazionale, lemma di Lax–Milgram (Peter Lax, Arthur Milgram, 1954)
+  - Pierre-Louis Lions (1956– , Fields 1994): soluzioni di viscosità per equazioni di Hamilton–Jacobi, problemi variazionali
+- Metodi numerici:
+  - Metodo degli elementi finiti (FEM): Richard Courant (1943), poi ingegneri (Argyris, Turner, Clough, Zienkiewicz)
+  - Metodi spettrali, differenze finite
+- Analisi microlocale:
+  - Lars Hörmander (1931–2012, Fields 1962): operatori pseudodifferenziali, propagazione delle singolarità, teoremi di esistenza e regolarità per operatori differenziali lineari (4 volumi *The Analysis of Linear Partial Differential Operators*, 1983–85)
+  - Mikio Sato (1928–2023): analisi microlocale, D-moduli, funzioni ipergeometriche generalizzate
+- PDE non lineari:
+  - Olga Ladyzhenskaya (1922–2004): fluidodinamica, equazioni di Navier–Stokes
+  - James Serrin, Louis Nirenberg: equazioni ellittiche non lineari
+  - Luis Caffarelli (1948– ): problemi di frontiera libera, regolarità
+- Problemi di evoluzione:
+  - Equazioni di Navier–Stokes (Millennium problem)
+  - Equazioni di Einstein (evoluzione)
+  - Solitoni: equazione di Korteweg–de Vries (KdV), metodo di scattering inverso (Gardner, Greene, Kruskal, Miura, 1967); equazione di Schrödinger non lineare
+- Teoria spettrale per PDE: Barry Simon, Michael Reed
+## 8.7 Combinatoria e teoria dei grafi
+- Frank P. Ramsey (1903–1930): teorema di Ramsey (1930): per ogni colorazione finita di un insieme sufficientemente grande, esiste un sottoinsieme monocromatico di una data struttura
+- Teoria di Ramsey: Erdős, Rado, Graham, Rothschild
+- Paul Erdős (1913–1996):
+  - Combinatoria probabilistica (metodo probabilistico, con Alfred Rényi)
+  - Teoria estremale dei grafi (teorema di Erdős–Stone)
+  - Problemi, congetture, premi in denaro
+  - Numero di Erdős
+- Endre Szemerédi (1940– ):
+  - Teorema di Szemerédi (1975): ogni sottoinsieme di interi con densità superiore positiva contiene progressioni aritmetiche arbitrariamente lunghe
+  - Lemma di regolarità di Szemerédi (teoria dei grafi)
+- Teoria dei grafi:
+  - Kazimierz Kuratowski (1896–1980): caratterizzazione grafi planari (non contengono K_5 o K_{3,3} come minore, 1930)
+  - Algoritmi su grafi: Dijkstra (cammino minimo, 1959), Prim, Kruskal (minimo albero ricoprente, 1956)
+  - Problema del commesso viaggiatore (TSP): Dantzig, Fulkerson, Johnson (1954)
+  - Teorema dei quattro colori: Kenneth Appel, Wolfgang Haken (1976) con assistenza computer
+  - Teorema di Robertson–Seymour (teoria dei minori di grafi, serie di articoli 1983–2004)
+- Combinatoria algebrica:
+  - Richard Stanley: funzioni generatrici, combinatoria enumerativa
+  - Gian-Carlo Rota: teoria delle matroidi, calcolo ombra, fondazione combinatoria moderna
+## 8.8 Informatica teorica e matematica discreta
+- Complessità computazionale:
+  - Classi P e NP
+  - Steve Cook (1971), Leonid Levin (1973): teorema di Cook–Levin (SAT è NP-completo)
+  - Richard Karp (1972): 21 problemi NP-completi
+  - Problema P vs NP (Millennium, Clay)
+  - Complessità spaziale (Savitch, Immerman–Szelepcsényi)
+- Automi e linguaggi formali:
+  - Noam Chomsky (1928– ): gerarchia di Chomsky (1956): linguaggi regolari, liberi da contesto, dipendenti da contesto, ricorsivamente enumerabili
+  - Automi finiti, push-down automata, macchine di Turing lineari limitate
+  - Linguaggi formali, grammatiche generative
+- Analisi di algoritmi:
+  - Donald Knuth (1938– ): *The Art of Computer Programming* (dal 1968), notazione asintotica O, algoritmi di ordinamento e ricerca, analisi combinatoria
+  - Robert Tarjan: union–find, grafi
+- Crittografia:
+  - Crittografia a chiave pubblica: Whitfield Diffie, Martin Hellman (scambio di chiavi, 1976)
+  - RSA: Ron Rivest, Adi Shamir, Leonard Adleman (1977)
+  - Crittografia su curve ellittiche (ECC): Neal Koblitz, Victor Miller (1985)
+  - Crittografia quantistica: BB84 (Charles Bennett, Gilles Brassard, 1984)
+  - Zero-knowledge proof (Goldwasser, Micali, Rackoff, 1985)
+- Teoria dei codici:
+  - Claude Shannon: teorema del canale rumoroso (1948)
+  - Richard Hamming: codici di Hamming (1950)
+  - Irving Reed, Gustave Solomon: codici Reed–Solomon (1960)
+  - Codici LDPC (Gallager, Mackay)
+  - Codici turbo (Berrou, Glavieux, 1993)
+## 8.9 Logica matematica avanzata
+- Teoria dei modelli:
+  - Abraham Robinson (1918–1974): analisi non standard (1961, infinitesimi rigorosi)
+  - Michael Morley (1930– ): teorema di categoricità di Morley (1965): una teoria enumerabile categorica in una potenza non enumerabile è categorica in tutte le potenze non enumerabili
+  - Saharon Shelah (1945– ): teoria della stabilità, teoria dei modelli astratti, programma di classificazione, forzatura propria, pcf theory
+- Teoria degli insiemi descrittiva:
+  - John Mycielski, Hugo Steinhaus: assioma di determinazione (AD)
+  - Robert Solovay: modello con tutti gli insiemi misurabili (1970)
+  - Donald Martin: determinazione di Borel (1975, Borel determinacy)
+  - John Steel, Hugh Woodin: determinazione proiettiva e grandi cardinali
+  - W. Hugh Woodin: programma per CH, omega-logica, modelli interni
+- Grandi cardinali: inaccessibili, Mahlo, misurabili, forti, di Woodin, supercompatti, estendibili
+  - Forcing e modelli interni (Dodd, Jensen, Steel)
+- Calcolabilità e gradi di Turing:
+  - Problema di Post (1944): esistono gradi di Turing intermedi?
+  - Priorità finita e infinita: Friedberg, Muchnik (1956, soluzione problema di Post)
+  - Gerarchia aritmetica e analitica
+## 8.10 Matematica applicata e metodi numerici
+- Metodi numerici per EDO: Runge–Kutta, metodi predictor-corrector
+- PDE numeriche: elementi finiti (FEM), differenze finite, volumi finiti, metodi spettrali, metodi senza mesh
+- Algebra lineare numerica: decomposizione QR, SVD (Golub–Kahan), metodi iterativi (gradiente coniugato, GMRES)
+- Ottimizzazione:
+  - Programmazione lineare: George Dantzig (metodo del simplesso, 1947)
+  - Leonid Kantorovich (1912–1986, Nobel economia 1975): programmazione lineare applicata a economia
+  - Ottimizzazione convessa: condizioni KKT (Karush–Kuhn–Tucker, 1939–1951)
+  - Algoritmo del punto interno: Narendra Karmarkar (1984)
+  - Ottimizzazione non lineare globale
+- Ricerca operativa:
+  - Flusso su reti: Ford–Fulkerson (1956), max flow/min cut
+  - Programmazione intera, branch and bound, branch and cut
+- Probabilità applicata e processi stocastici:
+  - Rudolf Kalman: filtro di Kalman (1960) per sistemi dinamici stocastici
+  - Controllo stocastico: Bellman (programmazione dinamica), Merton
+- Matematica finanziaria:
+  - Modello di Black–Scholes–Merton (1973): equazione differenziale stocastica per prezzi di opzioni
+  - Robert Merton, Myron Scholes (Nobel 1997)
+  - Calcolo di Itô, martingale
+## 8.11 Fisica matematica
+- Teoria quantistica dei campi:
+  - Assiomi di Wightman (1956)
+  - Rinormalizzazione: Dyson, Feynman, Schwinger, Tomonaga (QED)
+  - Yang–Mills: teoria di gauge non abeliana (1954), problema del gap di massa (Millennium)
+  - Costruzione di teorie interagenti (Glimm, Jaffe, φ^4 in 2D e 3D)
+- Meccanica statistica:
+  - Modello di Ising: soluzione di Onsager (1944) per reticolo 2D senza campo esterno
+  - Fenomeni critici, gruppo di rinormalizzazione (Wilson, Fisher, 1971–75)
+- Relatività generale matematica:
+  - Teoremi di singolarità: Roger Penrose (1965), Stephen Hawking
+  - Problema di Cauchy per equazioni di Einstein (Choquet-Bruhat, 1952)
+  - Buchi neri, stabilità (con lenta rotazione)
+- Teorie topologiche dei campi (TQFT):
+  - Edward Witten: invarianti di Jones da Chern–Simons (1989); teorie supersimmetriche
+  - Invarianti di Reshetikhin–Turaev (1991), invarianti di Witten–Reshetikhin–Turaev
+- Geometria simplettica e meccanica classica: Vladimir Arnold, Victor Guillemin, Shlomo Sternberg
+## 8.12 Aree interdisciplinari
+- Teoria dei giochi:
+  - John von Neumann, Oskar Morgenstern: *Theory of Games and Economic Behavior* (1944)
+  - John Nash (1928–2015): equilibrio di Nash (1950, Nobel 1994)
+  - Giochi cooperativi: Lloyd Shapley (valore di Shapley, 1953, Nobel 2012)
+  - Teoria dei giochi evolutivi (Maynard Smith, 1973)
+  - Teoria dei giochi combinatoria: *On Numbers and Games* (J.H. Conway, 1976), numeri surreali
+- Biomatematica:
+  - Modelli di popolazione (Lotka–Volterra, anni '20)
+  - Modelli di diffusione ed epidemie (SIR, Kermack–McKendrick, 1927)
+  - Morfogenesi (Turing, 1952, instabilità guidata da diffusione)
+  - Neuroscienze: modelli Hodgkin–Huxley (1952), FitzHugh–Nagumo
+- Economia matematica:
+  - Modello Arrow–Debreu (1954, equilibrio generale)
+  - Kenneth Arrow (impossibilità teorema, 1951, Nobel 1972)
+  - Gérard Debreu (teoria dell'equilibrio)
+- Teoria del controllo:
+  - Controllabilità e osservabilità (Kalman)
+  - Controllo ottimo (principio del massimo di Pontryagin, 1956)
+
+# 9. Matematica contemporanea e di frontiera (XXI secolo)
+## 9.1 Geometria e topologia
+- Varietà di Calabi–Yau e simmetria speculare:
+  - Philip Candelas, Xenia de la Ossa, Paul Green, Linda Parkes (1991): conteggio di curve razionali su quintica tramite mirror symmetry
+  - Simmetria speculare omologica: Maxim Kontsevich (1994, *Homological Algebra of Mirror Symmetry*, Congresso ICM)
+- Invarianti in dimensione bassa:
+  - Invarianti di Gromov–Witten (Mikhail Gromov, Edward Witten)
+  - Invarianti di Donaldson (Simon Donaldson, 1983, teoria di gauge su 4-varietà, Fields 1986)
+  - Invarianti di Seiberg–Witten (1994, semplificazione)
+  - Teoria di Floer (Andreas Floer, 1988): omologia di Floer per 3-varietà e isomorfismi simplettici
+  - Omologia di Heegaard–Floer (Peter Ozsváth, Zoltán Szabó, 2000)
+  - Omologia di Khovanov (Mikhail Khovanov, 1999): link invariants categorificati
+  - Invarianti di Kontsevich (integrale di Kontsevich, 1993)
+- Omotopia e ∞-categorie:
+  - Jacob Lurie (1977– ): *Higher Topos Theory* (2009), ∞-categorie, algebra omotopica, geometria derivata
+  - André Joyal: quasi-categorie (modelli di ∞-categorie)
+  - Algebra omotopica e topologia algebrica superiore
+- Gruppi quantistici e invarianti:
+  - Vladimir Drinfeld (1954– , Fields 1990): gruppi quantistici, programma di Langlands geometrico per curve su campi finiti
+  - Nicolai Reshetikhin, Vladimir Turaev: invarianti di link da gruppi quantistici
+- Teoria geometrica dei gruppi:
+  - Mikhail Gromov (1943– , Abel 2009): gruppi iperbolici (1987), crescita di gruppi, spazi metrici, principio di omotopia, geometria simplettica
+- Congettura di Poincaré in dimensione 3:
+  - Grigori Perelman (1966– ): dimostrazione usando il flusso di Ricci di Hamilton (2002–2003), rifiuta Fields e Millennium
+  - Richard Hamilton (1943–2024): programma del flusso di Ricci con chirurgia
+- Flusso di Ricci e analisi geometrica:
+  - Richard Hamilton, Grigori Perelman, Simon Brendle, Richard Schoen (teorema della sfera differenziabile, 2007)
+- Geometria simplettica:
+  - Dusa McDuff, Dietmar Salamon: *Introduction to Symplectic Topology*
+  - Cohomologia di Floer, omologia di contatto
+## 9.2 Algebra e teoria dei numeri
+- Programma di Langlands:
+  - Programma locale: corrispondenza di Langlands locale per GL(n) (Harris–Taylor, Henniart, 2000)
+  - Programma globale: funzioni L automorfe, funtorialità
+  - "Endoscopia" (Ngô Bảo Châu, 2008, lemma fondamentale di Langlands, Fields 2010)
+  - Programma di Langlands geometrico: Dennis Gaitsgory, Edward Frenkel
+  - Corrispondenza Langlands–Kazhdan–Lusztig
+- Ultimo teorema di Fermat:
+  - Andrew Wiles (1953– ): dimostrazione per curve ellittiche semistabili (1995, con Richard Taylor), *Annals of Mathematics*
+  - Teorema di modularità (tutte le curve ellittiche su ℚ sono modulari) dimostrato successivamente (Breuil, Conrad, Diamond, Taylor, 2001)
+- Congettura di Sato–Tate (dimostrata da Laurent Clozel, Michael Harris, Richard Taylor, 2008)
+- Teoria dei numeri combinatoria e additiva:
+  - Teorema di Green–Tao (2004, Terence Tao, Ben Green): esistono progressioni aritmetiche arbitrariamente lunghe di numeri primi
+  - Gaps tra primi: Yitang Zhang (2013, liminf gap < 70 milioni), James Maynard (2013) e progetto Polymath (record attuale 246)
+  - Congettura di Erdos–Moser, ipotesi di Riemann, problemi di approssimazione diofantea
+- Teoria dei gruppi algebrici e geometrici: completamento classificazione gruppi semplici finiti (Aschbacher, Smith per i quasithin groups, 2004)
+- New foundations for algebraic geometry:
+  - Spettri derivati, geometria derivata (Lurie, Bertrand Toën, Gabriele Vezzosi)
+  - Geometria tropicale (Grigory Mikhalkin, Bernd Sturmfels)
+## 9.3 Analisi e PDE
+- Meccanica dei fluidi e Navier–Stokes:
+  - Regolarità globale per dati piccoli (Leray, 1934)
+  - Millennium problem: regolarità globale o blowup in 3D
+  - Camillo De Lellis, László Székelyhidi: soluzioni deboli non uniche (tramite integrazione convessa)
+- Relatività generale matematica:
+  - Stabilità dello spazio-tempo di Minkowski (Demetrios Christodoulou, Sergiu Klainerman, 1993)
+  - Formazione di buchi neri (Christodoulou, 2009, formazione di trappole chiuse per onde scalari gravitazionali)
+  - Congettura della censura cosmica debole e forte (Roger Penrose)
+  - Stabilità di Kerr per piccole perturbazioni (Klainerman, Szeftel, Giorgi, recente)
+- Turbolenza e statistica:
+  - Teoria di Kolmogorov 1941 (K41), legge dei 5/3, raffinamenti intermittenza
+  - Analisi matematica della turbolenza: problemi aperti
+- Problemi di ottimizzazione di forma: Giuseppe Buttazzo, Dorin Bucur
+- Dispersive PDE: Schrödinger non lineare, KdV, onde d'acqua (Terence Tao, Kenig, Merle, Bourgain)
+## 9.4 Probabilità e statistica moderna
+- Matrici aleatorie:
+  - Eugene Wigner (legge del semicerchio, 1955)
+  - Freeman Dyson (gas coulombiano)
+  - Terence Tao, Van Vu: universalità per ensemble Wigner (2010)
+  - Tracy–Widom: distribuzioni per autovalori più grandi
+- Processi di Schramm–Loewner (SLE):
+  - Oded Schramm (1961–2008): introduzione SLE (1999) per limiti di scaling di modelli reticolari bidimensionali
+  - Wendelin Werner (Fields 2006), Greg Lawler, Stanislav Smirnov (Fields 2010): connessioni con percolazione critica, modello Ising, random walks
+  - Camia, Newman: SLE e Ising
+- Meccanica statistica rigorosa:
+  - Modello Ising: risultati conformi (Smirnov, Duminil-Copin, Chelkak, Hongler)
+  - Percolazione: transizione di fase, criticalità (Harry Kesten, Michael Aizenman, Hugo Duminil-Copin, Fields 2022)
+  - Modelli di spin, teoremi di Lee–Yang, disuguaglianze di correlazione (Griffiths, Kelly, Sherman, Fortuin, Kasteleyn, Ginibre)
+- Inferenza causale:
+  - Judea Pearl (1936– ): *Causality* (2000), do-calculus, diagrammi causali (Turing Award 2011)
+  - Donald Rubin: modello di Rubin per la causalità (potential outcomes)
+- Statistica in alta dimensione:
+  - Lasso (Tibshirani, 1996), compressed sensing (Candès, Romberg, Tao, Donoho, 2006)
+  - Test multipli, false discovery rate (Benjamini–Hochberg, 1995)
+  - Random forests, deep learning statistics
+- Probabilità applicata e processi stocastici:
+  - Martin Hairer (1975– , Fields 2014): strutture di regolarità per SPDE singolari (KPZ, Φ^4 stocastico)
+  - Interfacce casuali, crescita casuale (KPZ universality)
+## 9.5 Combinatoria e informatica
+- Teoria dell'informazione e complessità:
+  - Teorema PCP (Probabilistically Checkable Proofs): Arora, Safra (1992), Arora, Lund, Motwani, Sudan, Szegedy (1998)
+  - Teorema di durezza di approssimazione
+  - Algoritmi di approssimazione, algoritmi randomizzati, derandomizzazione
+  - Crittografia post-quantistica basata su reticoli (Regev, 2005, Learning With Errors)
+- Quantum computing:
+  - Algoritmo di Shor (Peter Shor, 1994): fattorizzazione in tempo polinomiale quantistico
+  - Algoritmo di Grover (Lov Grover, 1996): ricerca in database non strutturati O(√N)
+  - Quantum error correction (Shor, Steane, 1995)
+  - Supremazia quantistica: Google Sycamore (2019)
+- Complessità algebrica:
+  - Valiant (categorie #P), complessità del determinante vs permanente
+- Teoria spettrale dei grafi, grafi espansori (Lubotzky–Phillips–Sarnak, Margulis)
+- Teoria dei giochi algoritmica: equilibrio di Nash computazionale (Daskalakis, Goldberg, Papadimitriou, 2006, PPAD-completezza)
+## 9.6 Logica e fondamenti
+- Homotopy Type Theory (HoTT) e Univalent Foundations:
+  - Vladimir Voevodsky (1966–2017, Fields 2002): Modello di Kan per MLTT, univalenza (equivalenza = uguaglianza), fondazioni basate su tipi omotopici
+  - *HoTT Book* (2013): programma collettivo
+  - Steve Awodey, Thierry Coquand
+- Assistenti alla dimostrazione: Lean (Leonardo de Moura), Coq (INRIA), Agda, Isabelle/HOL
+  - Formalizzazione di grandi teoremi: teorema dei quattro colori (Gonthier, 2005 in Coq), teorema di Feit–Thompson (Gonthier, 2013), perfezione dello spazio di liquidi (Scholze, 2020–22, progetto Liquid Tensor Experiment con Lean)
+- Indipendenza e grandi cardinali:
+  - Programma modelli interni (Woodin, Steel) e CH
+  - Forcing iterato (Woodin, Neeman)
+  - Ω-logica, Woodin's Ultimate L
+- Calcolabilità e complessità descrittiva
+## 9.7 Matematica e Intelligenza Artificiale
+- Dimostrazione automatica di teoremi:
+  - AlphaProof e AlphaGeometry (Google DeepMind, 2024): risoluzione di problemi IMO a livello medaglia d'argento
+  - Lean Gym, autoformalizzazione, modello linguistici per matematica (GPT-f, Minerva, MetaMath)
+- Apprendimento di strutture matematiche:
+  - Neural operator (Kovachki et al., apprendimento di operatori PDE)
+  - Geometric deep learning (Bronstein, Bruna, Cohen, Veličković)
+  - Generazione di congetture con machine learning (Davies et al., *Nature* 2021, congetture in teoria dei nodi e rappresentazioni)
+- Reti neurali e approssimazione universale: teorema di approssimazione universale (Cybenko, 1989; Hornik, 1991)
+- Reti neurali informate dalla fisica (PINNs, Karniadakis)
+- AI for math: formalizzazione assistita, scoperta algoritmi (AlphaTensor per moltiplicazione matriciale, DeepMind, 2022)
+## 9.8 Fisica matematica avanzata
+- Teoria quantistica dei campi rigorosa:
+  - Yang–Mills e mass gap (Millennium)
+  - Costruzione di teorie interagenti in dimensione 4 (problema aperto)
+  - Rinormalizzazione perturbativa (teorema di Bogoliubov–Parasiuk–Hepp–Zimmermann)
+  - Conformal field theory (CFT) rigorosa
+- Holografia e entanglement:
+  - Corrispondenza AdS/CFT (Maldacena, 1997)
+  - Entanglement entropy e disuguaglianze (Ryu–Takayanagi, 2006)
+  - Informazione quantistica relativistica
+- Teorie topologiche dei campi (TQFT):
+  - Classificazione di TQFT estese (Lurie, Hopkins, Freed, Teleman)
+  - Simmetrie categoriali superiori
+- Schemi di Yang–Baxter, sistemi integrabili quantistici
+- Matrici casuali e gravità quantistica (teoria delle stringhe, modelli di matrici)
+## 9.9 Nuove aree interdisciplinari
+- Topological Data Analysis (TDA):
+  - Omologia persistente (Edelsbrunner, Harer, Carlsson, Zomorodian)
+  - Mapper algorithm (Singh, Mémoli, Carlsson)
+  - Applicazioni a biologia, scienza dei materiali, reti
+- Scienza delle reti:
+  - Modello Erdős–Rényi: grafo casuale G(n,p)
+  - Modello small-world (Watts–Strogatz, 1998)
+  - Reti scale-free (Barabási–Albert, 1999)
+  - Percolazione su reti, robustezza e attacchi
+- Biologia dei sistemi:
+  - Reti di regolazione genica (modelli booleani, equazioni differenziali)
+  - Modelli di crescita tumorale, angiogenesi
+  - Folding proteico (AlphaFold, DeepMind, 2020)
+- Matematica e scienze sociali:
+  - Modelli di segregazione (Schelling)
+  - Dinamica delle opinioni
+  - Econofisica: distribuzioni a legge di potenza nei mercati finanziari
+- Matematica per il clima:
+  - Modelli climatici globali (GCM), parametrizzazione stocastica
+  - Teoria della turbolenza geofisica
+  - Data assimilation (filtro di Kalman ensemble, 4D-Var)
+
+# 10. Interdisciplinare: grandi ponti e applicazioni
+## 10.1 Fisica matematica (sintesi e complementi)
+- Meccanica quantistica: spazi di Hilbert, teoria spettrale, teorema di Stone–von Neumann
+- Teoria dei campi: rinormalizzazione, gruppo di rinormalizzazione, costruttivismo (Glimm, Jaffe, Brydges, Dimock)
+- Meccanica statistica: transizioni di fase, universalità, esponenti critici, modello di Ising, modello O(n)
+- Teoria delle stringhe: dualità, mirror symmetry, Calabi–Yau, geometria enumerativa
+- Sistemi integrabili: equazioni di solitoni, metodo di scattering inverso, gerarchie KP, Toda
+## 10.2 Biologia matematica
+- Dinamica delle popolazioni: equazioni di Lotka–Volterra, modelli preda–predatore, competizione, cooperazione
+- Epidemiologia matematica: modelli SIR, SIS, SEIR, R0, reti di contatto
+- Morfogenesi: equazioni di Turing, pattern formation, sistemi di reazione–diffusione (Gierer–Meinhardt)
+- Neuroscienze matematiche: neuroni impulsivi, sincronizzazione, reti neurali biologiche, dinamiche di Wilson–Cowan
+- Bioinformatica e genomica:
+  - Allineamento di sequenze (Smith–Waterman, BLAST)
+  - Filogenetica: alberi filogenetici, massima verosimiglianza, metodi bayesiani
+  - Modelli di Markov nascosti (HMM)
+- Ecologia matematica: metacomunità, modelli di diffusione spaziale
+## 10.3 Teoria dei giochi ed economia matematica
+- Teoria dei giochi non cooperativi: strategie pure/miste, equilibri di Nash, raffinamenti (perfetto, sequenziale, corretto)
+- Giochi cooperativi: nucleo, valore di Shapley, nucleolo, insieme di contrattazione
+- Giochi evolutivi: dinamica del replicatore, strategie evolutivamente stabili (ESS, Maynard Smith, Price)
+- Teoria delle aste e market design: Vickrey, Milgrom, Wilson (Nobel 2020)
+- Economia generale: equilibrio di Arrow–Debreu, esternalità, beni pubblici
+- Teoria della scelta sociale: teorema di impossibilità di Arrow (1951), funzioni di benessere sociale, metodo di voto
+- Mechanism design: Hurwicz, Maskin, Myerson (Nobel 2007)
+## 10.4 Ingegneria e controllo
+- Teoria del controllo moderno: Kalman, controllabilità, osservabilità
+- Controllo ottimo: principio del massimo di Pontryagin, equazione di Hamilton–Jacobi–Bellman
+- Controllo adattativo e robusto
+- Controllo stocastico: filtro di Kalman–Bucy, processi decisionali di Markov (MDP)
+- Identificazione di sistemi
+- Ottimizzazione convessa e non lineare: metodi numerici, programmazione semidefinita, interior point methods
+## 10.5 Matematica finanziaria e attuariale
+- Modello di Black–Scholes–Merton: equazione di Black–Scholes, formula per opzioni europee
+- Misure di rischio (VaR, Expected Shortfall)
+- Modelli di tasso di interesse: Vasicek, CIR, Hull–White
+- Calcolo stocastico per la finanza: martingale, cambi di misura (Girsanov), teorema di rappresentazione delle martingale
+- Teoria del portafoglio (Markowitz, frontiera efficiente)
+## 10.6 Matematica e arte
+- Prospettiva lineare (Alberti, Piero, Dürer)
+- Proporzione aurea e serie di Fibonacci
+- Frattali e arte generativa (Mandelbrot, Jackson Pollock?)
+- Musica e matematica:
+  - Teoria delle proporzioni, Pitagora, temperamenti musicali
+  - Teoria dei gruppi in musica (Milton Babbitt, Iannis Xenakis: musica stocastica, teoria degli schermi)
+  - Analisi di Fourier e timbro
+- Origami e geometria: assiomi di Huzita–Justin (geometria di origami), teorema di Kawasaki, applicazioni a ingegneria (Miura-ori, pannelli solari)
+- Architettura parametrica e matematica
+## 10.7 Matematica e filosofia
+- Filosofia della matematica: platonismo, formalismo, intuizionismo, logicismo, costruttivismo, strutturalismo
+- Natura degli oggetti matematici, accesso epistemico
+- Ruolo della bellezza e dell'estetica in matematica
+- Matematica e verità
+## 10.8 Educazione matematica
+- Sviluppo cognitivo della matematica (Piaget, Vygotskij, Bruner, Dienes)
+- Didattica della matematica: approcci, pedagogia, Brousseau (teoria delle situazioni)
+- Storia e didattica integrata
+- Valutazione e test (OCSE PISA)
+## 10.9 Altre intersezioni
+- Linguistica matematica: sintassi formale, semantica di Montague, parsing
+- Scienze cognitive: modelli di decisione, reti bayesiane per il ragionamento
+- Giurimetria: analisi quantitativa del diritto
+- Archeologia matematica: datazione, paleoclimatologia quantitativa
+- Geografia quantitativa: statistica spaziale, GIS

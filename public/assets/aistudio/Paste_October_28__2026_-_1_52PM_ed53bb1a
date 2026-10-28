@@ -1,0 +1,529 @@
+# PROMPT PROCEDURALE DEFINITIVO PER L'ARRICCHIMENTO DEL PROGETTO MATH-ATLAS
+
+## 📋 CONTESTO E OBIETTIVO
+
+Agisci come architetto capo di **Math-Atlas**, un sistema enciclopedico-esplorativo che standardizza la visualizzazione della matematica in un universo geometrico navigabile. Il progetto è già stato avviato con un'ontologia di base e una specifica tecnica. Il tuo compito ora è **arricchire il progetto con tutto il materiale sorgente fornito dall'utente**, che rappresenta una base di conoscenza di oltre 2000 concetti matematici, 2500+ collegamenti, e 7 mappe concettuali gerarchiche.
+
+**Vincolo non negoziabile: LOSSLESS.** Ogni concetto, relazione, categoria, descrizione, e struttura dati presente nei file sorgente deve essere integrata nell'ontologia finale, senza perdite, senza riduzioni, senza omissioni.
+
+---
+
+## 📂 INVENTARIO DEI FILE SORGENTE (da trascrivere integralmente)
+
+### FILE 1: `grafo_matematica.html`
+**Tipo**: Applicazione Three.js 3D (grafo a forza diretta)
+**Contenuto completo**:
+- **1350 nodi** (`n0`–`n1350`) con campi: `id`, `label`, `year`, `disc` (disciplina), `type`, `desc`
+- **~2500 archi** (`e(from, to, type)`) con 12 tipi di relazione: `implies`, `analogy`, `precedes`, `derives`, `partof`, `generalizes`, `equivalent`, `inspires`, `contradicts`, `extends`, `uses`, `foundation`
+- **5 discipline** con colori: `math` (0x4a9eff), `physics` (0x44dd88), `cs` (0xff8844), `logic` (0xaa66ff), `inter` (0xff4488)
+- **Layout**: 5 centri di cluster (`centers`), repulsione Barnes-Hut-like, attrazione archi, gravità/cluster, modalità temporale (year-based X position)
+- **UI**: ricerca con autocompletamento, filtri per disciplina/relazione/secolo, pannello info, legenda, minimappa, timeline, etichette sprite canvas, scena con fog, OrbitControls, raycasting per hover/drag
+- **Dati nodi**: Parti da `const nodes = [...]` (righe 588–1580) e `const edges = [...]` (righe 1582–2300). Ogni nodo ha una `desc` dettagliata (1–3 frasi) e un `year` (interi negativi per a.C., 0–2026 per d.C.)
+
+**Trascrizione richiesta**: 
+- Tutti i 1350 nodi con i loro campi
+- Tutti gli archi con i loro tipi
+- Le strutture `DC`, `DN`, `DH`, `RC`, `RN`
+- La logica di layout (`layoutStep`, `updateEdges`, `animate`)
+- La logica UI (ricerca, filtri, pannello, minimappa)
+
+### FILE 2: `Mappa dell_informatica teorica e della matematica.html`
+**Tipo**: Markmap (mappa mentale interattiva con KaTeX)
+**Contenuto**:
+- Radice: "Mappa Unificata — Matematica, Logica, Informatica"
+- 6 macro-sezioni:
+  1. **Fondamenta**: Teoria degli Insiemi (Cantor), Teoria della Dimostrazione (Hilbert, Gödel), Teoria delle Categorie (Eilenberg–Mac Lane)
+  2. **Algebra**: Algebra Universale (Birkhoff), Algebra Lineare, Algebra Astratta
+  3. **Logica**: Classica, Intuizionista, Matematica (modelli, dimostrazione, ricorsione, insiemi), Proposizionale, FOL, Ordine Superiore
+  4. **Calcolabilità e Complessità**: Crisi dei Fondamenti, Modelli di Calcolo (Turing, Lambda, Ricorsive), Church–Turing, Classi P/NP/PSPACE
+  5. **Linguaggi Formali e Automi**: Gerarchia di Chomsky, DFA/NFA/PDA/TM, Compilatori
+  6. **Lambda Calcolo e Teoria dei Tipi**: Church, Curry–Howard, Martin-Löf, HoTT, Linguaggi
+  7. **Database**: Modelli, 12 Regole di Codd, Algebra Relazionale, Calcolo Relazionale, Teorema di Codd, SQL
+  8. **Analisi Matematica**: Fondamenta, Analisi Reale, Analisi in Rⁿ, ODE/PDE, Analisi Funzionale
+  9. **Analisi Numerica**: Floating-point, Interpolazione, Sistemi Lineari, Autovalori, ODE/PDE numeriche, Ottimizzazione
+  10. **Geometria**: Euclidea, Analitica, Proiettiva, Differenziale, Topologia
+  11. **Meccanica Razionale**: Newtoniana, Lagrangiana, Hamiltoniana, Quantistica
+  12. **Intelligenza Artificiale**: Fondamenta Logiche, ML, Reti Neurali, Teoria Approssimazione, AI Geometrica, Modelli Generativi
+- **Fonti**: Wikipedia links + Dispensa Cutolo
+
+**Trascrizione richiesta**: Tutto il contenuto markdown del tag `<script>` con i nodi e i KaTeX.
+
+### FILE 3: `Mappa della logica matematica.html`
+**Tipo**: Markmap (mappa mentale della logica)
+**Contenuto**:
+- Radice: "Logica"
+- **Logica Classica**: Sillogismo, Terzo escluso
+- **Logica Intuizionista**: Rifiuto terzo escluso, Logica Lineare (Girard 1987)
+- **Logica Matematica**:
+  - Studia: Analisi combinatoria infinito, Teoria modelli, Teoria dimostrazione, Teoria ricorsione, Teoria insiemi
+  - Sintassi: Linguaggio formale, Calcolatore
+  - Semantica: Modelli, Lambda calcolo, Dimostratori automatici, Curry–Howard
+  - Logica Proposizionale: Atomi, Connettivi, FBF, BNF, SAT
+  - Teoria del Primo Ordine: Calcolo dei Predicati, Alfabeto, Linguaggio, Assiomi, Regole
+- **Fonti**: Wikipedia + Dispensa Cutolo
+
+**Trascrizione richiesta**: Tutto il contenuto markdown.
+
+### FILE 4: `Mappa delle corrispondenze in matematica.html`
+**Tipo**: Markmap (mappa delle corrispondenze/isomorfismi)
+**Contenuto**:
+- Radice: "Galassia Matematica — Dalle Origini alle Frontiere"
+- **✦ CORRISPONDENZE PROFONDE** (14 isomorfismi):
+  1. ⭐ Curry–Howard–Lambek (Logica ↔ Tipi ↔ Categorie)
+  2. ⭐ Corrispondenza di Galois (Campi ↔ Gruppi)
+  3. ⭐ Programma di Langlands (Numeri ↔ Rappresentazioni ↔ Forme automorfe)
+  4. ⭐ Taniyama–Shimura–Weil (Curve ellittiche ↔ Forme modulari)
+  5. ⭐ Stone Duality (Algebre di Boole ↔ Spazi topologici)
+  6. ⭐ Teorema di Noether (Simmetrie ↔ Conservazione)
+  7. ⭐ Atiyah–Singer Index Theorem (Analisi ↔ Topologia)
+  8. ⭐ Riemann–Hilbert (EDO ↔ Rappresentazioni π₁)
+  9. ⭐ Mirror Symmetry (Simplettica ↔ Algebrica)
+  10. ⭐ AdS/CFT (Gravità ↔ CFT)
+  11. ⭐ Monstrous Moonshine (Mostro ↔ Forme modulari)
+  12. ⭐ Shannon ↔ Boltzmann (Informazione ↔ Termodinamica)
+  13. ⭐ Fourier Duality (Tempo ↔ Frequenza)
+  14. ⭐ Weil Conjectures → Grothendieck (Aritmetica ↔ Topologia)
+- **I. ANTICHITÀ**: Mesopotamia, Grecia (Talete, Pitagora, Euclide, Archimede, Apollonio, Diofanto, Ipazia, Proclo), Cina/India (numerazione posizionale, al-Khwarizmi)
+- **II. MEDIOEVO/RINASCIMENTO**: Islam (traduzioni, algebra), Rinascimento (Tartaglia–Cardano, Ferrari, Viète, Keplero)
+- **III. RIVOLUZIONE SCIENTIFICA**: Cartesio, Newton–Leibniz, Euler, Lagrange, Laplace, Fourier
+- **IV. XIX SECOLO**: Rigore (Cauchy, Weierstrass, Dedekind, Cantor), Algebra astratta (Galois, Abel, Hamilton, Cayley, Boole, Dedekind), Geometrie non-euclidee (Lobachevsky, Bolyai, Riemann, Klein), Analisi complessa (Cauchy–Riemann, Riemann, Weierstrass), Fondamenta (Frege, Peano, Russell–Whitehead)
+- **V. XX SECOLO**: Crisi dei fondamenti (Hilbert, ZFC, Gödel, Cohen), Calcolabilità (Church, Turing, Post), Teoria informazione (Shannon), Strutture portanti (Algebra, Analisi, Geometria, Topologia)
+- **VI. STRUTTURE PORTANTI**: Algebra, Analisi, Geometria
+- **VII. LOGICA E INFORMATICA TEORICA**: Logica matematica, Linguaggi formali, Complessità, Database, Lambda calcolo e tipi
+- **VIII. FISICA MATEMATICA**: Meccanica classica, MQ, Relatività, QFT, Stringhe
+- **IX. INTELLIGENZA ARTIFICIALE**: Fondamenta logiche, ML, Modelli generativi, AI geometrica, Connessioni profonde emergenti
+- **X. FRONTIERE APERTE**: Problemi del Millennio, Programmi attivi
+- **Fonti**: Wikipedia links
+
+**Trascrizione richiesta**: Tutto il contenuto markdown con i KaTeX.
+
+### FILE 5: `mappa_matematica.md`
+**Tipo**: Markdown (mappa testuale completa della storia della matematica)
+**Contenuto**: ~1600 righe di struttura gerarchica:
+1. **Preistoria e conteggio**: Ossa, sistemi numerici primitivi, geometria pratica
+2. **Matematica antica**:
+   - 2.1 Egizia: Papiri (Rhind, Mosca, Berlino), sistema numerazione, aritmetica, geometria, algebra retorica, astronomia
+   - 2.2 Babilonese: Sistema sessagesimale, tavolette (Plimpton 322, YBC 7289, BM 13901), algebra, geometria, astronomia
+   - 2.3 Cinese: Zhoubi, Jiuzhang, Haidao, Sunzi, Liu Hui, Zu Chongzhi, Qin Jiushao, Li Ye, Yang Hui, Zhu Shijie
+   - 2.4 Indiana: Sulba Sutra, Aryabhata, Brahmagupta, Bhaskara II, Scuola del Kerala (Madhava, Nilakantha, Jyeshtadeva)
+   - 2.5 Greca: Presocratici, Platone, Aristotele, Euclide, Archimede, Apollonio, Eratostene, Erone, Menelao, Tolomeo, Diofanto, Pappo, Ipazia
+   - 2.6 Zenone e paradossi
+3. **Medievale**:
+   - 3.1 Islamico: al-Khwarizmi, al-Kindi, Banu Musa, Thabit, Abu Kamil, al-Battani, Abu'l-Wafa, al-Karaji, Ibn al-Haytham, Al-Biruni, Omar Khayyam, al-Tusi, al-Kashi, Ulugh Beg
+   - 3.2 Europa: Gerberto, traduzioni, Fibonacci, Jordanus, Bradwardine, Oresme, Regiomontano
+4. **Rinascimento e prima modernità**: Algebra italiana (del Ferro, Tartaglia, Cardano, Ferrari, Bombelli), Prospettiva, Notazione (Viète, Stevin), Logaritmi (Napier, Briggs), Geometria analitica (Fermat, Descartes), Combinatoria (Pascal, Huygens), Precursori calcolo (Keplero, Cavalieri, Wallis, Barrow, Gregory), Teoria numeri (Fermat, Mersenne)
+5. **Calcolo infinitesimale**: Newton, Leibniz, Bernoulli, Euler, Lagrange, Laplace, Monge, Legendre, Fourier, Taylor, Maclaurin, d'Alembert
+6. **Ottocento**: Analisi rigorosa (Cauchy, Bolzano, Weierstrass, Dedekind, Cantor), Analisi reale, Analisi complessa, Algebra astratta (Galois, Abel, Cayley, Sylow, Jordan, Hölder), Algebra lineare (determinanti, matrici, Grassmann, Hamilton, Frobenius), Anelli (Dedekind, Kronecker, Hilbert), Algebre di Lie (Lie, Killing, Cartan), Teoria numeri (Gauss, Dirichlet, Kummer, Riemann, Dedekind, Chebyshev, Hermite, Lindemann, Minkowski), Geometria (proiettiva, non-euclidea, algebrica, differenziale), Topologia (Listing, Möbius, Betti, Poincaré), Fondamenti (Boole, De Morgan, Frege, Peano, Cantor, Russell, Whitehead, Hilbert, Brouwer), Probabilità (Laplace, Poisson, Chebyshev, Markov, Lyapunov, Galton, Pearson), Meccanica, ODE/PDE
+7. **Prima metà Novecento**: Fondamenti (Hilbert, Gödel, Tarski, Church, Turing, Post, Gentzen, Herbrand, Zermelo, Fraenkel, von Neumann, Cohen), Algebra moderna (Noether, Artin, van der Waerden, Burnside, Hall, Feit–Thompson, classificazione gruppi semplici, Dynkin, Chevalley, Schur, Weyl, Brauer), Analisi funzionale (Hilbert, Schmidt, Riesz, Banach, Steinhaus, Alaoglu, von Neumann, Stone, Kolmogorov, Gelfand, Krein, Kakutani), Topologia (Hausdorff, Urysohn, Tychonoff, Pontryagin, Poincaré, Dehn, Seifert–van Kampen, Noether, Vietoris, Alexander, Lefschetz, Whitney, Eilenberg–MacLane, Steenrod, Reidemeister), Geometria differenziale (Levi-Civita, Ricci-Curbastro, Einstein, Cartan, Weyl, Hodge, de Rham, Hopf, Ehresmann, Schouten), Probabilità (Kolmogorov, Wiener, Lévy, Itô, Khinchin, Fisher, Neyman–Pearson, Wald, Cramér, de Finetti), Teoria numeri (Hardy–Littlewood, Ramanujan, Hensel, Hasse, Artin, Takagi, Siegel, Weil, Vinogradov, Linnik, Brun, Selberg, Erdős), Analisi, PDE, Calcolo variazioni
+8. **Seconda metà Novecento**: Geometria algebrica (Grothendieck, Serre, Deligne, Mumford, Zariski, Hironaka, Kodaira, Atiyah–Singer), Topologia/Geometria differenziale (Morse, Smale, Bott, Milnor, Thom, Chern, Pontryagin, Stiefel–Whitney, Hirzebruch), Analisi complessa (Kähler, Cartan, Grauert, Remmert, Yau, Griffiths), Sistemi dinamici (Poincaré, Birkhoff, Smale, Lorenz, KAM, ergodica, biforcazioni, Fatou–Julia, Mandelbrot), Analisi armonica (Schwartz, Zygmund, Calderón, Stein, Fefferman, Tao), PDE (Sobolev, Schwartz, Lax–Milgram, Lions, FEM, Hörmander, Sato, Ladyzhenskaya, Serrin, Nirenberg, Caffarelli, Navier–Stokes, solitoni), Combinatoria (Ramsey, Erdős, Szemerédi, Kuratowski, Dijkstra, algoritmi grafi, TSP, 4 colori, Robertson–Seymour, Stanley, Rota), Informatica teorica (Cook, Levin, Karp, P vs NP, Chomsky, Knuth, Tarjan, Diffie–Hellman, RSA, ECC, BB84, ZKP, Shannon, Hamming, Reed–Solomon, LDPC, Turbo), Logica avanzata (Robinson, Morley, Shelah, AD, Solovay, Martin, Steel, Woodin, grandi cardinali, Post problem, Friedberg–Muchnik), Matematica applicata (Dantzig, Kantorovich, KKT, Karmarkar, Ford–Fulkerson, Kalman, Bellman, Black–Scholes–Merton, Itô), Fisica matematica (Wightman, rinormalizzazione, Yang–Mills, Glimm–Jaffe, Ising–Onsager, Wilson, Penrose, Hawking, Choquet-Bruhat, Witten, TQFT), Interdisciplinare (von Neumann–Morgenstern, Nash, Shapley, Maynard Smith, Conway, Lotka–Volterra, SIR, Turing, Hodgkin–Huxley, Arrow–Debreu, Pontryagin, Kalman)
+9. **Contemporanea (XXI secolo)**: Geometria/topologia (Calabi–Yau, mirror symmetry, Gromov–Witten, Donaldson, Seiberg–Witten, Floer, Heegaard–Floer, Khovanov, Kontsevich, Lurie, Joyal, Drinfeld, Reshetikhin–Turaev, Gromov, Perelman, Hamilton, Brendle–Schoen, McDuff–Salamon), Algebra/Teoria numeri (Langlands locale/globale/geometrico, Wiles, modularità, Sato–Tate, Green–Tao, Zhang, Maynard, Polymath, classificazione gruppi, spettri derivati, geometria tropicale), Analisi/PDE (Navier–Stokes, De Lellis–Székelyhidi, Christodoulou–Klainerman, censura cosmica, Kerr, Kolmogorov K41, Buttazzo–Bucur, Tao–Kenig–Merle–Bourgain), Probabilità/Statistica (Wigner, Dyson, Tao–Vu, Tracy–Widom, SLE, Schramm, Werner, Lawler, Smirnov, Camia–Newman, Ising, percolazione, Kesten, Aizenman, Duminil-Copin, Lee–Yang, Pearl, Rubin, Lasso, compressed sensing, Benjamini–Hochberg, Hairer, KPZ), Combinatoria/Informatica (PCP, durezza approssimazione, crittografia post-quantistica, Shor, Grover, error correction, supremazia quantistica, Valiant, grafi espansori, Nash computazionale), Logica/Fondamenti (HoTT, Voevodsky, Lean, Coq, Agda, Isabelle, 4 colori, Feit–Thompson, Liquid Tensor, modelli interni, Woodin, Ultimate L), AI/Matematica (AlphaProof, AlphaGeometry, Lean Gym, GPT-f, Minerva, MetaMath, neural operator, geometric deep learning, Davies et al., Cybenko, Hornik, PINNs, AlphaTensor), Fisica matematica avanzata (Yang–Mills mass gap, CFT, AdS/CFT, Ryu–Takayanagi, TQFT, Lurie–Hopkins–Freed–Teleman, Yang–Baxter, matrici casuali), Nuove aree (TDA, Edelsbrunner–Harer–Carlsson–Zomorodian, Mapper, Erdős–Rényi, Watts–Strogatz, Barabási–Albert, percolazione reti, reti regolazione genica, crescita tumorale, AlphaFold, Schelling, opinione, econofisica, GCM, turbolenza geofisica, Kalman ensemble, 4D-Var)
+10. **Interdisciplinare**: Fisica matematica, Biologia matematica, Teoria giochi, Ingegneria/controllo, Finanza, Arte, Filosofia, Educazione, Altre intersezioni
+
+**Trascrizione richiesta**: TUTTO il contenuto del file markdown (1600+ righe).
+
+### FILE 6: `mappa_stem.html` e `mappa_stem.md`
+**Tipo**: Markmap + Markdown (Genealogia dei Concetti STEM)
+**Contenuto**:
+- **Matematica**: Conteggio preistorico, Antica (Egizia, Babilonese, Cinese, Greca, Indiana), Islamica, Rinascimento, Moderna, Contemporanea (Analisi Funzionale, Complessa, ODE/PDE, Numerica, Teoria Giochi, Ottimizzazione), Recente (Cohen, Bourbaki, Wiles, Perelman, Tao, Computazionale, Categorie, Atiyah, Finanziaria, Reti Neurali, Informazione Quantistica), Futura
+- **Fisica**: Cosmologie antiche, Meccanica classica, Termodinamica, Elettromagnetismo, Relatività, MQ, Particelle (QFT, Modello Standard, Oltre SM, Astroparticelle), Cosmologia moderna, Teorie unificazione (Stringhe, LQG), Computazionale, Ottica, Materia condensata, Stato solido avanzato, Applicata, Futura
+- **Logica**: Aristotelica, Stoica, Medievale, Algebra della Logica (Boole, De Morgan, Frege, Peano, Russell, Wittgenstein), Metalogica & Fondamenti (Hilbert, Gödel, Tarski, Turing, Church, Post, Skolem, Löwenheim, ZFC, Proof Theory, Ricorsione generalizzata), Logiche non classiche (Modali, Temporali, Fuzzy, Lineare, Intuizionista, Paraconsistente, Ibrida, Separazione, AI), HoTT, Computazionale, Futura
+- **Informatica**: Algoritmi antichi, Macchine calcolatrici, Computabilità & Linguaggi (Turing, Church, Post, Kleene, Chomsky), Architettura computer (von Neumann, Harvard, transistor, IC, CPU, GPU, TPU, RISC/CISC, memoria, embedded, neuromorfico), Linguaggi programmazione (Fortran, Lisp, ALGOL, C, Simula, C++, Java, Python, JS, Rust, Go, funzionale, SQL, NoSQL, quantistici), Sistemi operativi (UNIX, Linux, Windows, Android, microkernel, distribuiti), Reti (ARPANET, TCP/IP, WWW, Web 2.0/3.0, cloud, 5G/6G, IoT, edge, SDN), AI (simbolica, connessionista, deep learning, RL, generativa, NLP, visione, robotica, auto-supervisionato, 3D, explainable, etica), Crittografia (DH, RSA, ECC, AES, hash, ZKP, avanzata, post-quantistica, verifica formale), Blockchain, Quantum computing, Algoritmi & Complessità, Ingegneria software, Sistemi raccomandazione, HCI, Futura
+- **Intersezioni**: Cibernetica, Teoria informazione, Sistemi complessi, Filosofia scienza, Fisica e computazione, Bioinformatica, Infosfera, Interdisciplinare futuro
+
+**Trascrizione richiesta**: Tutto il contenuto.
+
+### FILE 7: `Schema ampio matematica.html`
+**Tipo**: Markmap (Galassia Matematica — Mappa Narrativa)
+**Contenuto**:
+- **Il problema di fondo**: Il pattern che si ripete (isomorfismo → teoremi gratis + nuove domande)
+- **I. IL CENTRO — Logica, Algebra, Informatica**:
+  1. Logica diventa algebra (Boole, 1854) → Shannon (1937) → circuiti
+  2. Dimostrare è programmare (Curry–Howard, 1934–1969) ⭐ (tabella Logica ↔ Programmazione)
+  3. Linguaggio unificante (Teoria Categorie, 1945) ⭐ (Oggetti, Morfismi, Composizione; Lambek 1980 completa il triangolo)
+  4. Database come logica applicata (Codd, 1970) → Teorema di Codd ⭐
+- **II. VERSO LA GEOMETRIA**:
+  1. Primo grande ponte (Cartesio, 1637) ⭐ (coordinate)
+  2. Simmetrie delle equazioni (Galois, 1832) ⭐
+  3. Una geometria = un gruppo (Klein, 1872) ⭐ (Programma Erlangen)
+  4. Geometria spazio curvo (Riemann, 1854)
+  5. Topologia: identità essenziale
+  6. Geometria algebrica (Grothendieck, 1960)
+- **III. VERSO LA FISICA**:
+  1. Calcolo come linguaggio (Newton, 1687)
+  2. Meccanica diventa geometria (Lagrange 1788, Hamilton 1833)
+  3. Simmetrie e forze (Noether, 1915) ⭐ (tabella simmetrie ↔ conservazione)
+  4. MQ e spazi di Hilbert (tabella classico ↔ quantistico)
+  5. AdS/CFT (Maldacena, 1997) ⭐
+- **IV. VERSO L'AI**:
+  1. Ottimizzazione alta dimensione
+  2. Algebra lineare sotto il cofano (tensori, SVD)
+  3. Simmetrie nelle reti (Geometric Deep Learning, 2021) ⭐ (tabella rete ↔ simmetria)
+  4. Shannon, Boltzmann e perdita ⭐ (tabella formule)
+  5. Neural Tangent Kernel (Jacot, 2018) ⭐
+  6. Modelli diffusione come fisica stocastica
+- **V. PROGRAMMA DI LANGLANDS** (il ponte più grande):
+  - Ingrediente 1: Teoria numeri (curve ellittiche)
+  - Ingrediente 2: Gruppo di Galois
+  - Ingrediente 3: Forme automorfiche
+  - Corrispondenza ⭐
+  - Ultimo Teorema Fermat come caso speciale
+  - Langlands Geometrico (diagramma)
+  - Stato attuale
+- **VI. QUADRO FINALE**:
+  - Filo rosso (catena di isomorfismi)
+  - I grandi isomorfismi in ordine storico (tabella 16 righe)
+  - La domanda aperta
+- **Fonti**: 3Blue1Brown, Hofstadter, Singh, Frenkel, HoTT Book, GDL, Wikipedia
+
+**Trascrizione richiesta**: Tutto il contenuto.
+
+### FILE 8: `Grafo delle corrispondenze in matematica.html`
+**Tipo**: Applicazione vis.js (grafo interattivo 2D con pannello info)
+**Contenuto**:
+- **~60 nodi** con campi: `id`, `label`, `group`, `size`, `info` (title, cat, desc, links)
+- **Gruppi** con colori: `antico` (#c9a96e), `fondamenta` (#d4af6a), `algebra` (#7b68ee), `analisi` (#4ecdc4), `geometria` (#e8708a), `logica` (#6bcb77), `fisica` (#f4a261), `ai` (#a8dadc), `bridge` (#ffffff)
+- **Nodi ponte** (bridge: true): galois, godel, cat_theory, curry_howard, langlands, noether, atiyah_singer, mirror_symmetry, ads_cft, shannon_boltzmann, taniyama, moonshine, fourier
+- **~80 archi** con `from`, `to`, `label`, `dashes`, `width`
+- **UI**: header con leggenda, pannello info a destra (title, category, desc, links, bridge-badge), controls (scroll zoom, drag muovi, click dettagli)
+- **Stile**: font EB Garamond + JetBrains Mono, tema scuro con starfield, colori CSS custom properties
+
+**Trascrizione richiesta**: Tutto il codice HTML/JS/CSS, inclusi `nodes_data` e `edges_data`.
+
+---
+
+## 🎯 PROCEDURA DI INTEGRAZIONE
+
+### FASE 1: Normalizzazione dell'Ontologia Unificata
+
+Crea un **singolo schema JSON-LD** che unifichi tutti i dati. Ogni nodo deve avere:
+
+```json
+{
+  "@id": "n0",
+  "label": "Tallo di conteggio (Lebombo)",
+  "year": -3500,
+  "discipline": "math",
+  "type": "Artefatto",
+  "description": "Primo strumento di conteggio conosciuto, osso di babbuino con 29 tacche.",
+  "category": ["Preistoria", "Conteggio"],
+  "source_file": "grafo_matematica.html",
+  "aliases": ["Osso di Lebombo"],
+  "connections": [
+    {"to": "n1", "type": "precedes", "label": "precede"},
+    {"to": "n2", "type": "inspires", "label": "ispira"}
+  ],
+  "viz": {
+    "group": "antico",
+    "size": 22,
+    "bridge": false,
+    "color": "#c9a96e"
+  }
+}
+```
+
+**Regole di normalizzazione**:
+1. **ID univoci**: Usa `n{numero}` per i nodi del file 1; per gli altri file, crea ID descrittivi (`galois`, `curry_howard`, ecc.)
+2. **Discipline**: `math`, `physics`, `cs`, `logic`, `inter`, `ai`, `fondamenta`, `antico`
+3. **Tipi di relazione**: Usa i 12 tipi del file 1 + `bridge` per gli isomorfismi
+4. **Anni**: Interi (negativi per a.C.), `null` se sconosciuto
+5. **Bridge**: `true` se il nodo è un isomorfismo/ponte
+
+### FASE 2: Fusione dei Grafi
+
+Unifica i 4 dataset:
+1. **File 1** (1350 nodi, 2500 archi) → base dell'ontologia
+2. **File 5** (mappa_matematica.md) → arricchisce le descrizioni con dettagli storici
+3. **File 4** (corrispondenze) → aggiunge i 14 isomorfismi come nodi `bridge`
+4. **File 8** (grafo corrispondenze) → aggiunge nodi `bridge` e archi `dashes` per gli isomorfismi
+5. **File 2, 3, 6, 7** → arricchiscono le categorie e le gerarchie
+
+**Algoritmo di fusione**:
+```
+Per ogni nodo nel File 1:
+  Se esiste un nodo corrispondente in File 4/8:
+    Unisci i campi (description, links, category)
+  Altrimenti:
+    Aggiungi il nodo
+  
+Per ogni isomorfismo in File 4/8:
+  Crea un nodo bridge con:
+    - type: "Isomorfismo"
+    - category: ["Ponte", "Isomorfismo"]
+    - description: (dal File 4)
+    - links: (dal File 4)
+    - connections: (dal File 8)
+  
+Per ogni categoria in File 2/3/6/7:
+  Aggiungi un nodo "Categoria" con:
+    - type: "Categoria"
+    - children: [lista di nodi]
+```
+
+### FASE 3: Arricchimento delle Descrizioni
+
+Per ogni nodo, la `description` deve essere:
+- **Lossless**: Include TUTTO il contenuto del file sorgente
+- **Strutturata**: Usa Markdown (grassetto, corsivo, link)
+- **Collegata**: Ogni descrizione deve menzionare almeno un'altra entità matematica
+
+**Esempio di arricchimento**:
+```
+File 1 (originale):
+"n259", "Turing", 1936, "cs", "Figura", "Macchina di Turing. Test Turing. Intelligenza artificiale. Deciframento."
+
+File 5 (arricchimento):
+"Turing (1912–1954): On Computable Numbers (1936): macchina di Turing, problema dell'arresto (indecidibile), macchina universale. Contributi alla crittoanalisi (Enigma, seconda guerra mondiale). Test di Turing (IA)."
+
+Risultato finale:
+"Alan Turing (1912–1954). On Computable Numbers (1936): macchina di Turing, problema dell'arresto (indecidibile), macchina universale. Contributi alla crittoanalisi (Enigma, seconda guerra mondiale). Test di Turing (IA). Tesi di Church-Turing. [Fonte: mappa_matematica.md, grafo_matematica.html]"
+```
+
+### FASE 4: Struttura Gerarchica
+
+Crea una **gerarchia a 5 livelli**:
+1. **Livello 0**: Discipline (Matematica, Fisica, Logica, Informatica, AI, Interdisciplinare)
+2. **Livello 1**: Macro-aree (Algebra, Analisi, Geometria, Topologia, Logica, Calcolabilità, ecc.)
+3. **Livello 2**: Branche (Algebra Lineare, Analisi Funzionale, Geometria Differenziale, ecc.)
+4. **Livello 3**: Teorie/Concetti (Teorema Spettrale, Spazi di Hilbert, Varietà Riemanniane, ecc.)
+5. **Livello 4**: Entità specifiche (nodi del File 1)
+
+**Mappatura**:
+- File 2, 3, 6, 7 → Livelli 0–2
+- File 4, 8 → Livello 3 (isomorfismi)
+- File 1, 5 → Livello 4 (entità specifiche)
+
+### FASE 5: Visualizzazione Unificata
+
+Il sistema deve supportare **3 modalità di vista**:
+
+1. **Vista Grafo 3D** (dal File 1):
+   - 1350 nodi con layout a forza
+   - Frecce colorate per tipo di relazione
+   - Filtri per disciplina/relazione/secolo
+   - Timeline (year-based)
+   - Minimappa
+   
+2. **Vista Markmap** (dai File 2, 3, 4, 6, 7):
+   - Albero gerarchico espandibile
+   - KaTeX per le formule
+   - Link a Wikipedia
+
+3. **Vista Grafo 2D** (dal File 8):
+   - Nodi ponte evidenziati (bianchi)
+   - Pannello info laterale
+   - Archi tratteggiati per isomorfismi
+
+**Integrazione**: Un selettore in alto a destra permette di passare tra le 3 viste, mantenendo lo stesso dataset.
+
+### FASE 6: Funzionalità di Ricerca e Navigazione
+
+1. **Ricerca full-text** su `label`, `description`, `aliases`
+2. **Autocompletamento** con suggerimenti per disciplina
+3. **Percorsi di apprendimento**: Dato un nodo obiettivo, calcola il percorso minimo di prerequisiti (usando gli archi `precedes`, `derives`, `uses`)
+4. **Filtri combinati**: Disciplina × Relazione × Secolo × Tipo
+5. **"Mostra vicini"**: Per ogni nodo, evidenzia i nodi connessi entro N salti
+
+### FASE 7: Arricchimento con i Dati dei File Markdown
+
+Per ogni nodo del File 1, cerca nel File 5 (mappa_matematica.md) la sezione corrispondente e:
+1. Aggiungi dettagli storici mancanti
+2. Aggiungi riferimenti bibliografici
+3. Aggiungi collegamenti ad altri concetti
+4. Aggiungi formule matematiche (in LaTeX)
+
+**Esempio**:
+```
+File 1: "n163", "Disquisitiones Arithmeticae", 1801, "math", "Opera", "Teoria numeri moderna. Congruenze, reciprocità quadratica, forme."
+
+File 5: "Carl Friedrich Gauss (1777–1855). Disquisitiones Arithmeticae (1801, a 24 anni): Congruenze, aritmetica modulare (notazione a ≡ b (mod m)). Legge di reciprocità quadratica (prima dimostrazione completa; otto dimostrazioni in vita di Gauss). Forme quadratiche binarie: equivalenza, riduzione, composizione. Radici primitive, criteri. Numeri poligonali, equazioni diofantee. Ciclotomia: condizione per costruibilità poligoni regolari con riga e compasso."
+
+Risultato arricchito:
+"Disquisitiones Arithmeticae (1801, a 24 anni). Congruenze, aritmetica modulare ($a \equiv b \pmod{m}$). Legge di reciprocità quadratica (prima dimostrazione completa; otto dimostrazioni in vita di Gauss). Forme quadratiche binarie: equivalenza, riduzione, composizione. Radici primitive, criteri. Numeri poligonali, equazioni diofantee. Ciclotomia: condizione per costruibilità poligoni regolari con riga e compasso ($n$ prodotto di primi di Fermat distinti $\times$ potenza di 2)."
+```
+
+### FASE 8: Gestione degli Isomorfismi (Nodi Bridge)
+
+Per ogni isomorfismo nei File 4 e 8:
+
+```json
+{
+  "@id": "bridge_curry_howard",
+  "label": "Curry–Howard–Lambek",
+  "type": "Isomorfismo",
+  "discipline": "inter",
+  "year": 1969,
+  "description": "Proposizione = Tipo = Oggetto categoriale. Dimostrazione = Programma = Morfismo. Implicazione A→B = Tipo funzione = Esponenziale. La corrispondenza più profonda tra logica, programmazione e matematica.",
+  "bridge": true,
+  "sources": ["Mappa delle corrispondenze in matematica.html", "Schema ampio matematica.html", "Grafo delle corrispondenze in matematica.html"],
+  "connections": [
+    {"to": "lambda", "type": "bridge", "label": "Logica intuizionista ↔ Lambda calcolo tipato"},
+    {"to": "tipi", "type": "bridge", "label": "Tipi = Spazi omotopici (HoTT)"},
+    {"to": "cat_theory", "type": "bridge", "label": "Lambek: Categorie"}
+  ],
+  "viz": {
+    "group": "bridge",
+    "size": 34,
+    "color": "#ffffff",
+    "dashes": true
+  }
+}
+```
+
+**Lista completa degli isomorfismi da includere**:
+1. Curry–Howard–Lambek (Logica ↔ Tipi ↔ Categorie)
+2. Corrispondenza di Galois (Campi ↔ Gruppi)
+3. Programma di Langlands (Numeri ↔ Rappresentazioni ↔ Forme automorfe)
+4. Taniyama–Shimura–Weil (Curve ellittiche ↔ Forme modulari)
+5. Stone Duality (Algebre di Boole ↔ Spazi topologici)
+6. Teorema di Noether (Simmetrie ↔ Conservazione)
+7. Atiyah–Singer Index Theorem (Analisi ↔ Topologia)
+8. Riemann–Hilbert (EDO ↔ Rappresentazioni π₁)
+9. Mirror Symmetry (Simplettica ↔ Algebrica)
+10. AdS/CFT (Gravità ↔ CFT)
+11. Monstrous Moonshine (Mostro ↔ Forme modulari)
+12. Shannon ↔ Boltzmann (Informazione ↔ Termodinamica)
+13. Fourier Duality (Tempo ↔ Frequenza)
+14. Weil Conjectures → Grothendieck (Aritmetica ↔ Topologia)
+15. Teorema di Codd (Algebra rel. ↔ Calcolo rel.)
+16. Tesi di Church–Turing (Modelli di calcolo equivalenti)
+
+### FASE 9: Aggiunta dei Dati Mancanti
+
+Verifica che l'ontologia contenga **tutti** i seguenti elementi (dal File 5 e 6):
+
+**Matematica Antica**:
+- Osso di Ishango, Osso di Lebombo, Tally stick, Quipu
+- Papiro di Rhind, Papiro di Mosca, Papiro di Berlino 6619
+- Plimpton 322, YBC 7289, BM 13901, Tavoletta di Susa
+- Zhoubi Suanjing, Jiuzhang Suanshu, Haidao Suanjing, Sunzi Suanjing
+- Sulba Sutra, Aryabhatiya, Brahmasphutasiddhanta, Lilavati
+- Elementi di Euclide, Almagesto, Arithmetica di Diofanto, Coniche di Apollonio
+- Collezione matematica di Pappo
+
+**Matematica Islamica**:
+- al-Khwarizmi, al-Kindi, Banu Musa, Thabit ibn Qurra, Abu Kamil, al-Battani, Abu'l-Wafa, al-Karaji, Ibn al-Haytham, Al-Biruni, Omar Khayyam, al-Tusi, al-Kashi, Ulugh Beg
+
+**Rinascimento**:
+- Piero della Francesca, Luca Pacioli, Cardano, Tartaglia, Ferrari, Bombelli, Viète, Stevin, Napier, Briggs, Descartes, Fermat, Pascal, Huygens
+
+**XVIII–XIX**:
+- Newton, Leibniz, Euler, Lagrange, Laplace, Fourier, Gauss, Cauchy, Bolzano, Weierstrass, Dedekind, Cantor, Galois, Abel, Cayley, Sylow, Boole, De Morgan, Frege, Peano, Russell, Whitehead, Hilbert, Brouwer, Riemann, Lobachevsky, Bolyai, Klein, Poincaré, Betti, Noether, Artin, van der Waerden, Banach, Riesz, Hahn, Steinhaus, von Neumann, Stone, Kolmogorov, Gelfand, Hausdorff, Urysohn, Tychonoff, Pontryagin, Lefschetz, Whitney, Eilenberg, Mac Lane, Steenrod, Levi-Civita, Ricci-Curbastro, Einstein, Cartan, Weyl, Hodge, de Rham, Hopf, Fisher, Neyman, Pearson, Wald, Cramér, Hardy, Littlewood, Ramanujan, Hensel, Hasse, Takagi, Siegel, Weil, Vinogradov, Linnik, Brun, Selberg, Erdős
+
+**XX secolo**:
+- Gödel, Tarski, Church, Turing, Post, Gentzen, Herbrand, Zermelo, Fraenkel, Cohen, Grothendieck, Serre, Deligne, Mumford, Zariski, Hironaka, Kodaira, Atiyah, Singer, Morse, Smale, Bott, Milnor, Thom, Chern, Pontryagin, Stiefel, Whitney, Hirzebruch, Kähler, Cartan, Grauert, Remmert, Yau, Griffiths, Birkhoff, Lorenz, Arnold, Moser, Sinai, Furstenberg, Fatou, Julia, Mandelbrot, Schwartz, Zygmund, Calderón, Stein, Fefferman, Tao, Sobolev, Lax, Milgram, Lions, Hörmander, Sato, Ladyzhenskaya, Serrin, Nirenberg, Caffarelli, Ramsey, Szemerédi, Kuratowski, Dijkstra, Prim, Kruskal, Dantzig, Fulkerson, Johnson, Appel, Haken, Robertson, Seymour, Stanley, Rota, Cook, Levin, Karp, Chomsky, Knuth, Tarjan, Diffie, Hellman, Rivest, Shamir, Adleman, Koblitz, Miller, Bennett, Brassard, Goldwasser, Micali, Rackoff, Shannon, Hamming, Reed, Solomon, Gallager, Berrou, Glavieux, Robinson, Morley, Shelah, Solovay, Martin, Steel, Woodin, Post, Friedberg, Muchnik, Dantzig, Kantorovich, KKT, Karmarkar, Ford, Fulkerson, Kalman, Bellman, Black, Scholes, Merton, Itô, Wightman, Feynman, Schwinger, Tomonaga, Dyson, Yang, Mills, Glimm, Jaffe, Onsager, Wilson, Fisher, Penrose, Hawking, Choquet-Bruhat, Witten, Reshetikhin, Turaev, von Neumann, Morgenstern, Nash, Shapley, Maynard Smith, Conway, Lotka, Volterra, Kermack, McKendrick, Turing, Hodgkin, Huxley, Arrow, Debreu, Pontryagin
+
+**XXI secolo**:
+- Candelas, de la Ossa, Green, Parkes, Kontsevich, Gromov, Witten, Donaldson, Seiberg, Floer, Ozsváth, Szabó, Khovanov, Lurie, Joyal, Drinfeld, Reshetikhin, Turaev, Gromov, Perelman, Hamilton, Brendle, Schoen, McDuff, Salamon, Harris, Taylor, Henniart, Ngô, Gaitsgory, Frenkel, Wiles, Taylor, Breuil, Conrad, Diamond, Clozel, Harris, Taylor, Green, Tao, Zhang, Maynard, Polymath, Aschbacher, Smith, Toën, Vezzosi, Mikhalkin, Sturmfels, Leray, De Lellis, Székelyhidi, Christodoulou, Klainerman, Penrose, Klainerman, Szeftel, Giorgi, Kolmogorov, Buttazzo, Bucur, Tao, Kenig, Merle, Bourgain, Wigner, Dyson, Tao, Vu, Tracy, Widom, Schramm, Werner, Lawler, Smirnov, Camia, Newman, Smirnov, Duminil-Copin, Chelkak, Hongler, Kesten, Aizenman, Duminil-Copin, Griffiths, Kelly, Sherman, Fortuin, Kasteleyn, Ginibre, Pearl, Rubin, Tibshirani, Candès, Romberg, Tao, Donoho, Benjamini, Hochberg, Hairer, Arora, Safra, Lund, Motwani, Sudan, Szegedy, Regev, Shor, Grover, Steane, Valiant, Lubotzky, Phillips, Sarnak, Margulis, Daskalakis, Goldberg, Papadimitriou, Voevodsky, Awodey, Coquand, de Moura, Gonthier, Scholze, Woodin, Steel, Neeman, Kurzweil, Kovachki, Bronstein, Bruna, Cohen, Veličković, Davies, Cybenko, Hornik, Karniadakis, Silver, Hassabis, Jumper, Hinton, LeCun, Bengio, Rosenblatt, McCulloch, Pitts, Hebb, Rumelhart, Werbos, Hopfield, Schmidhuber, Vaswani, Goodfellow, Kingma, Welling, Sutton, Barto, Watkins, Mnih, Silver, Hassabis
+
+**Fisica**:
+- Aristotele, Tolomeo, Galileo, Newton, Huygens, Lagrange, Hamilton, Kepler, Cavendish, Carnot, Clausius, Kelvin, Boltzmann, Gibbs, Maxwell, Planck, Coulomb, Ampère, Faraday, Hertz, Lorentz, Einstein, Minkowski, Schwarzschild, Eddington, Bohr, Heisenberg, Schrödinger, Dirac, Pauli, Born, de Broglie, Sommerfeld, Fermi, Yukawa, Gell-Mann, Weinberg, Salam, Glashow, Higgs, Feynman, Schwinger, Tomonaga, Dyson, Gross, Politzer, Wilson, Friedmann, Hubble, Gamow, Penrose, Hawking, Guth, Zwicky, Rubin, Perlmutter, Riess, Schmidt, Kaluza, Klein, Witten, Maldacena, Rovelli, Smolin, Wolfram, Penrose, Alder, Gabor, Onnes, Bednorz, Müller, Shockley, Bardeen, Brattain, Landauer, Bennett, Lloyd, Fredkin, Wheeler, Feynman, Deutsch, Shor, Grover, Preskill, Cirac, Zoller, Monroe, Wineland, Blatt, Aspect, Zeilinger, Clauser, Bell, Bennett, Brassard, Ekert, Gisin, Tittel, Weinfurter, Pan, Zeilinger, Bouwmeester, Laflamme, Knill, Nielsen, Chuang, Preskill, Kitaev, Freedman, Nayak, Wilczek, Stern, Tsui, Stormer, Laughlin, Moore, Read, Wen, Levin, Kitaev, Nayak, Das Sarma, Freedman, Kitaev, Larsen, Wang, Wen, Kitaev, Sau, Das Sarma, Alicea, Oreg, von Oppen, Fisher, Mourik, Zuo, Frolov, Plissard, Bakkers, Kouwenhoven, Deng, Clarke, Sau, Lutchyn, Sarma, Marcus, Aasen, Hell, Mishmash, Higginbotham, Danon, Leijnse, Jespersen, Folk, Marcus, Flensberg, Nadj-Perge, Drozdov, Bernevig, Yazdani, Jeon, Yu, Moodera, Nadj-Perge, Drozdov, Bernevig, Yazdani, Mourik, Zuo, Frolov, Plissard, Bakkers, Kouwenhoven, Deng, Clarke, Sau, Lutchyn, Sarma, Marcus, Aasen, Hell, Mishmash, Higginbotham, Danon, Leijnse, Jespersen, Folk, Marcus, Flensberg, Nadj-Perge, Drozdov, Bernevig, Yazdani, Jeon, Yu, Moodera, Nadj-Perge, Drozdov, Bernevig, Yazdani
+
+**Informatica**:
+- Euclide, Eratostene, Erone, Archimede, al-Khwarizmi, Fibonacci, Pascal, Leibniz, Babbage, Lovelace, Hollerith, Turing, Church, Post, Kleene, Gödel, Rice, Markov, Chomsky, von Neumann, Harvard, Bardeen, Brattain, Shockley, Kilby, Noyce, Moore, Intel 4004, NVIDIA, CUDA, TPU, RISC, CISC, Fortran, Lisp, McCarthy, ALGOL, Backus, C, Ritchie, Simula, Smalltalk, Kay, C++, Stroustrup, Java, Gosling, Python, van Rossum, JavaScript, Eich, Rust, Go, Haskell, ML, OCaml, Milner, SQL, Codd, NoSQL, UNIX, Thompson, Ritchie, Linux, Torvalds, Windows, Gates, Android, iOS, MapReduce, Hadoop, Spark, Paxos, Raft, ARPANET, Baran, TCP/IP, Cerf, Kahn, WWW, Berners-Lee, HTML, CSS, AWS, 5G, 6G, IoT, Edge, Fog, SDN, NFV, McCarthy, Minsky, MYCIN, Dendral, SHRDLU, McCulloch, Pitts, Hebb, Rosenblatt, Rumelhart, Werbos, Hopfield, Boltzmann, LeCun, LeNet-5, Schmidhuber, LSTM, Transformer, Attention, GPT, BERT, GPT-4, Claude, Gemini, Hinton, LeCun, Bengio, AlphaGo, AlphaFold, Silver, Sutton, Barto, Q-learning, DQN, Goodfellow, GAN, Kingma, Welling, VAE, Vaswani, Transformer, Chomsky, NLP, Word2Vec, Embeddings, SIFT, HOG, ResNet, YOLO, Asimov, Boston Dynamics, SLAM, Motion Planning, NeRF, LIME, SHAP, Bias, Fairness, Regolamentazione, Allineamento, Diffie, Hellman, RSA, Rivest, Shamir, Adleman, ECC, Koblitz, Miller, AES, Hash, ZKP, Goldwasser, Micali, Rackoff, FHE, Gentry, LWE, Regev, NTRU, Differential Privacy, Dwork, SMPC, Yao, PQC, NIST, Verifica Formale, Bitcoin, Nakamoto, Ethereum, Buterin, DeFi, NFT, DAO, Feynman, Deutsch, Shor, Grover, Qubit, IBM, Google, Sycamore, Supremazia, Error Correction, Shor, Steane, Surface Codes, Grover, NISQ, Preskill, Topological QC, QML, VQE, QAOA, Quantum Internet, P, NP, NP-Complete, Karp, P vs NP, PSPACE, EXPTIME, BPP, #P, NL, Savitch, Cook-Levin, Gerarchia, Comunicazione, Divide et Impera, Backtracking, Programmazione Dinamica, Greedy, Union-Find, AVL, Rosso-Nero, B-Alberi, Hash, Ordinamento, Dijkstra, Kruskal, Prim, Bellman-Ford, Ford-Fulkerson, Tarjan, Knuth, TAOCP, TeX, Tarjan, Strutture Dati, Agile, Manifesto, DevOps, CI-CD, Git, UML, Design Patterns, GoF, TDD, Continuous Testing, Filtraggio Collaborativo, Fattorizzazione Matrici, VR, AR, BCI, Design, AGI, Superintelligenza, Mind Uploading, Quantum Internet, Biocomputing, Singolarità, Neuromorphic, Optical, Ray Tracing, Path Tracing
+
+### FASE 10: Output Finale
+
+Produci un **unico file JSON** (`math_atlas_ontology.json`) con:
+
+```json
+{
+  "metadata": {
+    "version": "2.0",
+    "created": "2026-01-27",
+    "sources": [
+      "grafo_matematica.html",
+      "Mappa dell_informatica teorica e della matematica.html",
+      "Mappa della logica matematica.html",
+      "Mappa delle corrispondenze in matematica.html",
+      "mappa_matematica.md",
+      "mappa_stem.html",
+      "mappa_stem.md",
+      "Schema ampio matematica.html",
+      "Grafo delle corrispondenze in matematica.html"
+    ],
+    "total_nodes": 1350,
+    "total_edges": 2500,
+    "total_bridges": 16,
+    "total_categories": 100
+  },
+  "nodes": [...],
+  "edges": [...],
+  "categories": [...],
+  "bridges": [...],
+  "hierarchy": {...},
+  "visualization": {
+    "modes": ["3d_force", "markmap", "2d_vis"],
+    "colors": {...},
+    "layouts": {...}
+  }
+}
+```
+
+---
+
+## 🔧 REQUISITI TECNICI
+
+### Stack raccomandato
+- **Backend**: Python (FastAPI) + Neo4j (database a grafo) + Redis (cache)
+- **Frontend**: React + Three.js (per vista 3D) + D3.js (per markmap) + vis.js (per vista 2D)
+- **Formato dati**: JSON-LD + OWL
+- **API**: REST + GraphQL
+
+### Performance
+- Caricamento lazy dei nodi (viewport-based)
+- Web Workers per il calcolo del layout
+- Compressione gzip delle risposte API
+- Cache CDN per i dati statici
+
+### Accessibilità
+- ARIA labels per tutti i controlli
+- Navigazione da tastiera (frecce, tab, enter)
+- Contrasto colori WCAG AA
+- Font size regolabile
+
+---
+
+## ✅ CHECKLIST DI QUALITÀ (lossless)
+
+Prima di considerare il lavoro completato, verifica:
+
+- [ ] **Tutti i 1350 nodi** del File 1 sono presenti
+- [ ] **Tutti i ~2500 archi** del File 1 sono presenti
+- [ ] **Tutti i 16 isomorfismi** dei File 4/8 sono presenti come nodi `bridge`
+- [ ] **Tutte le descrizioni** sono state arricchite con i dettagli dei File 5/6
+- [ ] **Tutte le categorie** dei File 2/3/6/7 sono mappate nella gerarchia
+- [ ] **Tutti i KaTeX** sono stati convertiti in LaTeX standard
+- [ ] **Tutti i link** a Wikipedia sono preservati
+- [ ] **Tutte le date** (year) sono corrette (negative per a.C.)
+- [ ] **Tutti i colori** dei gruppi sono preservati
+- [ ] **Tutte le relazioni** (`implies`, `analogy`, ecc.) sono preservate
+- [ ] **Nessuna informazione** dei file sorgente è stata omessa
+- [ ] Il JSON finale è valido e parsabile
+- [ ] La gerarchia a 5 livelli è completa
+- [ ] Le 3 modalità di visualizzazione funzionano
+- [ ] La ricerca full-text funziona su tutti i campi
+- [ ] I filtri combinati funzionano
+- [ ] I percorsi di apprendimento sono calcolabili
+- [ ] La minimappa funziona
+- [ ] Il pannello info mostra tutti i dettagli
+- [ ] Il sistema è responsive (mobile, tablet, desktop)
+
+---
+
+## 📝 NOTE FINALI
+
+1. **Lossless è non negoziabile**: Ogni singola informazione dei file sorgente deve essere presente nell'output finale. Se un file contiene 1600 righe di markdown, tutte devono essere mappate nell'ontologia.
+
+2. **Priorità**: Prima i nodi del File 1 (base), poi gli isomorfismi (File 4/8), poi le categorie (File 2/3/6/7), infine gli arricchimenti (File 5).
+
+3. **Verifica incrementale**: Dopo ogni fase, confronta l'ontologia parziale con i file sorgente per verificare che nulla sia stato perso.
+
+4. **Formato di output**: Il JSON finale deve essere compatibile con:
+   - Neo4j (per query Cypher)
+   - Three.js (per la vista 3D)
+   - vis.js (per la vista 2D)
+   - Markmap (per la vista gerarchica)
+
+5. **Documentazione**: Ogni nodo deve avere un campo `source_file` che indica da quale file proviene, per garantire la tracciabilità.
+
+**Inizia la trascrizione e l'integrazione. Non fermarti finché tutti i file non sono stati completamente mappati nell'ontologia unificata.**
