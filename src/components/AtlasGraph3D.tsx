@@ -25,6 +25,7 @@ import {
   RotateCcw,
   Network
 } from 'lucide-react';
+import { MathView } from './MathView';
 
 interface AtlasGraph3DProps {
   onOpenLab: (lab: 'dimensional' | 'tensor' | 'operator' | 'rotations' | 'cnl') => void;
@@ -779,9 +780,9 @@ export const AtlasGraph3D: React.FC<AtlasGraph3DProps> = ({ onOpenLab }) => {
           <div className="text-[10px] font-mono-tech uppercase tracking-wider text-slate-400 mb-1">
             Identità Formale & Struttura
           </div>
-          <code className="text-xs text-sky-300 font-mono-tech break-all leading-relaxed block">
-            {selectedNode.formula}
-          </code>
+          <MathView math={selectedNode.formula} block />
+
+
         </div>
 
         {/* Definition & Deep Insight */}
@@ -840,9 +841,9 @@ export const AtlasGraph3D: React.FC<AtlasGraph3DProps> = ({ onOpenLab }) => {
                   <div className="text-xs font-semibold text-slate-200">{otherNode.label}</div>
                   <p className="text-[11px] text-slate-400 leading-snug">{edge.explanation}</p>
                   {edge.formulaBridge && (
-                    <code className="block text-[10px] text-amber-300/90 font-mono-tech pt-0.5">
-                      {edge.formulaBridge}
-                    </code>
+                    <MathView math={edge.formulaBridge} className="text-[11px] text-amber-300 pt-0.5 block" />
+
+          
                   )}
                 </div>
               );

@@ -21,9 +21,11 @@ import {
   Copy,
   Check
 } from 'lucide-react';
+import { MathView } from './MathView';
+import { GraphicalMethodsView } from './GraphicalMethodsView';
 
 interface OntologyAndCompendiumViewProps {
-  initialSection?: 'taxonomy40' | 'bridges9' | 'book24' | 'cnl_lean';
+  initialSection?: 'taxonomy40' | 'bridges9' | 'book24' | 'cnl_lean' | 'graphical_methods';
 }
 
 const CNL_PRESETS = [
@@ -60,7 +62,7 @@ const CNL_PRESETS = [
 export const OntologyAndCompendiumView: React.FC<OntologyAndCompendiumViewProps> = ({
   initialSection = 'taxonomy40'
 }) => {
-  const [section, setSection] = useState<'taxonomy40' | 'bridges9' | 'book24' | 'cnl_lean'>(
+  const [section, setSection] = useState<'taxonomy40' | 'bridges9' | 'book24' | 'cnl_lean' | 'graphical_methods'>(
     initialSection
   );
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -178,7 +180,7 @@ export const OntologyAndCompendiumView: React.FC<OntologyAndCompendiumViewProps>
             Enciclopedia Strutturale Lossless & Specifica Formale Math-Atlas
           </div>
           <h2 className="text-2xl font-serif-editorial font-semibold text-slate-100 mt-1">
-            40 Categorie (`schema_strutture.tex`), 9 Ponti Strutturali, Trattato in 24 Capitoli & MathLingua CNL
+            40 Categorie (`schema_strutture.tex`), 9 Ponti Strutturali, Trattato in 24 Capitoli & Metodi Grafici
           </h2>
         </div>
 
@@ -187,7 +189,8 @@ export const OntologyAndCompendiumView: React.FC<OntologyAndCompendiumViewProps>
             { id: 'taxonomy40', label: '1. Tassonomia 40 Categorie & 7 Scoperte', icon: GitBranch },
             { id: 'bridges9', label: '2. I 9 Ponti & Bibliografia/MOOC', icon: GraduationCap },
             { id: 'book24', label: '3. Architettura Libro (24 Capitoli)', icon: BookOpen },
-            { id: 'cnl_lean', label: '4. MathLingua CNL → Lean 4 & Export', icon: Code2 }
+            { id: 'cnl_lean', label: '4. MathLingua CNL → Lean 4 & Export', icon: Code2 },
+            { id: 'graphical_methods', label: '5. Metodi Grafici Formali & Diagrammatic Reasoning', icon: Sparkles }
           ].map((tab) => {
             const Icon = tab.icon;
             return (
@@ -196,7 +199,7 @@ export const OntologyAndCompendiumView: React.FC<OntologyAndCompendiumViewProps>
                 onClick={() => setSection(tab.id as any)}
                 className={`px-3 py-2 rounded text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer border ${
                   section === tab.id
-                    ? 'bg-amber-500 text-slate-950 border-amber-400 font-semibold'
+                    ? 'bg-amber-500 text-slate-950 border-amber-400 font-semibold shadow-sm'
                     : 'bg-slate-900/90 text-slate-300 border-slate-800 hover:bg-slate-800'
                 }`}
               >
@@ -276,9 +279,7 @@ export const OntologyAndCompendiumView: React.FC<OntologyAndCompendiumViewProps>
                   </div>
                 </div>
 
-                <code className="block text-[11px] font-mono-tech text-sky-300 bg-[#090b10] border border-slate-800/80 p-2 rounded overflow-x-auto">
-                  {cat.keyFormula}
-                </code>
+                <MathView math={cat.keyFormula} block />
 
                 <div className="space-y-2 pt-1">
                   {cat.nodes.map((nd, idx) => (
@@ -288,9 +289,7 @@ export const OntologyAndCompendiumView: React.FC<OntologyAndCompendiumViewProps>
                     >
                       <div className="flex flex-wrap items-center justify-between gap-1">
                         <span className="font-semibold text-slate-200">{nd.name}</span>
-                        <code className="text-[10px] font-mono-tech text-amber-300">
-                          {nd.formula}
-                        </code>
+                        <MathView math={nd.formula} className="text-[11px] text-amber-300" />
                       </div>
                       <p className="text-[11px] text-slate-400 leading-snug">{nd.details}</p>
                     </div>
@@ -318,9 +317,7 @@ export const OntologyAndCompendiumView: React.FC<OntologyAndCompendiumViewProps>
                   <h3 className="text-base font-serif-editorial font-semibold text-slate-100">
                     {bridge.title}
                   </h3>
-                  <code className="block text-[11px] font-mono-tech text-sky-300 bg-[#090b10] border border-slate-800 p-2 rounded overflow-x-auto">
-                    {bridge.coreFormula}
-                  </code>
+                  <MathView math={bridge.coreFormula} block />
                   <p className="text-xs text-slate-300 leading-relaxed">
                     <strong className="text-sky-400">Lato Algebrico:</strong> {bridge.algebraicSide}
                   </p>
@@ -389,9 +386,7 @@ export const OntologyAndCompendiumView: React.FC<OntologyAndCompendiumViewProps>
                 <h4 className="text-base font-serif-editorial font-semibold text-slate-100">
                   {ch.chapterTitle}
                 </h4>
-                <code className="block text-[11px] font-mono-tech text-sky-300 bg-[#090b10] border border-slate-800 p-2 rounded overflow-x-auto">
-                  {ch.keyFormulas}
-                </code>
+                <MathView math={ch.keyFormulas} block />
                 <ul className="space-y-1.5 text-xs text-slate-300 list-disc pl-4">
                   {ch.coreTheoremsAndProofs.map((thm, i) => (
                     <li key={i} className="leading-relaxed">
@@ -518,6 +513,11 @@ export const OntologyAndCompendiumView: React.FC<OntologyAndCompendiumViewProps>
             </pre>
           </div>
         </div>
+      )}
+
+      {/* SECTION 5: Metodi Grafici Formali & Diagrammatic Reasoning */}
+      {section === 'graphical_methods' && (
+        <GraphicalMethodsView />
       )}
     </div>
   );
